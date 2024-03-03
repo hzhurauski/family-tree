@@ -1,0 +1,191 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#wrapper {
+    height: 100%;
+    /*    min-width: 1200px;*/
+    /* max-width: 2048px; */
+    min-height: 1080px;
+    margin: 0 auto;
+    font: 20px Segoe UI Semilight sans-serif;
+}
+
+/*Header*/
+
+#heap {
+    height: 112px;
+    color: #ffffff;
+    border-bottom: 1px solid #557FAF;
+    display: flex;
+    justify-content: center;
+}
+
+#header {
+    background-repeat: no-repeat;
+    background-image: url(../images/BackgroundSign.png);
+    background-size: cover;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+#logo {
+    float: left;
+    height: 100px;
+    margin-left: 50px;
+}
+
+#logo img {   
+    height: 110px;
+}
+
+.block {
+    border: 1px solid #F00;
+}
+
+
+#menu {
+    width: 650px;
+    height: 112px;
+    margin-left: 100px;
+    float: left;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul li {
+    float: left;
+}
+
+#menu ul li a div {
+    width: 160px;
+    height: 70px;
+    padding: 40px 0 72px 0;
+    text-align: center;
+    transition: all 0.8s;
+    border-bottom: 4px solid rgba(0, 0, 0, 0);
+}
+
+#menu ul li a div:hover 
+{
+    background-color: #FFF;
+    cursor: pointer;
+    border-color: rgba(0, 0, 0, 1);
+    color: #1A73D2;
+    transition: all 0.8s;
+}
+
+#menu li:hover a {
+    color: #FFF;
+}
+
+#menu .active {
+    background-color: #FFF;
+    color: #1A73D2;
+    border-bottom: 4px solid #000;
+}
+
+
+
+#menu ul a {
+    text-decoration: none;
+    color:#CCC;
+}
+
+.loginButton {
+    background-color: transparent;
+    float: right;
+    border: 1px solid #000;
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+    width: 200px;
+    height: 50px;
+    padding-top: 5px;
+    margin: 30px 0 0 0;
+    border-radius: 20px;
+    transition: background-color 0.4s ease-out, color 0.4s ease-out;
+}
+
+.loginButton:hover {
+    background-color: #000;
+    color: #1A73D2;   
+    transition: background-color 0.4s ease-in, color 0.4s ease-in;
+    cursor: pointer;
+}
+
+#headerText {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 48px;
+    color: #76ABEA;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 100;
+    
+}
+
+/*Footer*/
+#footer {
+    background-repeat: no-repeat;
+    background-image: url(../images/FooterBackground.png);
+    background-size: cover;
+    /*height: 210px;*/
+    margin: 0 auto;
+}
+
+#footerMenu {
+    margin: 10px 0 58px 0;
+}
+
+#footerMenu a div {
+    font: 16px Segoe UI Semilight sans-serif;
+    color: #838383;
+    text-transform: uppercase;
+    height: 60px;
+    padding: 30px 0 40px 0;
+    text-align: center;
+    border-bottom: 2px solid #33333D;
+    transition: all 0.8s;
+   
+}
+
+#footerMenu a div:hover 
+{
+    cursor: pointer;
+    border-bottom: 2px solid #006EF6;
+    color: #1A73D2;
+    transition: all 0.8s;
+    
+}
+
+#footerMenu a {
+    text-decoration: none;
+}
+
+.nullPadding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#copyright {
+    font: 20px Segoe UI Semilight sans-serif;
+    text-align: center;
+    padding-top: 25px;
+    height: 70px;
+    background-color: #0F54A2;
+    color: #76ABEA;
+}
+#author {
+    color: #FFF;
+}

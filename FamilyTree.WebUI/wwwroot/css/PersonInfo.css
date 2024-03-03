@@ -1,0 +1,486 @@
+﻿
+/*Стили главного элемента*/
+.infoPanel {
+    border: 1px solid #000;
+    height: 104px;
+    text-align: center;
+    padding-top: 35px;
+    transition: all 0.5s;
+    color: #acacac;
+    background-color: #454545;
+    border-right-width: 0;
+}
+
+#groupFields a {
+    text-decoration: none;
+}
+
+.infoPanel:hover {
+    background-color: #FFF;
+    transition: all 0.5s;
+    cursor: pointer;
+    border-color: #007cd3;
+    border-left-width: 40px;    
+    color: #0096FF;
+}
+
+.white {
+    background-color: #FFF;
+    color: #313538;
+    box-shadow: 0 0 20px rgba(255,255,255,0.7);
+}
+
+.infoPanel.white {
+    border-left: 40px solid #0096FF;
+    border-color: #0096FF;
+    box-shadow: none;
+}
+
+.white:hover {
+    cursor: default;
+    color: #313538;
+}
+
+.form-horizontal .col-md-9 {
+    padding-right: 0;
+   
+}
+.form-horizontal {
+    min-height: 520px;
+}
+
+#starText {
+    margin: 10px 10px 0 10px;
+}
+
+.borderStyleUp {
+    border-top: none;
+    border-right: none;
+}
+
+.borderStyleDown {
+    border-bottom: none;
+    border-right: none;
+}
+
+.borderStyleMiddle {
+    border-right: none;
+}
+
+/*Стили списка кнопок на переключение редактирования параметров*/
+
+#listButtons {
+    margin-top: 15px;
+    position: relative;
+    visibility: hidden;
+}
+
+#listButtons .list-group-item {
+    width: 100%;
+    cursor: pointer;
+}
+
+#listButtons .active {
+    color: #fff;
+    background-color: #0096FF;
+    background-image: none;
+    border-color: #0096FF;
+    cursor: default;
+}
+
+#AttentionMessage {
+    border: 1px solid #dc3545;
+    font-size: 14px;
+    padding: 10px;
+    background-color: #ffb9b9;    
+    border-radius: 5px;
+    visibility: hidden;
+}
+
+
+/*Стили на список изображений*/
+#imgPersonBlock {
+    width: 580px;
+    margin: 15px auto 0 auto;
+    display: none;
+}
+
+#imgPersonBlock .card {
+    width: 250px;
+    height: 301px;    
+    background-color: #555;
+    margin-bottom: 20px;
+    margin-right: 40px;
+    float: left;
+    transition: all 0.2s ease-in;
+    cursor: pointer;   
+    box-shadow: 0 0 10px rgba(0,0,0,0.9);
+}
+
+#imgPersonBlock .card:hover {    
+    background-color: #777;
+    transition: all 0.2s ease-in;
+}
+
+#imgPersonBlock .card-body {
+    height: 251px;
+}
+
+#imgPersonBlock img {
+    width: auto;
+    max-width: 250px;
+    max-height: 250px;
+}
+
+#imgPersonBlock .card .imageDescription {
+    height: 50px;
+    background-color: #333;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    word-break: break-word;
+    color: #aaa;
+    font-size: 14px;
+    padding: 6px 5px 5px 12px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#imgPersonBlock .card:hover .imageDescription {
+    color: #FFF;
+    background-color: #0096FF;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+
+/*Стили на слайдер*/
+.modal_imageSlider {
+    width: 85%;      
+}
+
+.modal_imageSlider .modal-content {
+    background-color: #333;
+}
+.modal_imageSlider .modal-body {
+    padding: 0;
+}
+
+.modal_imageSlider .modal-dialog {
+    padding: 0;
+    margin-top: 20px;
+}
+
+#GlifRemove .glyphicon-remove {
+    font-size: 42px;
+    color: #FFF;
+    transition: all 0.3s ease-in;
+    visibility: visible;
+    float: right;
+    padding: 10px 30px 0 0;
+    opacity: 0.1;
+}
+
+#GlifRemove:hover .glyphicon-remove {
+    opacity: 0.7;
+    transition: all 0.3s ease-in;
+}
+
+#carouselAvatarModal .carouselRows {
+    opacity: 0;
+    transition: all ease-in 0.3s;
+}
+
+#carouselAvatarModal:hover .carouselRows {
+    opacity: 1;
+    transition: all ease-in 0.3s;
+}
+
+.carousel .item {
+    background: #333;
+    text-align: center;    
+    width: 100%;
+    height: 600px;   
+}
+
+.carousel .item img {
+    max-width: 100%;
+    max-height: 600px;
+}
+
+.carouselRows {
+    height: 600px;  
+    transition: all 0.8s;
+    font-size: 60px;    
+    padding-top: 250px;
+    color: rgba(255,255,255,0.1); 
+    cursor: pointer;
+}
+
+.carouselRows:hover {   
+    transition: all 0.8s;
+    color: rgba(255,255,255,0.8);
+    opacity: 1;
+}   
+
+#prev {
+    position: absolute;
+    width: 25%;
+    text-align: left;
+    padding-left: 30px;    
+}
+#next {
+    position: absolute;
+    margin-left: 25%;
+    width: 73%;
+    text-align: right;
+    padding-right: 30px;
+}
+
+#AvatarImgModal {
+    width: 100%;
+    height: 600px;   
+    float: left;
+    
+}
+
+#carouselAvatarModal {
+    height: 600px;
+    background-color: #333;
+    width: 85%;     
+    float: left;
+}
+
+/*Описание изображения*/
+#descriptionModal {
+    width: 15%;
+    height: 600px;
+    background-color: #171717;
+    margin-left: 85%;
+}
+
+#desc {
+    width: 100%;
+    height: 550px;
+    background-color: #171717;
+    color: #777;
+    resize: none;
+    border: none;
+    padding: 5px 5px 0 10px;
+}
+
+#instruction {
+    height: 50px;
+    color: #777;
+    font-size: 14px;
+    font-weight: 100;
+    padding-left: 5px;
+}
+
+
+#carouselAvatarModal .carouselRows:hover {
+    text-decoration: none;
+}
+
+#RemoveImage {
+    width: 25%;
+    font-size: 17px;
+    font-family: 'Segoe UI';
+    padding: 11px 0;
+    float: left;
+    border-radius: 0;
+    height: 50px;
+}
+
+#SetImageToMain {
+    width: 15%;
+    font-size: 17px;
+    font-family: 'Segoe UI';
+    padding: 11px 0;
+    float: right;
+    border-radius: 0;
+    height: 50px;  
+    margin-left: 20px;   
+}
+
+#AddImage {
+    width: 93%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: 'Segoe UI';
+    padding: 11px 0;    
+}
+
+#ItemOfItems {
+    width: 100%;
+    text-align: right;  
+    padding: 13px 30px 0 0;
+    color: #666;
+    font-size: 17px;
+}
+
+#AddDateBlock {
+    margin: 11px;    
+    float: left;
+    color: #555;
+}
+
+#AddDate {
+    color: #666;
+    font-size: 17px;
+}
+
+.itemId, .itemAddDate, .itemDesc {
+    display: none;
+}
+
+#footerModal {
+    background-color: #171717;
+    height: 50px;   
+}
+
+/*Стили на модальное окно удаления*/
+#deleteModal .modal-footer {
+    margin-top: 0;
+}
+
+#Delete, #CancelModalDelete {
+    width: 25%;
+    height: 50px;
+    margin: 0;
+    font-size: 18px;
+    padding-top: 10px;    
+}
+
+#CancelModalDelete {
+    margin-right: 263.5px;
+}
+
+#peopleDelete {
+    margin-top: 10px;
+    font-weight:700;
+}
+
+#peopleDeleteBlock {
+    overflow: auto;
+    height: 203px;
+    padding: 7px 7px;
+    font-weight: 400;
+}
+
+.personNameDelete {
+    width: 502px;
+    border: 0px solid #333;
+    min-height: 50px;
+    margin-bottom: 20px;
+    background-color: #003d68;   
+    color: #ccc;
+    box-shadow: 0 0 7px rgba(0,0,0, 1);
+    padding: 8px 8px 8px 10px;
+    word-break: break-all;
+}
+
+
+
+
+/*Стили ???*/
+.activeBtn {
+    background-color: aqua;
+}
+
+#btns {
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left;
+}
+
+#btns .btn-default {
+    padding: 7px 10px;
+}
+
+.form-control-feedback {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.has-feedback {
+    position: relative;
+    margin: 20px 10px !important;
+}
+
+.has-success .form-control-feedback {
+    color: #3c763d;
+}
+
+.marginText {
+    border: 1px solid #003E62;
+    width: 35%;
+    padding: 5px 0;
+    border-radius: 5px 0 0 5px;
+    background-color: #0096FF;
+    color: #FFF;
+    text-align: center;
+    float: left;
+    height:34px;
+}
+
+/*Стили блока параметров*/
+#blockInformation {
+    font-size: 16px;
+    min-height: 500px;
+    font-family: 'Segoe UI';
+}
+
+.inputGroup {
+    float: left;
+    border: 1px solid #003E62;
+    border-left: none;
+    padding: 5px 35px 5px 5px;
+    width: 65%;
+    height:34px;
+}
+
+.glyphicon-ok, .glyphicon-remove {
+    visibility: hidden;
+}
+.glyphicon-ok {
+    color: #3C763D;
+}
+
+.glyphicon-remove {
+    color: #A94442;
+}
+
+/*Стили кнопок radiogroup*/
+#btns .active {
+    background-color: #28A745 !important;
+    color: #FFF !important;
+    border: 1px solid #005300 !important;
+}
+/*Стили кнопок*/
+
+#Send, #Cancel, #DeleteDiv,#CancelModal {
+    width: 25%;
+    height: 50px;
+    margin: 10px 0 20px 10px;
+    font-size: 18px;
+}
+
+#Cancel, #DeleteDiv {
+    padding-top: 11px;
+}
+
+
+#Send {
+    width: 42%;
+}
+
+#CancelHref {
+    text-decoration: none;
+}

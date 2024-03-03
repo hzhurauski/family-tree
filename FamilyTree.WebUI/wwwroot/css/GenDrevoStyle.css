@@ -1,0 +1,542 @@
+﻿/*Content*/
+
+/*#900000 - цвет крови*/
+
+#main-tree-block,
+#start-tree-block,
+#create-person-block,
+#has-no-trees-block {
+    display: none;
+}
+
+#has-no-trees-block {
+    text-align: center;
+}
+
+#has-no-trees-block #create-family-tree-button {
+    padding: 10px 50px;
+    margin: 20px;
+    font-size: 20px;
+}
+
+#start-tree-block {
+    margin: 100px auto;
+    width: 300px;
+    height: 450px;
+    border: 5px dashed #003050;
+    background-color: #FFF;
+    transition: all 0.3s;
+}
+
+#start-tree-block:hover {
+    transition: all 0.3s;
+    cursor: pointer;
+    border-color: #007aff;
+}
+
+#imgAdd {
+    margin: 120px 45px;
+    width: 200px;
+    height: 200px;
+}
+
+#Buttons {
+    width: 100%;
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#show-main-person-button {
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 50px;
+}
+
+#ScaleTree {
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+    width: 200px;
+}
+
+#BloodTree {
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 50px;
+    width: 200px;    
+}
+
+#BlockFullTree {
+    display: block;
+    padding-left: 70px;
+}
+
+#content {
+    width: 1300px;
+    /*width: 100%;*/
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+    min-height: 500px;
+    /*display: flex;
+    justify-content: center;*/
+}
+
+.star-button {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+        top: 0;
+    right: 0;
+    margin: 5px;
+    padding: 0;
+}
+
+.star-button:hover {
+    color: #FAC917;
+}
+
+.person {
+    position: relative;
+    width: 100px;
+    height: 100%;
+    float: left;
+    font-size: 12px;
+    color: #DDD;
+    border: 1px solid #003050;
+    background-color: #003050;
+    cursor: pointer;
+}
+
+.newPerson {
+    width: 100px;
+    height: 160px;
+    float: left;
+    font-size: 12px;
+    color: #DDD;
+    border: 3px dashed #003050;
+    background-color: #FFF;
+    cursor: pointer;
+    padding: 47px 0 0 20px;
+    opacity: 0.4;
+    transition: opacity 0.4s; 
+    
+}
+
+.newPerson:hover {      
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.hiddenPersonContent {
+    display: none;
+}
+
+.newPerson img {
+    width: 50px;
+}
+
+.surname, .name, .middlename, .birthday {
+    width: 100px;
+    text-align: center;
+}
+
+.imgPerson {
+    max-width: 100%;
+    max-height: 98px;
+}
+
+#BlockFullTree .imgPerson {
+    max-height: 98px;
+}
+
+#BlockPartTree .imgPerson {
+    max-height:200px;
+}
+
+.imgBlock {
+    background-color: #343a40;    
+    text-align: center;
+}
+
+#BlockFullTree .imgBlock {    
+    height: 98px;
+}
+
+#BlockPartTree .imgBlock {   
+    height: 200px;
+    margin-bottom: 8px;
+}
+
+#canvas0, #canvas1, #canvas2, #canvas3, #canvas4, #canvas5, #canvas6, #canvas7 {
+    margin-bottom: -5px;
+}
+
+.grand {
+    margin-right: 50px;
+}
+
+#blood-parentOne {
+    margin-left: 75px;
+}
+
+#blood-parentTwo, #parentOne, #parentTwo {
+    margin-left: 200px;
+}
+
+#brothers {   
+    height: 150px;
+    width: 560px;   
+    float: left;  
+    margin-left: -65px;
+}
+
+#mainPerson, #mainPerson-LittleTree {
+    height: 100%;
+    background-color: #075f00;
+    border-color: #075f00;
+}
+
+#wifes {
+    margin-left:173px;
+    width: 560px;
+    height: 150px;
+    float: left;    
+}
+
+#sons {
+    margin-left: 240px;
+    float: left;    
+    width: 560px;
+}
+
+#sonAnotherWife {
+    margin-left: 140px;
+}
+
+#myModal {
+    font-size: 14px;
+}
+
+.AddPerson-Tree {
+    border: 3px dashed #003050;
+    width: 75px;
+    height: 150px;
+    background-color: #FFF;
+    opacity: 0.3;
+    transition: opacity 0.4s;
+    cursor: pointer;
+    padding: 50px 0 0 13px;
+    visibility: hidden;
+}
+
+.AddPerson-Tree:hover {    
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.AddPerson-Tree img {
+    width: 40px;
+}
+
+#blood-newBrother, #blood-newSon {
+    margin-left: 480px
+}
+
+#blood-newWife {
+    float: left;
+    margin-right: 15px;
+}
+
+/*Увеличенный масштаб дерева*/
+
+#BlockPartTree {    
+    display: none;
+    padding-left: 120px;
+}
+
+.LittleTreePerson {
+    width: 200px;
+    height: 300px;
+    float: left;
+    font-size: 22px;
+    color: #DDD;
+    border: 1px solid #003050;
+    background-color: #003050;
+    cursor: pointer;
+    position: relative;
+}
+
+#BlockPartTree .newPerson {
+    width: 200px;
+    height: 300px;
+    float: left;
+    font-size: 16px;
+    color: #DDD;
+    border: 5px dashed #003050;
+    background-color: #FFF;
+    cursor: pointer;
+    padding: 93px 0 0 44px;
+    opacity: 0.4;
+    transition: opacity 0.4s;
+}
+
+#BlockPartTree .newPerson:hover {
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+#BlockPartTree .newPerson img {
+    width: 100px;
+}
+
+.LittleTreePerson .surname, .LittleTreePerson .name, .LittleTreePerson .middlename, .LittleTreePerson .birthday{
+    width: 200px;
+    text-align: center;
+}
+
+.AddPerson-LittleTree {
+    border: 5px dashed #003050;
+    width: 100px;
+    height: 300px;
+    background-color: #FFF;
+    opacity: 0.3;
+    transition: opacity 0.4s;
+    cursor: pointer;
+    padding: 115px 0 0 10px;
+    visibility: hidden;
+}
+
+.AddPerson-LittleTree:hover {    
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.AddPerson-LittleTree img {
+    width: 70px;
+}
+
+#addWife-LittleTree {
+    margin-left: 352px;
+}
+
+#blood-parentTwo-LittleTree {
+    margin-left: 626px;
+}
+
+#brothers-LittleTree {
+    height: 300px;
+    width: 700px;
+    float: left;   
+}
+
+#addBrother-LittleTree {
+    float: left;
+    margin-right: 20px;
+}
+
+#AddSon-LittleTree {
+    float: left;
+    margin-left: 20px;
+}
+
+
+#wifes-LittleTree {    
+    height: 300px;
+    width: 400px;
+    margin-left: 700px;
+}
+
+#sons-LittleTree {
+    height: 300px;
+    width: 700px;
+    margin-left: 295px;    
+}
+
+#wifes:hover .PrevNext, #wifes:hover .AddPerson-Tree,
+#brothers:hover .PrevNext, #brothers:hover .AddPerson-Tree,
+#sons:hover .PrevNext, #sons:hover .AddPerson-Tree,
+#wifes-LittleTree:hover .PrevNext, #wifes-LittleTree:hover .AddPerson-LittleTree,
+#brothers-LittleTree:hover .PrevNext, #brothers-LittleTree:hover .AddPerson-LittleTree, 
+#sons-LittleTree:hover .PrevNext, #sons-LittleTree:hover .AddPerson-LittleTree {
+   visibility: visible;
+}
+
+#wifeOne-LittleTree {
+    float: left;
+}
+
+#brothers .PrevNext, #wifes .PrevNext, #sons .PrevNext {
+    margin-top: 50px;
+}
+
+.PrevNext {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    float: left;
+    background-color: #ccc;
+    color: #eee;
+    padding: 12px 0 0 14px;
+    cursor: pointer;
+    transition: background-color 0.4s, color 0.4s;
+    margin-top: 125px;
+    visibility: hidden;
+}
+
+.PrevNext:hover {   
+    background-color: #009aff;
+    color: #000;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+/*Слайдер*/
+
+.MySliderContainer {
+    width: 430px;
+    border: 1px dashed #ff0000;
+    height: 210px;
+    overflow: hidden;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 0;
+    float: left;
+}
+
+.SliderContainer {
+    width: 330px;    
+    height: 160px;
+    overflow: hidden;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 0;
+    float: left;
+}
+
+.SliderContainer-LittleTree {
+    width: 430px;   
+    height: 300px;
+    overflow: hidden;
+    margin-left: 15px;
+    margin-right: 15px;   
+    padding: 0;
+    float: left;
+}
+
+#SliderWifes{
+    width: 200px;
+}
+
+.ListSlider {
+    list-style: none;
+    width: 658px;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.5s linear;
+}
+
+
+.itemSlider {    
+    position: absolute;
+}
+
+.PrevNextNew {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    float: left;
+    background-color: #ccc;
+    color: #eee;
+    padding: 12px 0 0 14px;
+    cursor: pointer;
+    transition: background-color 0.4s, color 0.4s;
+    margin-top: 75px;
+    
+}
+
+.PrevNextNew:hover {
+    background-color: #009aff;
+    color: #000;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+/*Стили всплывающего окна*/
+#modalBlockPerson {   
+    border-radius: 10px;
+    width: 320px;
+    height: auto;
+    position: absolute;
+    top: 15px;
+    left: 0px;
+    z-index: 10;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    visibility: hidden;
+}
+
+#modalBlockPerson a {
+    text-decoration: none;
+}
+
+#headerModal {
+    background-color: #CCC;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+#textModal {
+    padding: 10px;
+    background-color: #FFF;
+    text-align: center;
+}
+
+#editPersonModal {
+    background-color: #FFF;   
+    padding: 23px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0 0 8px 0;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    color: #007fd8;
+    width: 50%;
+    align-self: center;
+}
+
+#editPersonModal:hover {
+    background-color: #0096FF;
+    color: #FFF;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#delete-person-button {
+    background-color: #ff0000;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0 0 0 8px;
+    transition: color ease 0.3s, background-color ease 0.3s;
+    color: #FFF;
+    width: 50%;
+}
+
+#delete-person-button:hover {
+    color: #FFF;
+    background-color: #c20000;
+    transition: color ease 0.3s, background-color ease 0.3s;
+}
+
+.footerModal {
+    display: flex;
+    background-color: white;
+}
+
+#unvisibleZone {
+    height: 10px;
+    background-color: inherit;
+}
+
+#visibleZone {
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}

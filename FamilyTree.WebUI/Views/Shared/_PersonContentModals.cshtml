@@ -1,0 +1,511 @@
+﻿<div class="modal fade" id="add-data-category-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Добавление категории</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="add-data-category-name" class="col-sm-2 control-label">Имя</label>
+                        <div class="col-sm-10">
+                            <input id="add-data-category-name" class="form-control" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-data-category-type" class="col-sm-2 control-label">Тип</label>
+                        <div class="col-sm-10">
+                            <select id="add-data-category-type" class="form-control">
+                                <option value="InfoBlock" selected>Блок</option>
+                                <option value="ListBlock">Список</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="add-data-category-submit-button" type="button" class="btn btn-my-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add-data-block-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Добавление блока</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="add-data-block-title" class="col-sm-2 control-label">Заголовок</label>
+                        <div class="col-sm-10">
+                            <input id="add-data-block-title" class="form-control" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="add-data-block-submit-button" type="button" class="btn btn-my-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add-data-holder-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Добавление поля для данных</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="add-data-holder-title" class="col-sm-2 control-label">Заголовок</label>
+                        <div class="col-sm-10">
+                            <input id="add-data-holder-title" class="form-control" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-data-holder-type" class="col-sm-2 control-label">Тип</label>
+                        <div class="col-sm-10">
+                            <select id="add-data-holder-type" class="form-control">
+                                <option value="Text" selected>Текст</option>
+                                <option value="TextArea">Большой текст</option>
+                                <option value="Date">Дата</option>
+                                <option value="Time">Время</option>
+                                <option value="DateTime">Дата и время</option>
+                            </select>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="add-data-holder-submit-button" type="button" class="btn btn-my-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit-data-category-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Изменение категории</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="edit-data-category-name" class="col-sm-2 control-label">Имя</label>
+                        <div class="col-sm-10">
+                            <input id="edit-data-category-name" class="form-control" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="edit-data-category-submit-button" type="button" class="btn btn-my-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit-data-block-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Изменение блока</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="edit-data-block-title" class="col-sm-2 control-label">Заголовок</label>
+                        <div class="col-sm-10">
+                            <input id="edit-data-block-title" class="form-control" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="edit-data-block-submit-button" type="button" class="btn btn-my-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit-data-holder-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Изменение поля для данных</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="edit-data-holder-title" class="col-sm-2 control-label">Заголовок</label>
+                        <div class="col-sm-10">
+                            <input id="edit-data-holder-title" class="form-control" type="text" />
+                        </div>
+                        <label for="edit-data-holder-order" class="col-sm-3 control-label">Отображение</label>
+                        <div class="col-sm">
+                            <input id="edit-data-holder-order" class="edit-order__checkbox" type="checkbox" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="edit-data-holder-submit-button" type="button" class="btn btn-my-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add-image-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Добавление изображения</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="image-title" class="col-sm-2 control-label">Заголовок</label>
+                        <div class="col-sm-10">
+                            <input id="image-title" class="form-control" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image-file" class="col-sm-2 control-label">Файл</label>
+                        <div class="col-sm-10">
+                            <input id="image-file" type="file" accept="image/*" />
+                            <progress id="image-upload-progress" value="0"></progress>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image-desc" class="col-sm-2 control-label">Описание</label>
+                        <div class="col-sm-10">
+                            <input id="image-desc" class="form-control" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="add-image-submit-button" type="button" class="btn btn-my-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="image-carousel-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="slider"></div>
+                    </div>
+                    <div class="col-md-4 image-details">
+                        <div class="image-details__title image-title">
+                            <div class="image-title__text">Заголовок</div>
+                            <div class="image-title__value">
+                                <textarea id="slider-image-title" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="image-details__desc image-desc">
+                            <div class="image-desc__text">Описание</div>
+                            <div class="image-desc__value">
+                                <textarea id="slider-image-desc" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="pages modal-footer__pages">
+                    <div class="pages__current-page"></div>
+                    <div class="pages__separator">/</div>
+                    <div class="pages__count"></div>
+                </div>                
+                <div class="buttons modal-footer__buttons">
+                    <div class="privacy">
+                        <div class="privacy__privacy-level"></div>
+                        <div id="edit-image-privacy-button" class="btn privacy__privacy-button"></div>
+                    </div>
+                    <button id="set-image-as-avatar-button" type="button" class="btn modal-primary-button">Сделать изображением персоны</button>
+                    <button id="save-image-submit-button" type="button" class="btn modal-primary-button">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add-video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Добавление видео</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="video-title" class="col-sm-2 control-label">Заголовок</label>
+                        <div class="col-sm-10">
+                            <input id="video-title" class="form-control" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="video-file" class="col-sm-2 control-label">Файл</label>
+                        <div class="col-sm-10">
+                            <input id="video-file" type="file" accept="video/*" />
+                            <progress id="video-upload-progress" value="0"></progress>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="video-desc" class="col-sm-2 control-label">Описание</label>
+                        <div class="col-sm-10">
+                            <input id="video-desc" class="form-control" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="add-video-submit-button" type="button" class="btn btn-my-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="video-container">
+                            <video id="current-video" preload="metadata" controls muted></video>
+                        </div>                        
+                        <div class="video-details">
+                            <div class="video-details__title video-title">
+                                <div class="video-title__text">Заголовок</div>
+                                <div class="video-title__value">
+                                    <input id="current-video-title" type="text"/>
+                                </div>
+                            </div>
+                            <div class="video-details__desc video-desc">
+                                <div class="video-desc__text">Описание</div>
+                                <div class="video-desc__value">
+                                    <textarea id="current-video-desc" rows="6"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-modal-buttons">
+                            <button id="save-video-submit-button" type="button" class="btn modal-primary-button">Сохранить</button>
+                            <div class="privacy">
+                                <div class="privacy__privacy-level"></div>
+                                <div id="edit-video-privacy-button" class="btn privacy__privacy-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="videos-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Удаление</h3>
+            </div>
+            <div class="modal-body">
+                <span>Вы уверенны, что хотите удалить выбранные элементы?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="delete-submit-button" type="button" class="btn btn-my-danger">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete-data-category-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Удаление</h3>
+            </div>
+            <div class="modal-body">
+                <span>Вы уверенны, что хотите удалить выбранные категории данных?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="delete-data-category-submit-button" type="button" class="btn btn-my-danger">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add-audio-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Добавление аудио</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="audio-title" class="col-sm-2 control-label">Заголовок</label>
+                        <div class="col-sm-10">
+                            <input id="audio-title" class="form-control" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="audio-file" class="col-sm-2 control-label">Файл</label>
+                        <div class="col-sm-10">
+                            <input id="audio-file" type="file" accept="audio/*" />
+                            <progress id="audio-upload-progress" value="0"></progress>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="audio-desc" class="col-sm-2 control-label">Описание</label>
+                        <div class="col-sm-10">
+                            <input id="audio-desc" class="form-control" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="add-audio-submit-button" type="button" class="btn btn-my-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="audio-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="audio-container">
+                            <audio id="current-audio" preload="metadata" controls></audio>
+                        </div>
+                        <div class="video-details">
+                            <div class="video-details__title video-title">
+                                <div class="video-title__text">Заголовок</div>
+                                <div class="video-title__value">
+                                    <input id="current-audio-title" type="text"/>
+                                </div>
+                            </div>
+                            <div class="video-details__desc video-desc">
+                                <div class="video-desc__text">Описание</div>
+                                <div class="video-desc__value">
+                                    <textarea id="current-audio-desc" rows="6"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-modal-buttons">
+                            <button id="save-audio-submit-button" type="button" class="btn modal-primary-button">Сохранить</button>
+                            <div class="privacy">
+                                <div class="privacy__privacy-level"></div>
+                                <div id="edit-audio-privacy-button" class="btn privacy__privacy-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add-participant-modal" tabindex="-1" role="dialog" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Добавление участника</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <ul>
+                    <li class=" ">
+                        <div id="" class="person idPopover" data-value="">
+                            <div class="imgBlock">
+                                <img src="~/images/person.png" class="imgPerson" />
+                            </div>
+                            <div class="part-modal">
+                                @*@foreach (var item in ViewBag.Participants)
+                                {
+                                    var surname = item
+                                    <div class="surname">@item.DataBlockId</div>
+                                    <div class="name"></div>
+                                    <div class="middlename"></div>
+                                    <div class="birthday"></div>
+                                }*@
+                                <div class="dataid text-center"></div>
+                                <div class="surname"></div>
+                                <div class="name"></div>
+                                <div class="middlename"></div>
+                                <div class="birthday"></div>
+                            </div>
+                            <div class="btn btn-default star-button">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-my-dark" data-dismiss="modal">Отмена</button>
+                <button id="add-participant-submit-button" type="button" class="btn btn-my-primary" onclick="CreatePart()">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*
+<li class="itemSlider itemAfter" style="left:220px;">
+    <div id="mainPerson" class="person idPopover" data-value="">
+        <div class="imgBlock">
+            <img src="~/images/person.png" class="imgPerson" />
+        </div>
+        <div>
+            <div class="surname"></div>
+            <div class="name"></div>
+            <div class="middlename"></div>
+            <div class="birthday"></div>
+        </div>
+        <div class="btn btn-default star-button">
+            <i class="fas fa-star"></i>
+        </div>
+    </div>
+</li>*@

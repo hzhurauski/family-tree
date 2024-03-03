@@ -1,0 +1,131 @@
+﻿#content {
+    background-color: #808080;
+    padding: 30px 0;
+}
+
+#InformationBlock {
+    width: 1170px;
+    min-height: 600px;
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 20px 20px 20px 0;
+    box-shadow: 0 0 10px rgba(255,255,255,1); 
+}
+
+#TitleInfBlock {
+    margin: 0 auto 50px auto;
+    width: 335px;
+    font-size: 36px;
+    font-weight: 100;
+}
+
+/*Список*/
+#listInf {
+    border: 1px solid #AAA;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 30px 20px 30px;
+    float: left;
+}
+
+#listInf .list-item {
+    height: 70px;
+    border-bottom: 1px solid #AAA;
+    text-align: center;
+    padding-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
+}
+
+#listInf #lastItem {
+    border: none;
+}
+
+#listInf .active {
+    background-color: #0090ff;
+    color: #FFF;
+    cursor: default;
+}
+
+#listInf .list-item:hover {
+    background-color: #DDD;
+    transition: background-color 0.2s ease-in;
+}
+
+#listInf .active:hover {
+    background-color: #0090ff;
+}
+
+.inflistItem {
+    width: 800px;   
+    min-height: 200px;
+    margin-left: 350px;
+    text-align:left;
+    padding: 10px 30px;
+    color: #333;
+    display: none;
+}
+
+.RedString {
+    margin-left: 50px;
+}
+
+.inflistItem ul {
+    color: #0090ff;
+    margin-left: 30px;
+    
+}
+
+.inflistItem ul span {
+    color: #333;
+}
+
+.BigText {
+    font-size: 28px;
+    margin: 20px 0 20px 50px;
+}
+
+.imgInf {
+    width: 200px;
+    height: 300px;
+    margin: 20px auto;
+}
+
+.imgInf img {    
+    height: 300px;    
+}
+
+.imgInfLine {
+    width: 400px;
+    height: 150px;
+    margin: 20px auto;
+}
+
+.imgInfLine img {
+    height: 150px;
+}
+
+
+
+
+.greenText {
+    color: #00a90e;
+}
+
+.blueText {
+    color: #0090ff;
+}
+.redText {
+    color: #900000;
+}
+
+.imgInfLineColor {
+    width: 50px;   
+    margin: 0 10px 0 50px;
+}
+
+.imgInfLineColor img {
+    width: 50px;
+    height: 15px;
+}
+

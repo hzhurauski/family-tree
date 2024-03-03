@@ -1,0 +1,117 @@
+﻿@page
+@model RegisterModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/css/LoginStyle.css" type="text/css" rel="stylesheet">
+    <link href="~/css/Register.css" type="text/css" rel="stylesheet">
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Регистрация</title>
+</head>
+<body>
+    <div id="backgroundImageWrapper">
+        <div class="container">
+            <div class="row">
+                <div id="wrapper" class="col-md-12">
+                    <div id="header">
+                        <div id="logo"><img src="~/images/MiddleLightBlueTree.png" alt="Logo" /></div>
+                        <div id="menu">
+                            <ul>
+                                <li>
+                                    <a href="/FamilyTree">
+                                        <div>Генеалогическое древо</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Support/Reference">
+                                        <div>Справка</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Support/About">
+                                        <div>О проекте</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <partial name="_LoginPartial" />
+                    </div>
+                    <div id="content">
+                        <div id="contentText">Регистрация</div>
+                        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                            <div id="loginPanel">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group">
+                                    <div class="inputField">
+                                        <div class="Glif">
+                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                        </div>
+                                        <input id="Account_Login" asp-for="Input.Email" class="inputGroup" placeholder="E-mail" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="inputField">
+                                        <div class="Glif">
+                                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                                        </div>
+                                        <input id="Account_Pass" asp-for="Input.Password" class="inputGroup" placeholder="Пароль" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="inputField">
+                                        <div class="Glif">
+                                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                                        </div>
+                                        <input id="Account_Pass_Confirm" asp-for="Input.ConfirmPassword" class="inputGroup" placeholder="Повторите пароль" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div id="Submit">
+                                        <button id="submitInput" type="submit" class="btn btn-primary">Регистрация</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <div id="footerMenu">
+                    <div class="row">
+                        <div class="col-md-12 nullPadding">
+                            <a href="/FamilyTree"><div class="col-md-4">Генеалогическое древо</div></a>
+                            <a href="/Support/Reference"><div class="col-md-4">Справка</div></a>
+                            <a href="/Support/About"><div class="col-md-4">О проекте</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="copyright" class="col-md-6 col-md-offset-3">
+                        &copy @DateTime.Now.Year  <span id="author">Author Name</span>. Все права защищены.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

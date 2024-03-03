@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/lib/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="~/css/LayoutStyle.css" type="text/css" rel="stylesheet">
+    <link href="~/css/ButtonStyle.css" type="text/css" rel="stylesheet">
+    <link href="~/lib/font-awesome/css/all.css" type="text/css" rel="stylesheet">
+    @RenderSection("Styles", false)
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div id="backgroundImageWrapper">
+        <div id="wrapper">
+            <div id="header">
+                <div class="container">
+                    <div class="row">
+                        <div id="heap">
+                            <div id="logo"><img src="~/images/MiddleLightBlueTree.png" alt="Logo" /></div>
+                            <div id="menu">
+                                <ul>
+                                    <li>
+                                        <a href="/FamilyTree">
+                                            @if (ViewBag.Active == "GenDrevo")
+                                            {
+                                                <div class="active">Генеалогическое древо</div>
+                                            }
+                                            else
+                                            {
+                                                <div>Генеалогическое древо</div>
+                                            }
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Support/Reference">
+                                            @if (ViewBag.Active == "Support")
+                                            {
+                                                <div class="active">Справка</div>
+                                            }
+                                            else
+                                            {
+                                                <div>Справка</div>
+                                            }
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Support/About">
+                                            @if (ViewBag.Active == "About")
+                                            {
+                                                <div class="active">О проекте</div>
+                                            }
+                                            else
+                                            {
+                                                <div>О проекте</div>
+                                            }
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <partial name="_LoginPartial" />
+                        </div>
+                        @RenderSection("HeaderText")
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <div id="footerMenu">
+                <div class="row">
+                    <div class="col-md-12 nullPadding">
+                        <a href="/FamilyTree"><div class="col-md-4">Генеалогическое древо</div></a>
+                        <a href="/Support/Reference"><div class="col-md-4">Справка</div></a>
+                        <a href="/Support/About"><div class="col-md-4">О проекте</div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="copyright" class="col-md-6 col-md-offset-3">
+                    &copy @DateTime.Now.Year <span id="author">Author Name</span>. Все права защищены.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("ModalPersonInfo", false)
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/lib/moment/moment.min.js"></script>
+    <script src="~/lib/moment/moment-with-locales.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+﻿#InformationBlock {
+    border: 5px dashed #0094ff;
+    width: 700px;
+    height: 300px;
+    margin: 50px auto;
+    font-weight: 100;
+    padding: 45px 50px 0 100px;
+}
+
+#DipInf {
+    margin-bottom: 20px;
+}
+
+.inf {
+    margin-bottom: 20px;
+}
+
+.blueText {
+    color: #0094ff;
+}

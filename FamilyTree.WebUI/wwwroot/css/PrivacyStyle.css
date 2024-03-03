@@ -1,0 +1,43 @@
+﻿.privacy-top-secret {
+    background-color: #FF3108 !important;
+}
+
+.privacy-confidential {
+    background-color: #FF7E00 !important;
+}
+
+.privacy-internal-use {
+    background-color: #FFE60D !important;
+}
+
+.privacy-public-use {
+    background-color: #8EFF05 !important;
+}
+
+#privacy-level-modal .btn-group .btn.active {
+    border-color: black;
+}
+
+.privacy {
+    display: flex;
+    border: 1px solid #ababab;
+    border-radius: 5px;
+}
+
+.privacy .privacy__privacy-level {
+    border-right: 1px solid #ababab;
+    width: 50%;
+    border-radius: 4px 0 0 4px;
+}
+
+.privacy .privacy__privacy-button {
+    background-image: url(../lib/bootstrap/icons/lock-fill.svg);
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-origin: content-box;
+    background-position-x: 7px;
+    background-color: #ababab;
+    padding: 5px;
+    width: 50%;
+    border-radius: 0 4px 4px 0;
+}

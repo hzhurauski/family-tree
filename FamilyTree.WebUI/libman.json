@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitter-bootstrap@3.0.0",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "bootstrap-icons@1.3.0",
+      "destination": "wwwroot/lib/bootstrap"
+    },
+    {
+      "library": "jquery@1.10.2",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "library": "jquery-validate@1.11.1",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "library": "moment.js@2.29.1",
+      "destination": "wwwroot/lib/moment"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery"
+    },
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "wwwroot/lib/jquery"
+    },
+    {
+      "library": "Sortable@1.13.0",
+      "destination": "wwwroot/lib/sortable"
+    },
+    {
+      "library": "slick-carousel@1.8.1",
+      "destination": "wwwroot/lib/slick"
+    },
+    {
+      "library": "microsoft-signalr@3.1.14",
+      "destination": "wwwroot/lib/signalr"
+    }
+  ,
+{
+  "library": "font-awesome@5.15.4",
+  "destination": "wwwroot/lib/font-awesome/"
+}
+]
+}

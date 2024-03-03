@@ -1,0 +1,67 @@
+﻿<div class="modal fade" id="privacy-level-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Применение уровня доступа</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="privacy-level-buttons-group" class="control-label col-sm-4">Уровень доступа</label>
+                        <div class="col-sm-8">
+                            <div id="privacy-level-buttons-group" class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-default privacy-public-use">
+                                    <input name="privacy-level" type="radio" value="3" />Публичный
+                                </label>
+                                <label class="btn btn-default privacy-internal-use">
+                                    <input name="privacy-level" type="radio" value="2" />Внутренний
+                                </label>
+                                <label class="btn btn-default privacy-confidential">
+                                    <input name="privacy-level" type="radio" value="1" />Личный
+                                </label>
+                                <label class="btn btn-default privacy-top-secret">
+                                    <input name="privacy-level" type="radio" value="0" />Строго секретно
+                                </label>
+                            </div>
+                        </div>
+                    </div>                    
+                    <div id="privacy-level-accounts" class="form-group">
+                        <div>Выберите аккаунты</div>
+                        <div>На данный момент недоступно.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="limit-type-buttons-group" class="control-label col-sm-4">Ограничения</label>
+                        <div class="col-sm-8">
+                            <div id="limit-type-buttons-group" class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-default">
+                                    <input name="limit-type" type="radio" value="0" />Постоянно
+                                </label>
+                                <label class="btn btn-default">
+                                    <input name="limit-type" type="radio" value="1" />Период
+                                </label>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div id="privacy-level-limits">                        
+                        <div class="form-group">
+                            <label for="privacy-level-begin-date" class="col-sm-4 control-label">Дата начала</label>
+                            <div class="col-sm-8">
+                                <input id="privacy-level-begin-date" class="form-control" type="datetime-local" />
+                            </div>                                
+                        </div>
+                        <div class="form-group">
+                            <label for="privacy-level-end-date" class="col-sm-4 control-label">Дата окончания</label>
+                            <div class="col-sm-8">
+                                <input id="privacy-level-end-date" class="form-control" type="datetime-local" />
+                            </div>                                
+                        </div>                                               
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn btn-my-dark" data-dismiss="modal">Отмена</div>
+                <div class="btn btn-my-danger" id="edit-privacy-level-submit-button">Сохранить</div>
+            </div>
+        </div>
+    </div>
+</div>

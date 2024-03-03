@@ -1,0 +1,717 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Active = "GenDrevo";
+    ViewBag.Title = "Генеалогичекое древо";
+}
+
+@section Styles
+{
+    <link href="~/css/GenDrevoStyle.css" type="text/css" rel="stylesheet" />
+    <link href="~/css/PersonInfo.css" type="text/css" rel="stylesheet"/>
+    <link href="~/css/PersonDataStyle.css" type="text/css" rel="stylesheet" />
+    <link href="~/css/PrivacyStyle.css" type="text/css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="~/js/SliderGenDrevo.js"></script>
+    <script src="~/js/LoadTree.js"></script>
+    <script src="~/lib/sortable/Sortable.js"></script>
+    <script src="~/js/PersonData.js"></script>
+    <script src="~/js/Privacy.js"></script>
+    <script src="~/lib/slick/slick.min.js"></script>
+    <script src="~/lib/signalr/signalr.min.js"></script>
+}
+
+@section HeaderText
+{
+    <div id="headerText">Ваше генеалогическое древо</div>
+}
+
+<div id="has-no-trees-block">
+    <div class="has-no-trees-block__content">
+        <h3>У вас нет деревьев.</h3>
+        <h3>Создайте новое дерево.</h3>
+        <div id="create-family-tree-button" class="btn btn-my-primary">Создать</div>
+    </div>
+</div>
+
+<div id="create-person-block" class="create-person-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="data-categories">
+                    <div class="data-categories__item data-categories__item_active">
+                        Персональные параметры
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="data-holders create-person-block__data-holders">
+                     <div class="data-holders__item data-holder">
+                        <div class="data-holder__title">
+                            <div>Фамилия</div>
+                        </div>
+                        <div class="data-holder__data">
+                            <input id="create-person-surname" type="text"/>
+                        </div>
+                    </div>
+                    <div class="data-holders__item data-holder">
+                        <div class="data-holder__title">
+                            <div>Имя</div>
+                        </div>
+                        <div class="data-holder__data">
+                            <input id="create-person-name" type="text"/>
+                        </div>
+                    </div>
+                    <div class="data-holders__item data-holder">
+                        <div class="data-holder__title">
+                            <div>Отчество</div>
+                        </div>
+                        <div class="data-holder__data">
+                            <input id="create-person-middlename" type="text"/>
+                        </div>
+                    </div>
+                    <div class="data-holders__item data-holder">
+                        <div class="data-holder__title">
+                            <div>День рождения</div>
+                        </div>
+                        <div class="data-holder__data">
+                            <input id="create-person-birthday" type="date"/>
+                        </div>
+                    </div>
+                    <div class="data-holders__item data-holder-gender">
+                        <div class="data-holder-gender__title">
+                            <div>Пол</div>
+                        </div>
+                        <div class="data-holder-gender__data">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-default">
+                                    <input type="radio" name="person-gender" value="Male" />Мужской
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="person-gender" value="Female" />Женский
+                                </label>
+                                <label class="btn btn-default active">
+                                    <input type="radio" name="person-gender" value="Unknown" checked />Неизвестно
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="create-person-block__buttons">
+                    <div id="cancel-person-button" class="btn btn-my-dark">Отмена</div>
+                    <div id="save-person-button" class="btn btn-my-primary">Сохранить</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="start-tree-block">
+    <img src="~/images/addBlack.png" id="imgAdd" />
+</div>
+
+<div id="main-tree-block">
+    <div id="Buttons">
+        <div id="show-main-person-button" class="btn btn-my-outline-primary">
+            Перейти к главной персоне
+        </div>
+        <div id="BloodTree" class="btn btn-my-outline-danger">
+            Кровное родство
+        </div>
+        <div id="ScaleTree" class="btn btn-my-outline-primary">
+            Увеличить масштаб
+        </div>
+    </div>
+
+    <div id="BlockFullTree">
+        <canvas width="1150" height="50" id="canvas0"></canvas>
+        <div>
+            <div id="blood-grandOne" class="person grand" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="blood-grandTwo" class="person grand" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="blood-grandThree" class="person grand" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="blood-grandFour" class="person grand" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="grandOne" class="person grand" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="grandTwo" class="person grand" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="grandThree" class="person grand" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="grandFour" class="person" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+        <canvas width="1150" height="100" id="canvas1"></canvas>
+        <div>
+            <div id="blood-parentOne" class="person" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="blood-parentTwo" class="person" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="parentOne" class="person" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="parentTwo" class="person" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+        <canvas width="1150" height="100" id="canvas2"></canvas>
+        <div>
+            <div id="brothers">
+                <div class="PrevNext PrevItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </div>
+                </div>
+                <div class="SliderContainer">
+                    <input class="itemSize" type="text" style="display: none;" value="100" />
+                    <input class="itemMargin" type="text" style="display: none;" value="10" />
+                    <input class="itemVisibleCount" type="text" style="display: none;" value="3" />
+                    <ul class="ListSlider" style="transform: translateX(0px)">
+                        <li class="itemSlider itemAfter" style="left:220px;">
+                            <div id="mainPerson" class="person idPopover" data-value="">
+                                <div class="imgBlock">
+                                    <img src="~/images/person.png" class="imgPerson" />
+                                </div>
+                                <div>
+                                    <div class="surname"></div>
+                                    <div class="name"></div>
+                                    <div class="middlename"></div>
+                                    <div class="birthday"></div>
+                                </div>
+                                <div class="btn btn-default star-button">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="PrevNext NextItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                </div>
+                <div id="blood-newBrother" class="AddPerson-Tree">
+                    <img src="~/images/addBlack.png" class="imgAdd-Tree" />
+                </div>
+            </div>
+            <div id="wifes">
+                <div id="blood-newWife" class="AddPerson-Tree">
+                    <img src="~/images/addBlack.png" class="imgAdd-Tree" />
+                </div>
+                <div class="PrevNext PrevItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </div>
+                </div>
+                <div class="SliderContainer">
+                    <input class="itemSize" type="text" style="display: none;" value="100" />
+                    <input class="itemMargin" type="text" style="display: none;" value="126" />
+                    <input class="itemVisibleCount" type="text" style="display: none;" value="2" />
+                    <ul class="ListSlider" style="transform: translateX(0px)">
+                        <li class="itemSlider itemCurrent" style="left:0px;" data-value="5">
+                            <div id="wifeOne" class="person" data-value="5">
+                                <div class="imgBlock">
+                                    <img src="~/images/person.png" class="imgPerson" />
+                                </div>
+                                <div>
+                                    <div class="surname"></div>
+                                    <div class="name"></div>
+                                    <div class="middlename"></div>
+                                    <div class="birthday"></div>
+                                </div>
+                                <div class="btn btn-default star-button">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="PrevNext NextItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <canvas width="1150" height="120" id="canvas3"></canvas>
+        <div>
+            <div id="sons">
+                <div class="PrevNext PrevItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </div>
+                </div>
+                <div class="SliderContainer">
+                    <input class="itemSize" type="text" style="display: none;" value="100" />
+                    <input class="itemMargin" type="text" style="display: none;" value="10" />
+                    <input class="itemVisibleCount" type="text" style="display: none;" value="3" />
+                    <ul class="ListSlider" style="transform: translateX(0px)">
+                        <li class="itemSlider itemCurrent" style="left:0px;">
+                            <div id="sonOne" class="person" data-toggle="modal" data-target="#myModal" data-value="">
+                                <div class="imgBlock">
+                                    <img src="~/images/person.png" class="imgPerson" />
+                                </div>
+                                <div>
+                                    <div class="surname"></div>
+                                    <div class="name"></div>
+                                    <div class="middlename"></div>
+                                    <div class="birthday"></div>
+                                </div>
+                                <div class="btn btn-default star-button">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="PrevNext NextItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                </div>
+                <div id="blood-newSon" class="AddPerson-Tree">
+                    <img src="~/images/addBlack.png" class="imgAdd-Tree" />
+                </div>
+            </div>
+            <div id="sonAnotherWife" class="person" data-toggle="modal" data-target="#myModal" data-value="">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+        <canvas width="1150" height="50" id="canvas4"></canvas>
+    </div>
+    <div id="BlockPartTree">
+        <canvas width="1025" height="100" id="canvas5"></canvas>
+        <div>
+            <div id="blood-parentOne-LittleTree" class="LittleTreePerson" data-toggle="modal" data-target="#myModal" data-value="5">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div id="blood-parentTwo-LittleTree" class="LittleTreePerson" data-toggle="modal" data-target="#myModal" data-value="5">
+                <div class="imgBlock">
+                    <img src="~/images/person.png" class="imgPerson" />
+                </div>
+                <div>
+                    <div class="surname"></div>
+                    <div class="name"></div>
+                    <div class="middlename"></div>
+                    <div class="birthday"></div>
+                </div>
+                <div class="btn btn-default star-button">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+        <canvas width="1025" height="200" id="canvas6"></canvas>
+        <div>
+            <div id="brothers-LittleTree">
+                <div id="addBrother-LittleTree" class="AddPerson-LittleTree">
+                    <img src="~/images/addBlack.png" class="imgAdd-LittleTree" />
+                </div>
+                <div id="prevBrothers" class="PrevNext PrevItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </div>
+                </div>
+                <div class="SliderContainer-LittleTree">
+                    <input class="itemSize" type="text" style="display: none;" value="200" />
+                    <input class="itemMargin" type="text" style="display: none;" value="30" />
+                    <input class="itemVisibleCount" type="text" style="display: none;" value="2" />
+                    <ul class="ListSlider" style="transform: translateX(0px)">
+                        <li class="itemSlider itemAfter" style="left:230px;">
+                            <div id="mainPerson-LittleTree" class="LittleTreePerson" data-toggle="modal" data-target="#myModal" data-value="5">
+                                <div class="imgBlock">
+                                    <img src="~/images/person.png" class="imgPerson" />
+                                </div>
+                                <div>
+                                    <div class="surname"></div>
+                                    <div class="name"></div>
+                                    <div class="middlename"></div>
+                                    <div class="birthday"></div>
+                                </div>
+                                <div class="btn btn-default star-button">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="nextBrothers" class="PrevNext NextItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="wifes-LittleTree">
+                <div id="prevWife" class="PrevNext PrevItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </div>
+                </div>
+                <div id="SliderWifes" class="SliderContainer-LittleTree">
+                    <input class="itemSize" type="text" style="display: none;" value="200" />
+                    <input class="itemMargin" type="text" style="display: none;" value="30" />
+                    <input class="itemVisibleCount" type="text" style="display: none;" value="1" />
+                    <ul class="ListSlider" style="transform: translateX(0px)">
+                        <li class="itemSlider itemCurrent" style="left:0px;">
+                            <div id="wifeOne-LittleTree" class="LittleTreePerson">
+                                <div class="imgBlock">
+                                    <img src="~/images/person.png" class="imgPerson" />
+                                </div>
+                                <div>
+                                    <div class="surname"></div>
+                                    <div class="name"></div>
+                                    <div class="middlename"></div>
+                                    <div class="birthday"></div>
+                                </div>
+                                <div class="btn btn-default star-button">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="nextWife" class="PrevNext NextItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                </div>
+                <div id="addWife-LittleTree" class="AddPerson-LittleTree">
+                    <img src="~/images/addBlack.png" class="imgAdd-LittleTree" />
+                </div>
+            </div>
+        </div>
+        <canvas width="1025" height="200" id="canvas7"></canvas>
+        <div>
+            <div id="sons-LittleTree">
+                <div id="prevSon" class="PrevNext PrevItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </div>
+                </div>
+                <div class="SliderContainer-LittleTree">
+                    <input class="itemSize" type="text" style="display: none;" value="200" />
+                    <input class="itemMargin" type="text" style="display: none;" value="30" />
+                    <input class="itemVisibleCount" type="text" style="display: none;" value="2" />
+                    <ul class="ListSlider" style="transform: translateX(0px)">
+                        <li class="itemSlider itemCurrent" style="left:0px;">
+                            <div id="sonOne-LittleTree" class="LittleTreePerson" data-toggle="modal" data-target="#myModal" data-value="5">
+                                <div class="imgBlock">
+                                    <img src="~/images/person.png" class="imgPerson" />
+                                </div>
+                                <div>
+                                    <div class="surname"></div>
+                                    <div class="name"></div>
+                                    <div class="middlename"></div>
+                                    <div class="birthday"></div>
+                                </div>
+                                <div class="btn btn-default star-button">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="nextSon" class="PrevNext NextItem">
+                    <div>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </div>
+                </div>
+                <div id="AddSon-LittleTree" class="AddPerson-LittleTree">
+                    <img src="~/images/addBlack.png" class="imgAdd-LittleTree" />
+                </div>
+            </div>
+        </div>
+        <canvas width="1025" height="100" id="canvas8"></canvas>
+    </div>
+</div>
+
+<div id="person-data-block" class="person-data-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="toolbox">
+                    <div class="toolbox_buttons">
+                        <div id="back-to-tree-button" class="btn btn-default button-back" data-toggle="tooltip" data-placement="top" title="Вернуться к дереву">
+                            <div class="button-back__img"></div>
+                        </div>
+                        <div class="btn-group data-category-dropdown-buttons">
+                            <button id="add-data-category-button" type="button" class="btn btn-default button-add" data-toggle="tooltip" data-placement="top" title="Добавить категорию">
+                                <div class="button-add__img"></div>
+                            </button>
+                            <button type="button" class="btn btn-default dropdown-toggle button-caret-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="button-caret-down__img"></div>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div id="edit-data-category-button" class="dropdown-item">Изменить</div>
+                                <div id="copy-data-category-button" class="dropdown-item">Копировать</div>
+                                <div id="paste-data-category-button" class="dropdown-item">Вставить</div>
+                                <div id="delete-data-category-button" class="dropdown-item">Удалить</div>
+                                <div id="select-participant-to-insert-button" class="dropdown-item">Вставить событие</div>
+                            </div>
+                        </div>
+                        <div class="toolbox__horizontal-separator"></div>
+                    </div>
+                </div>
+                <div class="data-categories person-data-block__data-categories"></div>
+            </div>
+            <div class="col-md-9">
+                <div class="toolbox">
+                    <div class="toolbox_buttons">
+                        <div class="btn-group">
+                            <button id="select-all-button" type="button" class="btn btn-default button-select" data-toggle="tooltip" data-placement="top" title="Выделить всё">
+                                <div class="button-select__img"></div>
+                            </button>
+                            <button type="button" class="btn btn-default dropdown-toggle button-caret-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="button-caret-down__img"></div>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div id="deselect-all-button" class="dropdown-item">Убрать выделение</div>
+                                <div id="invert-selection-button" class="dropdown-item">Инвертировать выделение</div>
+                            </div>
+                        </div>
+                        <div class="toolbox__vertical-separator"></div>
+                        <div id="back-to-data-blocks-button" class="btn btn-default button-back" data-toggle="tooltip" data-placement="top" title="Вернуться к блокам данных">
+                            <div class="button-back__img"></div>
+                        </div>
+                        <div id="add-element-button" class="btn btn-default button-add" title="Добавить">
+                            <div class="button-add__img"></div>
+                        </div>
+                        <div id="edit-privacy-button" class="btn btn-default button-privacy" title="Приватность">
+                            <div class="button-privacy__img"></div>
+                        </div>
+                        <div id="copy-button" class="btn btn-default button-copy" data-toggle="tooltip" data-placement="top" title="Копировать">
+                            <div class="button-copy__img"></div>
+                        </div>
+                        <div id="paste-button" class="btn btn-default button-paste" data-toggle="tooltip" data-placement="top" title="Вставить">
+                            <div class="button-paste__img"></div>
+                        </div>
+                        <div id="paste-participant-button" class="btn btn-default button-paste-participant" data-toggle="tooltip" data-placement="top" title="Поделиться событием">
+                            <div class="button-paste-participant__img"></div>
+                        </div>
+                        <div id="edit-element-button" class="btn btn-default button-edit" data-toggle="tooltip" data-placement="top" title="Редактировать">
+                            <div class="button-edit__img"></div>
+                        </div>
+                        <div id="order-elements-button" class="btn btn-default button-order" data-toggle="tooltip" data-placement="top" title="Переупорядочить">
+                            <div class="button-order__img"></div>
+                        </div>
+                        <div id="delete-button" class="btn btn-danger button-delete" data-toggle="tooltip" data-placement="top" title="Удалить">
+                            <div class="button-delete__img"></div>
+                        </div>
+                        <div id="save-elements-button" class="btn btn-default button-save">
+                            <div class="button-save__img"></div>
+                            <div class="btn__vertical-separator"></div>
+                            <div class="loader"></div>
+                            <div class="btn__text">Сохранить</div>
+                        </div>
+                        <div class="toolbox__horizontal-separator"></div>
+                    </div>                    
+                </div>
+                <div class="data-blocks person-data-block__data-blocks"></div>
+                <div class="data-block-content">
+                    <div class="tabs-containers data-block-content__tabs-containers">
+                        <div class="data-holders person-data-block__data-holders tab-container"></div>
+                        <div class="images tab-container"></div>
+                        <div class="videos tab-container"></div>
+                        <div class="audios tab-container"></div>
+                        <div class="participants tab-container"></div>
+                    </div>
+                    <div class="tabs-buttons data-block-content__tabs-buttons">
+                        <div class="tabs-buttons__button tab-button-data">Данные</div>
+                        <div class="tabs-buttons__button tab-button-images">Изображения</div>
+                        <div class="tabs-buttons__button tab-button-videos">Видео</div>
+                        <div class="tabs-buttons__button tab-button-audios">Аудио</div>
+                        <div id="tab-button-participants" class="tabs-buttons__button tab-button-participants">Участники</div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_PersonContentModals" />
+<partial name="_PrivacyLevelModal" />
+<partial name="_FamilyTreeModals" />
+
+@section ModalPersonInfo
+    {
+    <div id="modalBlockPerson">
+        <div id="visibleZone">
+            <div id="headerModal"></div>
+            <div id="bodyModal">
+                <div id="textModal"></div>
+            </div>
+            <div class="footerModal">
+                <div id="delete-person-button" data-id="">Удалить человека</div>
+                <div id="editPersonModal" data-id="">Подробнее...</div>
+            </div>
+        </div>
+        <div id="unvisibleZone"></div>
+    </div>
+}
