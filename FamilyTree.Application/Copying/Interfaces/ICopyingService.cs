@@ -1,8 +1,6 @@
-﻿using FamilyTree.Application.PersonContent.DataBlocks.ViewModels;
-using FamilyTree.Domain.Entities.Media;
+﻿using FamilyTree.Domain.Entities.Media;
 using FamilyTree.Domain.Entities.PersonContent;
 using FamilyTree.Domain.Entities.Tree;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,9 +8,9 @@ namespace FamilyTree.Application.Copying.Interfaces
 {
     public interface ICopyingService
     {
-        Task<List<DataBlockDto>> CopyDataCategoryToPerson(Person person, DataCategory dataCategory, CancellationToken cancellationToken);
+        Task CopyDataCategoryToPerson(Person person, DataCategory dataCategory, CancellationToken cancellationToken);
 
-        Task<DataBlockDto> CopyDataBlockToDataCategory(DataCategory dataCategory, DataBlock dataBlock, CancellationToken cancellationToken);
+        Task CopyDataBlockToDataCategory(DataCategory dataCategory, DataBlock dataBlock, CancellationToken cancellationToken);
 
         Task CopyDataHolderToDataBlock(DataBlock dataBlock, DataHolder dataHolder, CancellationToken cancellationToken);
 

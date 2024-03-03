@@ -4,7 +4,10 @@ using FamilyTree.Domain.Entities.Media;
 using FamilyTree.Domain.Entities.Privacy;
 using FamilyTree.Domain.Entities.Tree;
 using FamilyTree.Domain.Entities.PersonContent;
+using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using IdentityServer4.EntityFramework.Options;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Reflection;
@@ -14,15 +17,16 @@ using FamilyTree.Domain.Entities.Identity;
 
 namespace FamilyTree.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
+    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
     {
         private readonly ICurrentUserService _currentUserService;
 
         private readonly IDateTimeService _dateTimeService;
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options,
+        public ApplicationDbContext(DbContextOptions options,
+                                    IOptions<OperationalStoreOptions> operationalStoreOptions,
                                     ICurrentUserService currentUserService,
-                                    IDateTimeService dateTimeService) : base(options)
+                                    IDateTimeService dateTimeService) : base(options, operationalStoreOptions)
         {
             _currentUserService = currentUserService;
             _dateTimeService = dateTimeService;
@@ -56,7 +60,9 @@ namespace FamilyTree.Infrastructure.Persistence
 
         public DbSet<DataBlockAudio> DataBlockAudios { get; set; }
 
-        public DbSet<PersonToDataBlocks> PersonToDataBlocks { get; set; }
+        public DbSet<ApplicationUser> AppUsers { get; set; }
+
+        public DbSet<SharedTree> SharedTrees { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {

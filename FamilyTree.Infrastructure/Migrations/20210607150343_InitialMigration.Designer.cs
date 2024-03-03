@@ -445,14 +445,14 @@ namespace FamilyTree.Infrastructure.Migrations
 
                     b.ToTable("DataHolder");
                 });
-            
+
             modelBuilder.Entity("FamilyTree.Domain.Entities.Privacy.PrivacyEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-                    
+
                     b.Property<DateTime>("BeginDate")
                         .HasColumnType("datetime2");
 

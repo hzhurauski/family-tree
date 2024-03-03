@@ -1,0 +1,52 @@
+#footer {
+    background-repeat: no-repeat;
+    background-image: url(../../images/FooterBackground.png);
+    height: 210px;
+    min-width: 1200px;
+    max-width: 2048px;
+    margin: 0 auto;
+}
+
+#footerMenu {
+    margin: 10px 0 58px 0;
+}
+
+#footerMenu a div {
+    font: 16px Segoe UI Semilight sans-serif;
+    color: #33333D;
+    text-transform: uppercase;
+    height: 60px;
+    padding: 30px 0 40px 0;
+    text-align: center;
+    border-bottom: 2px solid #33333D;
+    transition: all 0.8s;
+}
+
+#footerMenu a div:hover {
+    cursor: pointer;
+    border-bottom: 2px solid #006EF6;
+    color: #1A73D2;
+    transition: all 0.8s;
+}
+
+#footerMenu a {
+    text-decoration: none;
+}
+
+.nullPadding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#copyright {
+    font: 20px Segoe UI Semilight sans-serif;
+    text-align: center;
+    padding-top: 25px;
+    height: 70px;
+    background-color: #0F54A2;
+    color: #76ABEA;
+}
+
+#author {
+    color: #FFF;
+}

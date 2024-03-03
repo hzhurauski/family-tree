@@ -11,8 +11,8 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.4.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,8 +21,10 @@
 
   <ItemGroup>
     <Folder Include="Common\Mappings\" />
-    <Folder Include="People\Helpers\" />
+    <Folder Include="User\Commands\" />
+    <Folder Include="User\Interfaces\" />
     <Folder Include="Privacy\Queries\" />
+    <Folder Include="User\Validators\" />
   </ItemGroup>
 
 </Project>

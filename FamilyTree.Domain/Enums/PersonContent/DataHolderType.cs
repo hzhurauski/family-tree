@@ -12,6 +12,5 @@
         MiddleName,
         Birthday,
         Gender
-        //,isShown
     }
 }

@@ -18,7 +18,7 @@ namespace FamilyTree.Infrastructure
 
             services.AddScoped<IApplicationDbContext>(services => services.GetService<ApplicationDbContext>());
 
-            services.AddDefaultIdentity<ApplicationUser>(options =>
+            /*services.AddDefaultIdentity<ApplicationUser>(options =>
             {
                 options.Password = new PasswordOptions()
                 {
@@ -29,7 +29,7 @@ namespace FamilyTree.Infrastructure
                 };
             }
             )
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+            .AddEntityFrameworkStores<ApplicationDbContext>();*/
 
             services.AddTransient<IDateTimeService, DateTimeService>();
 

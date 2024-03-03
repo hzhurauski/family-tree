@@ -24,8 +24,30 @@ namespace FamilyTree.Application.Media.Audios.Handlers
 
         public async Task<List<AudioDto>> Handle(GetAudiosQuery request, CancellationToken cancellationToken)
         {
+            var userId = request.UserId;
+            /*var sharedTree = await _context.FamilyTrees
+                .Join(_context.SharedTrees, ft => ft.Id, st => st.FamilyTreeId, (ft, st) => new
+                {
+                    FamilyTree = ft,
+                    SharedTree = st
+                })
+                .Where(jn => (jn.FamilyTree.UserId.Equals(userId) || jn.SharedTree.SharedPersonId.Equals(userId) && jn.FamilyTree.Id == treeId))
+                .Select(jn => new
+                {
+                    Id = jn.FamilyTree.Id,
+                    Name = jn.FamilyTree.Name,
+                    MainPersonId = jn.FamilyTree.MainPersonId,
+                    UserId = jn.FamilyTree.UserId
+                })
+                .SingleOrDefaultAsync(cancellationToken);
+
+            if (sharedTree != null)
+            {
+                userId = sharedTree.UserId;
+            }
+            */
             DataBlock dataBlock = await _context.DataBlocks
-                .SingleOrDefaultAsync(db => db.CreatedBy.Equals(request.UserId) &&
+                .SingleOrDefaultAsync(db => db.CreatedBy.Equals(userId) &&
                                             db.Id == request.DataBlockId,
                                       cancellationToken);
 

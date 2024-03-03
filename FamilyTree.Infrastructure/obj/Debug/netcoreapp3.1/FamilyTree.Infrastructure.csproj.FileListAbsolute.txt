@@ -1,0 +1,5 @@
+D:\Univer\Диплом\test\FamilyTree.Infrastructure\obj\Debug\netcoreapp3.1\FamilyTree.Infrastructure.csproj.AssemblyReference.cache
+D:\Univer\Диплом\test\FamilyTree.Infrastructure\obj\Debug\netcoreapp3.1\FamilyTree.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Univer\Диплом\test\FamilyTree.Infrastructure\obj\Debug\netcoreapp3.1\FamilyTree.Infrastructure.AssemblyInfoInputs.cache
+D:\Univer\Диплом\test\FamilyTree.Infrastructure\obj\Debug\netcoreapp3.1\FamilyTree.Infrastructure.AssemblyInfo.cs
+D:\Univer\Диплом\test\FamilyTree.Infrastructure\obj\Debug\netcoreapp3.1\FamilyTree.Infrastructure.csproj.CoreCompileInputs.cache

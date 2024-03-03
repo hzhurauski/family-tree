@@ -1,16 +1,13 @@
 ﻿using FamilyTree.Application.Common.Interfaces;
 using FamilyTree.Application.Copying.Interfaces;
-using FamilyTree.Application.PersonContent.DataBlocks.ViewModels;
 using FamilyTree.Application.PersonContent.DataCategories.Extensions;
 using FamilyTree.Application.PersonContent.DataHolders.Extensions;
-using FamilyTree.Application.PersonContent.DataHolders.ViewModels;
 using FamilyTree.Domain.Entities.Media;
 using FamilyTree.Domain.Entities.PersonContent;
 using FamilyTree.Domain.Entities.Privacy;
 using FamilyTree.Domain.Entities.Tree;
 using FamilyTree.Domain.Enums.PersonContent;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -31,7 +28,7 @@ namespace FamilyTree.Application.Copying.Services
             _context = context;
         }
 
-        public async Task<List<DataBlockDto>> CopyDataCategoryToPerson(Person person, DataCategory dataCategory, CancellationToken cancellationToken)
+        public async Task CopyDataCategoryToPerson(Person person, DataCategory dataCategory, CancellationToken cancellationToken)
         {
             var dataCategoriesCount = await _context.DataCategories
                 .CountAsync(dc => dc.PersonId == person.Id,
@@ -62,17 +59,13 @@ namespace FamilyTree.Application.Copying.Services
                 .OrderBy(db => db.OrderNumber)
                 .ToList();
 
-            var createdDataBlockIds = new List<DataBlockDto>(dataBlocks.Count);
-
             foreach (var dataBlock in dataBlocks)
             {
-                createdDataBlockIds.Add(await CopyDataBlockToDataCategory(entity, dataBlock, cancellationToken));
+                await CopyDataBlockToDataCategory(entity, dataBlock, cancellationToken);
             }
-
-            return createdDataBlockIds;
         }
 
-        public async Task<DataBlockDto> CopyDataBlockToDataCategory(DataCategory dataCategory, DataBlock dataBlock, CancellationToken cancellationToken)
+        public async Task CopyDataBlockToDataCategory(DataCategory dataCategory, DataBlock dataBlock, CancellationToken cancellationToken)
         {
             DataBlock entity = new DataBlock()
             {
@@ -126,19 +119,6 @@ namespace FamilyTree.Application.Copying.Services
             {
                 await CopyAudioToDataBlock(entity, audio, cancellationToken);
             }
-
-            return new DataBlockDto
-            {
-                Id = entity.Id,
-                Title = entity.Title,
-                DataHolders = entity.DataHolders.Select(x => new DataHolderDto
-                {
-                    Id = x.Id,
-                    Data = x.Data,
-                    DataHolderType = x.DataHolderType,
-                    Title = x.Title
-                }).ToList(),
-            };
         }
 
         public async Task CopyDataHolderToDataBlock(DataBlock dataBlock, DataHolder dataHolder, CancellationToken cancellationToken)

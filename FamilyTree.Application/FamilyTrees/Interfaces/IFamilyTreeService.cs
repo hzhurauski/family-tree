@@ -14,9 +14,7 @@ namespace FamilyTree.Application.FamilyTrees.Interfaces
         Task<BloodTreeVm> GetBloodTreeById(GetBloodTreeByIdQuery request, CancellationToken cancellationToken);
 
         Task<string> GetRelationsByPeopleIds(GetRelationsByPeopleIdsQuery request, CancellationToken cancellationToken);
-        // Дополнение: Функция получения лет жизни человека.
-        //Task<string> GetLifeYearsByPeopleId(GetLifeYearsByPeopleIdQuery request, CancellationToken cancellationToken);
-        // Дополнение: Функция получения лет жизни человека.
+
         Task<List<int>> GetPeopleDeleteList(int familyTreeId, string userId, int startId, int endId, CancellationToken cancellationToken);
     }
 }

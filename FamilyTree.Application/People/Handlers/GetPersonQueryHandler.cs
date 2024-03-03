@@ -53,14 +53,7 @@ namespace FamilyTree.Application.People.Handlers
                 Middlename = dataHolders
                     .Where(dh => dh.DataHolderType == DataHolderType.MiddleName)
                     .First().Data,
-                // Дополнение: получение даты рождения для вывода в карточке человека.
-                //Birthday = DateTime.Parse(dataHolders.Where(dh => dh.DataHolderType.ToString() == DataHolderType.Birthday.ToString()).First().Data.ToString()),
-                Birthday = dataHolders
-                //.Where(dh => dh.DataHolderType.ToString() == DataHolderType.Birthday.ToString())
-                    .Where(dh => dh.DataHolderType == DataHolderType.Birthday)
-                    .First().Data,
-                // Дополнение: получение даты рождения для вывода в карточке человека.
-                AvatarImageId = person.AvatarImageId,
+                AvatarImageId = person.AvatarImageId
             };
 
             return result;

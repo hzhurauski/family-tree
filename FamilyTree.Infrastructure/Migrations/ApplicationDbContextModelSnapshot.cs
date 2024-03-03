@@ -15,8 +15,8 @@ namespace FamilyTree.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.Identity.ApplicationUser", b =>
@@ -32,8 +32,8 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -45,12 +45,12 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -71,17 +71,17 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
+                        .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
+                        .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.HasIndex("ProfileId")
@@ -444,27 +444,6 @@ namespace FamilyTree.Infrastructure.Migrations
                     b.ToTable("DataHolder");
                 });
 
-            modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.PersonToDataBlocks", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("DataBlockId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DataBlockId");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("PersonToDataBlocks");
-                });
-
             modelBuilder.Entity("FamilyTree.Domain.Entities.Privacy.PrivacyEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -629,6 +608,144 @@ namespace FamilyTree.Infrastructure.Migrations
                     b.ToTable("Person");
                 });
 
+            modelBuilder.Entity("FamilyTree.Domain.Entities.Tree.SharedTree", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FamilyTreeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OwnerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SharedPersonId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SharedTree");
+                });
+
+            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
+                {
+                    b.Property<string>("UserCode")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ClientId")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Data")
+                        .IsRequired()
+                        .HasMaxLength(50000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("DeviceCode")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("Expiration")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SessionId")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("SubjectId")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("UserCode");
+
+                    b.HasIndex("DeviceCode")
+                        .IsUnique();
+
+                    b.HasIndex("Expiration");
+
+                    b.ToTable("DeviceCodes");
+                });
+
+            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.PersistedGrant", b =>
+                {
+                    b.Property<string>("Key")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ClientId")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("ConsumedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Data")
+                        .IsRequired()
+                        .HasMaxLength(50000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("Expiration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SessionId")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("SubjectId")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Key");
+
+                    b.HasIndex("Expiration");
+
+                    b.HasIndex("SubjectId", "ClientId", "Type");
+
+                    b.HasIndex("SubjectId", "SessionId", "Type");
+
+                    b.ToTable("PersistedGrants");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -639,18 +756,18 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
+                        .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
@@ -707,12 +824,12 @@ namespace FamilyTree.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -749,12 +866,12 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -771,6 +888,8 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("FamilyTree.Domain.Entities.Identity.ApplicationUser", "ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Profile");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.Media.Audio", b =>
@@ -780,6 +899,8 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("PrivacyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Privacy");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.Media.Image", b =>
@@ -789,6 +910,8 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("PrivacyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Privacy");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.Media.Video", b =>
@@ -798,6 +921,8 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("PrivacyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Privacy");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.DataBlock", b =>
@@ -807,6 +932,8 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("DataCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("DataCategory");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.DataBlockAudio", b =>
@@ -822,6 +949,10 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("DataBlockId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Audio");
+
+                    b.Navigation("DataBlock");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.DataBlockImage", b =>
@@ -837,6 +968,10 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("ImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("DataBlock");
+
+                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.DataBlockVideo", b =>
@@ -852,6 +987,10 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("VideoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("DataBlock");
+
+                    b.Navigation("Video");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.DataCategory", b =>
@@ -861,6 +1000,8 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.DataHolder", b =>
@@ -876,21 +1017,10 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("PrivacyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.PersonToDataBlocks", b =>
-                {
-                    b.HasOne("FamilyTree.Domain.Entities.PersonContent.DataBlock", "DataBlock")
-                        .WithMany("Participants")
-                        .HasForeignKey("DataBlockId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("DataBlock");
 
-                    b.HasOne("FamilyTree.Domain.Entities.Tree.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Privacy");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.Tree.FamilyTie", b =>
@@ -916,6 +1046,16 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Child");
+
+                    b.Navigation("MarriagePerson");
+
+                    b.Navigation("Parent1");
+
+                    b.Navigation("Parent2");
+
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.Tree.FamilyTreeEntity", b =>
@@ -929,6 +1069,10 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("MainPerson");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FamilyTree.Domain.Entities.Tree.Person", b =>
@@ -942,6 +1086,10 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("FamilyTreeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AvatarImage");
+
+                    b.Navigation("FamilyTree");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -993,6 +1141,36 @@ namespace FamilyTree.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FamilyTree.Domain.Entities.Identity.ApplicationUser", b =>
+                {
+                    b.Navigation("FamilyTrees");
+                });
+
+            modelBuilder.Entity("FamilyTree.Domain.Entities.Identity.Profile", b =>
+                {
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.DataBlock", b =>
+                {
+                    b.Navigation("DataHolders");
+                });
+
+            modelBuilder.Entity("FamilyTree.Domain.Entities.PersonContent.DataCategory", b =>
+                {
+                    b.Navigation("DataBlocks");
+                });
+
+            modelBuilder.Entity("FamilyTree.Domain.Entities.Tree.FamilyTreeEntity", b =>
+                {
+                    b.Navigation("People");
+                });
+
+            modelBuilder.Entity("FamilyTree.Domain.Entities.Tree.Person", b =>
+                {
+                    b.Navigation("DataCategories");
                 });
 #pragma warning restore 612, 618
         }

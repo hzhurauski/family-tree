@@ -33,7 +33,6 @@ namespace FamilyTree.Application.PersonContent.DataHolders.Handlers
                 throw new Exception("Can\'t update DataHolder. This DataHolder isn\'t updatable");
 
             dataHolder.Title = request.Title;
-            //dataHolder.isShown = request.isShown;
 
             await _context.SaveChangesAsync(cancellationToken);
 

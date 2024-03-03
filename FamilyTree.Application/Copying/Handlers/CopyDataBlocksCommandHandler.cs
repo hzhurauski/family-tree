@@ -2,20 +2,18 @@
 using FamilyTree.Application.Common.Interfaces;
 using FamilyTree.Application.Copying.Commands;
 using FamilyTree.Application.Copying.Interfaces;
-using FamilyTree.Application.PersonContent.DataBlocks.ViewModels;
 using FamilyTree.Domain.Entities.PersonContent;
 using FamilyTree.Domain.Enums.PersonContent;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace FamilyTree.Application.Copying.Handlers
 {
-    public class CopyDataBlocksCommandHandler : IRequestHandler<CopyDataBlocksCommand, List<DataBlockDto>>
+    public class CopyDataBlocksCommandHandler : IRequestHandler<CopyDataBlocksCommand>
     {
         private readonly IApplicationDbContext _context;
 
@@ -27,8 +25,8 @@ namespace FamilyTree.Application.Copying.Handlers
             _copying = copying;
         }
 
-        public async Task<List<DataBlockDto>> Handle(CopyDataBlocksCommand request, CancellationToken cancellationToken)
-        { // придётся отдавать модель датаБлок-датаХолдеры, чтобы обновить айди датахолдеров на фронте и потом сохранить
+        public async Task<Unit> Handle(CopyDataBlocksCommand request, CancellationToken cancellationToken)
+        {
             DataCategory dataCategory = await _context.DataCategories
                 .Include(dc => dc.DataBlocks)
                 .SingleOrDefaultAsync(dc => dc.CreatedBy.Equals(request.UserId) &&
@@ -49,14 +47,12 @@ namespace FamilyTree.Application.Copying.Handlers
                              request.DataBlocksIds.Contains(db.Id))
                 .ToListAsync(cancellationToken);
 
-            var createdDataBlockIds = new List<DataBlockDto>();
-
             foreach (var dataBlock in dataBlocks)
             {            
-                createdDataBlockIds.Add(await _copying.CopyDataBlockToDataCategory(dataCategory, dataBlock, cancellationToken));
+                await _copying.CopyDataBlockToDataCategory(dataCategory, dataBlock, cancellationToken);
             }
 
-            return createdDataBlockIds;
+            return Unit.Value;
         }
     }
 }

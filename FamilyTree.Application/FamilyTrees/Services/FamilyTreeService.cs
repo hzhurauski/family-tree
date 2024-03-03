@@ -64,14 +64,7 @@ namespace FamilyTree.Application.FamilyTrees.Services
 
             return await FindRelation(request.TargetPersonId.Value, request.PersonId.Value, cancellationToken);
         }
-        /* // Дополнение: Функция получения лет жизни человека.
-        public async Task<string> GetLifeYearsPeopleId(GetLifeYearsByPeopleIdQuery request, CancellationToken cancellationToken)
-        {
-            //await LoadPeople(request.FamilyTreeId.Value, request.UserId, cancellationToken);
 
-            return await FindLifeYears(request.PersonId.Value, cancellationToken);
-        }
-        */ // Дополнение: Функция получения лет жизни человека.
         public async Task<BloodTreeVm> GetBloodTreeById(GetBloodTreeByIdQuery request, CancellationToken cancellationToken)
         {
             FamilyTreeVm tree = await GetFamilyTreeById(new GetFamilyTreeByIdQuery()
@@ -509,6 +502,27 @@ namespace FamilyTree.Application.FamilyTrees.Services
 
         private async Task<PersonDto> GetPerson(int treeId, int personId, string userId, CancellationToken cancellationToken)
         {
+            var sharedTree = await _context.FamilyTrees
+                .Join(_context.SharedTrees, ft => ft.Id, st => st.FamilyTreeId, (ft, st) => new
+                {
+                    FamilyTree = ft,
+                    SharedTree = st
+                })
+                .Where(jn => ((jn.FamilyTree.UserId.Equals(userId) || jn.SharedTree.SharedPersonId.Equals(userId)) && jn.FamilyTree.Id == treeId))
+                .Select(jn => new
+                {
+                    Id = jn.FamilyTree.Id,
+                    Name = jn.FamilyTree.Name,
+                    MainPersonId = jn.FamilyTree.MainPersonId,
+                    UserId = jn.FamilyTree.UserId
+                }).Distinct()
+                .SingleOrDefaultAsync(cancellationToken);
+
+            if (sharedTree != null)
+            {
+                userId = sharedTree.UserId;
+            }
+
             PersonDto result = null;
             Person person = await _context.People
                 .Where(p => p.CreatedBy.Equals(userId) &&
@@ -518,6 +532,8 @@ namespace FamilyTree.Application.FamilyTrees.Services
 
             if (person != null)
             {
+                result = new PersonDto();
+
                 List<DataCategory> dataCategories = await _context
                     .DataCategories
                     .Include(c => c.DataBlocks)
@@ -528,15 +544,11 @@ namespace FamilyTree.Application.FamilyTrees.Services
                 List<DataBlock> dataBlocks = dataCategories.SelectMany(c => c.DataBlocks).ToList();
                 List<DataHolder> dataHolders = dataBlocks.SelectMany(db => db.DataHolders).ToList();
 
-                result = new PersonDto
-                {
-                    Id = person.Id,
-                    Name = dataHolders.FirstOrDefault(dh => dh.DataHolderType == DataHolderType.Name).Data,
-                    Surname = dataHolders.FirstOrDefault(dh => dh.DataHolderType == DataHolderType.Surname).Data,
-                    Middlename = dataHolders.FirstOrDefault(dh => dh.DataHolderType == DataHolderType.MiddleName).Data,
-                    Birthday = dataHolders.FirstOrDefault(dh => dh.DataHolderType == DataHolderType.Birthday).Data,
-                    AvatarImageId = person.AvatarImageId,
-                };
+                result.Id = person.Id;
+                result.Name = dataHolders.FirstOrDefault(dh => dh.DataHolderType == DataHolderType.Name).Data;
+                result.Surname = dataHolders.FirstOrDefault(dh => dh.DataHolderType == DataHolderType.Surname).Data;
+                result.Middlename = dataHolders.FirstOrDefault(dh => dh.DataHolderType == DataHolderType.MiddleName).Data;
+                result.AvatarImageId = person.AvatarImageId;
             }
 
             return result;
@@ -717,6 +729,27 @@ namespace FamilyTree.Application.FamilyTrees.Services
         // Загрузка данных о людях и их связях из базы данных
         private async Task LoadPeople(int treeId, string userId, CancellationToken cancellationToken)
         {
+            var sharedTree = await _context.FamilyTrees
+                .Join(_context.SharedTrees, ft => ft.Id, st => st.FamilyTreeId, (ft, st) => new
+                {
+                    FamilyTree = ft,
+                    SharedTree = st
+                })
+                .Where(jn => ((jn.FamilyTree.UserId.Equals(userId) || jn.SharedTree.SharedPersonId.Equals(userId)) && jn.FamilyTree.Id == treeId))
+                .Select(jn => new
+                {
+                    Id = jn.FamilyTree.Id,
+                    Name = jn.FamilyTree.Name,
+                    MainPersonId = jn.FamilyTree.MainPersonId,
+                    UserId = jn.FamilyTree.UserId
+                })
+                .SingleOrDefaultAsync(cancellationToken);
+
+            if (sharedTree != null)
+            {
+                userId = sharedTree.UserId;
+            }
+
             People = new List<PersonNode>();
 
             // Получение списка id людей, которые принадлежат текущему аккаунту
@@ -1307,18 +1340,6 @@ namespace FamilyTree.Application.FamilyTrees.Services
 
             return res;
         }
-
-        /* // Дополнение: Функция получения лет жизни человека.
-        public async Task<string> FindLifeYears(int userId, CancellationToken cancellationToken)
-        {
-            // userId - id человека, возраст которого нужно высчитать 
-
-            List<int> numberLine = FindRelationLine(startId, endId);
-            string resultLine = await ChangeLine(numberLine, startId, cancellationToken);
-
-            return resultLine;
-        }
-        */  // Дополнение: Функция получения лет жизни человека.
 
         public async Task<string> FindRelation(int startId, int endId, CancellationToken cancellationToken)
         {

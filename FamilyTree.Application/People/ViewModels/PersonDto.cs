@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace FamilyTree.Application.People.ViewModels
+﻿namespace FamilyTree.Application.People.ViewModels
 {
     public class PersonDto
     {
@@ -12,8 +9,6 @@ namespace FamilyTree.Application.People.ViewModels
         public string Surname { get; set; }
 
         public string Middlename { get; set; }
-
-        public string Birthday { get; set; }
 
         public int? AvatarImageId { get; set; }
     }

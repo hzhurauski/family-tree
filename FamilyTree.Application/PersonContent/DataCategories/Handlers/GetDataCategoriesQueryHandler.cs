@@ -21,8 +21,30 @@ namespace FamilyTree.Application.PersonContent.DataCategories.Handlers
 
         public async Task<List<DataCategoryDto>> Handle(GetDataCategoriesQuery request, CancellationToken cancellationToken)
         {
+            var userId = request.UserId;
+            /*var sharedTree = await _context.FamilyTrees
+                .Join(_context.SharedTrees, ft => ft.Id, st => st.FamilyTreeId, (ft, st) => new
+                {
+                    FamilyTree = ft,
+                    SharedTree = st
+                })
+                .Where(jn => (jn.FamilyTree.UserId.Equals(userId) || jn.SharedTree.SharedPersonId.Equals(userId) && jn.FamilyTree.Id == treeId))
+                .Select(jn => new
+                {
+                    Id = jn.FamilyTree.Id,
+                    Name = jn.FamilyTree.Name,
+                    MainPersonId = jn.FamilyTree.MainPersonId,
+                    UserId = jn.FamilyTree.UserId
+                })
+                .SingleOrDefaultAsync(cancellationToken);
+
+            if (sharedTree != null)
+            {
+                userId = sharedTree.UserId;
+            }
+            */
             List<DataCategoryDto> result =  await _context.DataCategories
-                .Where(dc => dc.CreatedBy.Equals(request.UserId) &&
+                .Where(dc => dc.CreatedBy.Equals(userId) &&
                              dc.PersonId == request.PersonId)
                 .OrderBy(dc => dc.OrderNumber)
                 .Select(dc => new DataCategoryDto() { Id = dc.Id, Name = dc.Name })

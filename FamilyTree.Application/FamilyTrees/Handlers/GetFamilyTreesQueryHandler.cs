@@ -21,17 +21,20 @@ namespace FamilyTree.Application.FamilyTrees.Handlers
 
         public async Task<List<FamilyTreeEntityDto>> Handle(GetFamilyTreesQuery request, CancellationToken cancellationToken)
         {
-            List<FamilyTreeEntityDto> result = await _context.FamilyTrees
-                .Where(dt => dt.CreatedBy.Equals(request.UserId))
-                .Select(ft => new FamilyTreeEntityDto()
+            var query = from ft in _context.FamilyTrees
+                join st in _context.SharedTrees on ft.Id equals st.FamilyTreeId into gj
+                from sht in gj.DefaultIfEmpty()
+                where ft.UserId.Equals(request.UserId) || sht.SharedPersonId.Equals(request.UserId)
+                select new FamilyTreeEntityDto()
                 {
                     Id = ft.Id,
                     Name = ft.Name,
                     MainPersonId = ft.MainPersonId
-                })
-                .ToListAsync(cancellationToken);
+                };
 
-            return result;
+            List<FamilyTreeEntityDto> result = await query.ToListAsync(cancellationToken);
+
+            return result.GroupBy(dto => dto.Id).Select(x => x.First()).ToList();
         }
     }
 }

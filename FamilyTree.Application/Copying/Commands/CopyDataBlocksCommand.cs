@@ -1,10 +1,9 @@
-﻿using FamilyTree.Application.PersonContent.DataBlocks.ViewModels;
-using MediatR;
+﻿using MediatR;
 using System.Collections.Generic;
 
 namespace FamilyTree.Application.Copying.Commands
 {
-    public class CopyDataBlocksCommand : IRequest<List<DataBlockDto>>
+    public class CopyDataBlocksCommand : IRequest
     {
         public List<int> DataBlocksIds { get; set; }
 

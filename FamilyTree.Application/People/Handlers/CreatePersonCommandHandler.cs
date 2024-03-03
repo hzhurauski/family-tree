@@ -104,20 +104,20 @@ namespace FamilyTree.Application.People.Handlers
 
             DataBlock dataBlock = new DataBlock() { Title = String.Empty };
             dataBlock.DataHolders = new List<DataHolder>();
-            dataBlock.DataHolders.Add(new DataHolder()
-            {
-                Title = "Фамилия",
-                Data = request.Surname,
-                DataHolderType = DataHolderType.Surname,
+            dataBlock.DataHolders.Add(new DataHolder() 
+            { 
+                Title = "Имя", 
+                Data = request.Name, 
+                DataHolderType = DataHolderType.Name, 
                 OrderNumber = 1,
                 IsDeletable = false,
                 Privacy = CreateDefaultPrivacy()
             });
             dataBlock.DataHolders.Add(new DataHolder() 
             { 
-                Title = "Имя", 
-                Data = request.Name, 
-                DataHolderType = DataHolderType.Name, 
+                Title = "Фамилия", 
+                Data = request.Surname, 
+                DataHolderType = DataHolderType.Surname, 
                 OrderNumber = 2,
                 IsDeletable = false,
                 Privacy = CreateDefaultPrivacy()
@@ -134,7 +134,7 @@ namespace FamilyTree.Application.People.Handlers
             dataBlock.DataHolders.Add(new DataHolder() 
             { 
                 Title = "День рождения", 
-                Data = request.Birthday.Value.ToString("dd/MM/yyyy"), 
+                Data = request.Birthday.ToString(), 
                 DataHolderType = DataHolderType.Birthday, 
                 OrderNumber = 4,
                 IsDeletable = false,

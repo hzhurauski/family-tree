@@ -2,7 +2,6 @@
 using FamilyTree.Domain.Entities.Media;
 using FamilyTree.Domain.Entities.PersonContent;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace FamilyTree.Domain.Entities.Tree
 {

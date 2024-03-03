@@ -17,8 +17,6 @@ namespace FamilyTree.Domain.Entities.PersonContent
 
         public int OrderNumber { get; set; }
 
-        //public string isShown { get; set;}
-
         public int PersonId { get; set; }
 
         public Person Person { get; set; }

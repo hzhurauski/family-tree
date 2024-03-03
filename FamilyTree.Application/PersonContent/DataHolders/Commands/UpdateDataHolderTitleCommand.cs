@@ -8,8 +8,6 @@ namespace FamilyTree.Application.PersonContent.DataHolders.Commands
 
         public string Title { get; set; }
 
-        //public string isShown { get; set;}
-
         public string UserId { get; set; }
     }
 }
