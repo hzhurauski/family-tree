@@ -524,7 +524,7 @@ async function SaveDataHolders() {
         .find(".data-holders .data-holders__item");
 
     let updatedDataHolders = []; //Use updatedDataHolders array to avoid jQuery object each() iterating, because it cannot execute asynchronously
-    мотивация трудовой деятельности и подходы к её повышению
+   // мотивация трудовой деятельности и подходы к её повышению
     dataHolders.each(async (i, el) => {
         let data = "";
 
