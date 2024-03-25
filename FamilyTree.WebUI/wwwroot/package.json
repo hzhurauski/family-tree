@@ -1,0 +1,18 @@
+{
+  "name": "wwwroot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@microsoft/signalr": "^5.0.17",
+    "jquery": "^1.11.3",
+    "moment": "^2.29.1",
+    "slick-carousel": "^1.8.1",
+    "sortablejs": "^1.13.0"
+  }
+}
