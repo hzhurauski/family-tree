@@ -1,7 +1,7 @@
 ﻿
 
 // Функции рисования
-function draw(context, x0, y0, x1, y1, width, color, dash, dashLength, back) {
+export function draw(context, x0, y0, x1, y1, width, color, dash, dashLength, back) {
     if (dash) {
         context.setLineDash([dashLength, 7]);
     } else {
@@ -25,7 +25,7 @@ function draw(context, x0, y0, x1, y1, width, color, dash, dashLength, back) {
     }
 }
 
-function drawLine(context, x0, y0, x1, y1, width, color, dash, dashLength) {
+export function drawLine(context, x0, y0, x1, y1, width, color, dash, dashLength) {
     if (dash) {
         context.setLineDash([dashLength, 7]);
     } else {
@@ -40,7 +40,7 @@ function drawLine(context, x0, y0, x1, y1, width, color, dash, dashLength) {
     context.stroke();
 }
 
-function drawHalf(context, x0, y0, x1, y1, width, color, dash, dashLength) {
+export function drawHalf(context, x0, y0, x1, y1, width, color, dash, dashLength) {
     if (dash) {
         context.setLineDash([dashLength, 7]);
     } else {
@@ -55,7 +55,7 @@ function drawHalf(context, x0, y0, x1, y1, width, color, dash, dashLength) {
     context.stroke();
 }
 
-function drawHalfUp(context, x0, y0, x1, y1, width, color, dash, dashLength) {
+export function drawHalfUp(context, x0, y0, x1, y1, width, color, dash, dashLength) {
     if (dash) {
         context.setLineDash([dashLength, 7]);
     } else {
@@ -69,7 +69,7 @@ function drawHalfUp(context, x0, y0, x1, y1, width, color, dash, dashLength) {
     context.stroke();
 }
 
-function DrawConnections(tree, blood) {
+export function DrawConnections(tree, blood) {
     var colorDefault = "#0080FF"; // Основной
     var colorBlood = "#900000"; // Кровавый
     var colorMuted = "#90B2D5"; // Основной приглушенный
@@ -85,7 +85,7 @@ function DrawConnections(tree, blood) {
     // One        
     for (var i = 0; i < 8; i++) {
         if (tree.Grand_has_parent[i] == true) {
-            if (bloodFlag) if (bloodTree.Grand[i]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+            if (window.bloodFlag) if (window.bloodTree.Grand[i]) colorLine = colorBloodMuted; else colorLine = colorMuted;
             else colorLine = colorMuted;
 
             drawLine(context, 50 + 150 * i, 15, 50 + 150 * i, 50, width, colorLine, true, dashLength);
@@ -100,8 +100,8 @@ function DrawConnections(tree, blood) {
     // Ones
     for (var i = 0; i < 8; i++) {
         if (tree.Grand_has_another_child[i] == true) {
-            if (bloodFlag)
-                if (bloodTree.Grand[i])
+            if (window.bloodFlag)
+                if (window.bloodTree.Grand[i])
                     colorLine = colorBloodMuted;
                 else colorLine = colorMuted;
             else colorLine = colorMuted;
@@ -116,7 +116,7 @@ function DrawConnections(tree, blood) {
 
     for (var i = 0; i < 4; i++) {
         if (tree.Parent_has_brother[i] == true) {
-            if (bloodFlag) if (bloodTree.Parent[i]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+            if (window.bloodFlag) if (window.bloodTree.Parent[i]) colorLine = colorBloodMuted; else colorLine = colorMuted;
             else colorLine = colorMuted;
 
             drawHalf(context, 125 + 300 * i, 60, 75 + 300 * i, 90, width, colorLine, true, dashLength);
@@ -135,7 +135,7 @@ function DrawConnections(tree, blood) {
     for (var i = 0; i < 8; i++) {
         if (i % 2 == 0) {
             if (arrGrand[i] != null) {
-                if (bloodFlag) if (bloodTree.Grand[i]) colorLine = colorBlood; else colorLine = colorDefault;
+                if (window.bloodFlag) if (window.bloodTree.Grand[i]) colorLine = colorBlood; else colorLine = colorDefault;
                 else colorLine = colorDefault;
 
                 draw(context, 50 + 300 * i / 2, 0, 125 + 300 * i / 2, 60, width, colorLine, false, dashLength, false);
@@ -147,7 +147,7 @@ function DrawConnections(tree, blood) {
             }
         } else {
             if (arrGrand[i] != null) {
-                if (bloodFlag) if (bloodTree.Grand[i]) colorLine = colorBlood; else colorLine = colorDefault;
+                if (window.bloodFlag) if (window.bloodTree.Grand[i]) colorLine = colorBlood; else colorLine = colorDefault;
                 else colorLine = colorDefault;
                 draw(context, 200 + 300 * (i - 1) / 2, 0, 125 + 300 * (i - 1) / 2, 60, width, colorLine, false, dashLength, true);
             }
@@ -164,7 +164,7 @@ function DrawConnections(tree, blood) {
             if (arrGrand[i * 2] == null && arrGrand[i * 2 + 1] == null) {
                 drawLine(context, 125 + 300 * i, 60, 125 + 300 * i, 100, width, colorMuted, true, dashLength);
             } else {
-                if (bloodFlag) if (bloodTree.Parent[i]) colorLine = colorBlood; else colorLine = colorDefault;
+                if (window.bloodFlag) if (window.bloodTree.Parent[i]) colorLine = colorBlood; else colorLine = colorDefault;
                 else colorLine = colorDefault;
                 drawLine(context, 125 + 300 * i, 60, 125 + 300 * i, 100, width, colorLine, false, dashLength);
             }
@@ -179,7 +179,7 @@ function DrawConnections(tree, blood) {
     // One
     // Братья
     if (tree.Brothers != null && tree.Brothers.length > 0) {
-        if (bloodFlag) if (bloodTree.Parent[0] || bloodTree.Parent[1]) colorLine = colorBlood; else colorLine = colorDefault;
+        if (window.bloodFlag) if (window.bloodTree.Parent[0] || window.bloodTree.Parent[1]) colorLine = colorBlood; else colorLine = colorDefault;
         else colorLine = colorDefault;
 
         drawHalf(context, 270, 60, 220, 90, width, colorLine, false, dashLength);
@@ -207,7 +207,7 @@ function DrawConnections(tree, blood) {
             }
 
             if (arrParent[i] != null) {
-                if (bloodFlag) if (bloodTree.Parent[i]) colorLine = colorBlood; else colorLine = colorDefault;
+                if (window.bloodFlag) if (window.bloodTree.Parent[i]) colorLine = colorBlood; else colorLine = colorDefault;
                 else colorLine = colorDefault;
                 draw(context, 125 + 600 * i / 2, 0, 270 + 605 * i / 2, 60, width, colorLine, false, dashLength, false);
             }
@@ -216,7 +216,7 @@ function DrawConnections(tree, blood) {
             }
         } else {
             if (arrParent[i] != null) {
-                if (bloodFlag) if (bloodTree.Parent[i]) colorLine = colorBlood; else colorLine = colorDefault;
+                if (window.bloodFlag) if (window.bloodTree.Parent[i]) colorLine = colorBlood; else colorLine = colorDefault;
                 else colorLine = colorDefault;
                 draw(context, 425 + 600 * (i - 1) / 2, 0, 270 + 605 * (i - 1) / 2, 60, width, colorLine, false, dashLength, true);
             }
@@ -232,11 +232,11 @@ function DrawConnections(tree, blood) {
             break;
         }
         if (arrParent[i * 2] == null && arrParent[i * 2 + 1] == null) {
-            if (bloodFlag) if (bloodTree.Parent[i * 2] || bloodTree.Parent[i * 2 + 1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+            if (window.bloodFlag) if (window.bloodTree.Parent[i * 2] || window.bloodTree.Parent[i * 2 + 1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
             else colorLine = colorMuted;
             drawLine(context, 270 + 605 * i, 60, 270 + 605 * i, 100, width, colorLine, true, dashLength);
         } else {
-            if (bloodFlag) if (bloodTree.Parent[i * 2] || bloodTree.Parent[i * 2 + 1]) colorLine = colorBlood; else colorLine = colorDefault;
+            if (window.bloodFlag) if (window.bloodTree.Parent[i * 2] || window.bloodTree.Parent[i * 2 + 1]) colorLine = colorBlood; else colorLine = colorDefault;
             else colorLine = colorDefault;
             drawLine(context, 270 + 605 * i, 60, 270 + 605 * i, 100, width, colorLine, false, dashLength);
         }
@@ -251,7 +251,7 @@ function DrawConnections(tree, blood) {
             tail += 400;
         }
         if (tree.Parent_has_another_child[i] == true) {
-            if (bloodFlag) if (bloodTree.Parent[i]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+            if (window.bloodFlag) if (window.bloodTree.Parent[i]) colorLine = colorBloodMuted; else colorLine = colorMuted;
             else colorLine = colorMuted;
             drawHalf(context, 125 + 300 * i, 0, tail, 30, width, colorLine, true, dashLength);
         }
@@ -260,7 +260,7 @@ function DrawConnections(tree, blood) {
     // Three
     // Есть ли у второй жены родитель
     if (tree.Wife_2_has_parent) {
-        if (bloodFlag) if (bloodTree.Wifes[1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+        if (window.bloodFlag) if (window.bloodTree.Wifes[1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
         else colorLine = colorMuted;
         drawLine(context, 1100, 75, 1100, 100, width, colorLine, true, dashLength);
     }
@@ -275,7 +275,7 @@ function DrawConnections(tree, blood) {
     if (tree.Wife_has_another_child != null) {
         for (var i = 0; i < 2; i++) {
             if (tree.Wife_has_another_child[i]) {
-                if (bloodFlag) if (bloodTree.Wifes[i]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+                if (window.bloodFlag) if (window.bloodTree.Wifes[i]) colorLine = colorBloodMuted; else colorLine = colorMuted;
                 else colorLine = colorMuted;
                 drawHalf(context, 875 + i * 225, 0, 925 + i * 225, 30, width, colorLine, true, dashLength);
             }
@@ -284,30 +284,30 @@ function DrawConnections(tree, blood) {
 
     // Есть вторая жена и ребенок от нее
     if (tree.ChildWife_2 != null) {
-        if (bloodFlag) if (bloodTree.Main) colorLine = colorBloodMuted; else colorLine = colorMuted;
+        if (window.bloodFlag) if (window.bloodTree.Main) colorLine = colorBloodMuted; else colorLine = colorMuted;
         else colorLine = colorMuted;
         drawLine(context, 450, 40, 950, 40, width, colorLine, false, dashLength);
         drawHalfUp(context, 950, 40, 988, 80, width, colorLine, false, dashLength);
 
-        if (bloodFlag) if (bloodTree.Wifes[1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+        if (window.bloodFlag) if (window.bloodTree.Wifes[1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
         else colorLine = colorMuted;
         draw(context, 1100, 0, 988, 80, width, colorLine, false, dashLength, true);
 
-        if (bloodFlag) if (bloodTree.Main || bloodTree.Wifes[1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+        if (window.bloodFlag) if (window.bloodTree.Main || window.bloodTree.Wifes[1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
         else colorLine = colorMuted;
         drawLine(context, 988, 80, 988, 120, width, colorLine, false, dashLength);
 
 
         // Количество детей у 2-й жены больше 1
         if (tree.CountChildrenWife_2) {
-            if (bloodFlag) if (bloodTree.Wifes[1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+            if (window.bloodFlag) if (window.bloodTree.Wifes[1]) colorLine = colorBloodMuted; else colorLine = colorMuted;
             else colorLine = colorMuted;
             drawHalf(context, 988, 80, 938, 110, width, colorLine, true, dashLength);
         }
 
         // Есть ли ребенок от 3-й жены
         if (tree.Child_Wife_3) {
-            if (bloodFlag) if (bloodTree.Main) colorLine = colorBloodMuted; else colorLine = colorMuted;
+            if (window.bloodFlag) if (window.bloodTree.Main) colorLine = colorBloodMuted; else colorLine = colorMuted;
             else colorLine = colorMuted;
 
             drawLine(context, 950, 40, 1150, 40, width, colorLine, true, dashLength);
@@ -321,25 +321,25 @@ function DrawConnections(tree, blood) {
         drawLine(context, 575, 80, 575, 120, width, colorMuted, true, dashLength);
     } else {
 
-        if (bloodFlag) if (bloodTree.Main) colorLine = colorBlood; else colorLine = colorDefault;
+        if (window.bloodFlag) if (window.bloodTree.Main) colorLine = colorBlood; else colorLine = colorDefault;
         else colorLine = colorDefault;
         draw(context, 270, 0, 575, 80, width, colorLine, false, dashLength, false);
 
-        if (bloodFlag) if (bloodTree.Children[0]) colorLine = colorBlood; else colorLine = colorDefault;
+        if (window.bloodFlag) if (window.bloodTree.Children[0]) colorLine = colorBlood; else colorLine = colorDefault;
         else colorLine = colorDefault;
         drawLine(context, 575, 80, 575, 120, width, colorLine, false, dashLength);
 
         if (tree.Wifes == null) {
             draw(context, 875, 0, 575, 80, width, colorMuted, true, dashLength, true);
         } else {
-            if (bloodFlag) if (bloodTree.Wifes[0]) colorLine = colorBlood; else colorLine = colorDefault;
+            if (window.bloodFlag) if (window.bloodTree.Wifes[0]) colorLine = colorBlood; else colorLine = colorDefault;
             else colorLine = colorDefault;
             draw(context, 875, 0, 575, 80, width, colorLine, false, dashLength, true);
         }
     }
 
     if (tree.Children != null) {
-        if (bloodFlag) if (bloodTree.Children[0]) colorLine = colorBlood; else colorLine = colorDefault;
+        if (window.bloodFlag) if (window.bloodTree.Children[0]) colorLine = colorBlood; else colorLine = colorDefault;
         else colorLine = colorDefault;
 
         if (tree.Children.length > 1) {
@@ -364,7 +364,7 @@ function DrawConnections(tree, blood) {
     // Есть ли у братьев дети
 
     if (tree.BrothersSons != null && tree.BrothersSons.length > 0) {
-        if (bloodFlag) if (bloodTree.Main) colorLine = colorBloodMuted; else colorLine = colorMuted;
+        if (window.bloodFlag) if (window.bloodTree.Main) colorLine = colorBloodMuted; else colorLine = colorMuted;
         else colorLine = colorMuted;
 
         if (tree.BrothersSons[0]) {
@@ -383,7 +383,7 @@ function DrawConnections(tree, blood) {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     if (tree.Children != null) {
-        if (bloodFlag) if (bloodTree.Children[0]) colorLine = colorBloodMuted; else colorLine = colorMuted;
+        if (window.bloodFlag) if (window.bloodTree.Children[0]) colorLine = colorBloodMuted; else colorLine = colorMuted;
         else colorLine = colorMuted;
 
 
@@ -406,7 +406,7 @@ function DrawConnections(tree, blood) {
     }
 
     if (tree.Child_Another_has_sons) {
-        if (bloodFlag) if (bloodTree.AnotherChild) colorLine = colorBloodMuted; else colorLine = colorMuted;
+        if (window.bloodFlag) if (window.bloodTree.AnotherChild) colorLine = colorBloodMuted; else colorLine = colorMuted;
         else colorLine = colorMuted;
         drawLine(context, 988, 0, 988, 35, width, colorLine, true, dashLength);
     }

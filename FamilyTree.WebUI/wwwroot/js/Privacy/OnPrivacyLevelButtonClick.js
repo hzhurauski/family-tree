@@ -1,4 +1,4 @@
-function OnPrivacyLevelButtonClick(event) {
+export function OnPrivacyLevelButtonClick(event) {
     let privacyLevelValue = $(event.currentTarget)
         .find("input")
         .val();

@@ -1,22 +1,31 @@
-﻿window.onload = function () {
+﻿import { DrawConnections } from "./Draw.js";
+import { DrawBlood } from "./DrawBlood.js";
+import { DrawConntecionsLittleTree } from "./DrawConntecionsLittleTree.js";
+import { FillTree } from "./FillTree.js";
+import { ImageAlign } from "./ImageAlign.js";
+import { InitFamilyTreeEvents } from "./InitFamilyTreeEvents.js";
+import { LoadFamilyTree } from "./LoadFamilyTree.js";
+import { ShowModalPerson } from "./ShowModalPerson.js";
+
+window.onload = function () {
     LoadFamilyTree();
     InitFamilyTreeEvents();
 };
 
-const PersonRelationTypes = {
+window.PersonRelationTypes = {
     Parent: "Parent",
     Sibling: "Sibling",
     Lover: "Lover",
     Child: "Child"
 };
 
-let _familyTrees = [];
-let _currentFamilyTree = {
+window._familyTrees = [];
+window._currentFamilyTree = {
     Id: 0,
     Name: "",
     MainPersonId: 0
 };
-let _createPersonData = {
+window._createPersonData = {
     Name: "",
     Surname: "",
     Middlename: "",
@@ -28,65 +37,61 @@ let _createPersonData = {
     WifeId: 0,
     MainPersonId: 0
 };
-let _deletePersonId = null;
+window._deletePersonId = null;
 
-var mainTree; // главное дерево
-var bloodTree; // дерево кровности
-var bloodFlag; // флаг на включенность режима кровного родства
-var visibleModal = false;
+window.mainTree; // главное дерево
+window.bloodTree; // дерево кровности
+window.bloodFlag; // флаг на включенность режима кровного родства
+window.visibleModal = false;
 
-
-
-
-
-function OnShowMainPersonButtonClick() {
+export function OnShowMainPersonButtonClick() {
     sessionStorage.removeItem("StartFamilyTree");
     document.location.reload();
 }
 
-function OnUpdateMainPersonButtonClick(target) {
+export function OnUpdateMainPersonButtonClick(target) {
     let personId = $(target.currentTarget).parent().attr("data-value");
 
     UpdateMainPerson(personId).then((result) => {
-        _familyTrees = GetFamilyTrees();
+        window._familyTrees = GetFamilyTrees();
         ShowStarButtons();
     }, (r) => console.error(r));
 }
 
-function OnDeletePersonButtonClick() {
+export function OnDeletePersonButtonClick() {
     $("#delete-person-modal").modal("show");
 }
 
-function OnDeletePersonSubmitButtonClick() {
-    DeletePerson(_deletePersonId).then((result) => {
-        if (_currentFamilyTree.MainPersonId == _deletePersonId)
+export function OnDeletePersonSubmitButtonClick() {
+    DeletePerson(window._deletePersonId).then((result) => {
+        if (window._currentFamilyTree.MainPersonId == window._deletePersonId)
             sessionStorage.removeItem("StartFamilyTree");
-        _deletePersonId = null;
+            window._deletePersonId = null;
         document.location.reload();
     });
 }
 
-async function DeletePerson(personId) {
+export async function DeletePerson(personId) {
     return await $.ajax({
         method: "DELETE",
         url: "/People/Delete/" + personId
     });
 }
 
-async function UpdateMainPerson(personId) {
+export async function UpdateMainPerson(personId) {
     let result = await $.ajax({
         method: "PUT",
         data: {
             Id: _currentFamilyTree.Id,
             PersonId: personId
         },
-        url: "/FamilyTree/UpdateMainPerson/" + _currentFamilyTree.Id
+        url: "/FamilyTree/UpdateMainPerson/" + window._currentFamilyTree.Id
     });
 
     return result;
 }
 
-function ShowStarButtons() {
+export function ShowStarButtons() {
     let peopleElements = $(".person, .LittleTreePerson");
 
     let visiblePeopleElements = peopleElements
@@ -101,9 +106,9 @@ function ShowStarButtons() {
     hiddenPeopleElements.children(".star-button")
         .css("visibility", "hidden");
 
-    let tree = _familyTrees
-        .find((item) => item.Id == _currentFamilyTree.Id);
-
+    var tree = window._familyTrees
+        .find((item) => item.Id == window._currentFamilyTree.Id);
+        // var MainPersonId
     $(".person[data-value=\"" + tree.MainPersonId + "\"]")
         .children(".star-button")
         .first()
@@ -115,7 +120,7 @@ function ShowStarButtons() {
         .css("visibility", "hidden");
 }
 
-function GetFamilyTrees() {
+export function GetFamilyTrees() {
     let result = null;
 
     $.ajax({
@@ -132,7 +137,7 @@ function GetFamilyTrees() {
     return result;
 }
 
-async function GetFamilyTree(familyTreeId, mainPersonId) {
+export async function GetFamilyTree(familyTreeId, mainPersonId) {
     let result = await $.ajax({
         type: 'GET',
         dataType: 'json',
@@ -142,7 +147,7 @@ async function GetFamilyTree(familyTreeId, mainPersonId) {
     return result;
 }
 
-function CreateFamilyTree(name) {
+export function CreateFamilyTree(name) {
     let result = -1;
 
     $.ajax({
@@ -158,7 +163,7 @@ function CreateFamilyTree(name) {
     return result;
 }
 
-function ClearInputs() {
+export function ClearInputs() {
     $("#create-person-name").val("");
     $("#create-person-surname").val("");
     $("#create-person-middlename").val("");
@@ -166,27 +171,27 @@ function ClearInputs() {
     $("#create-person-block").find("input[name=\"person-gender\"][value=\"Unknown\"]").parent().click();
 }
 
-function ShowHasNoTreesBlock(isShow = true) {
+export function ShowHasNoTreesBlock(isShow = true) {
     $("#has-no-trees-block").css("display", isShow ? "block" : "none");
 }
 
-function ShowStartTree(isShow = true) {
+export function ShowStartTree(isShow = true) {
     $("#start-tree-block")[0].style.display = isShow ? "block" : "none";
 }
 
-function ShowMainTree(isShow = true) {
+export function ShowMainTree(isShow = true) {
     $("#main-tree-block")[0].style.display = isShow ? "block" : "none";
 }
 
-function ShowCreatePersonForm(isShow = true) {
+export function ShowCreatePersonForm(isShow = true) {
     $("#create-person-block")[0].style.display = isShow ? "block" : "none";
 }
 
-function ShowPersonData(isShow = true) {
+export function ShowPersonData(isShow = true) {
     $("#person-data-block")[0].style.display = isShow ? "block" : "none";
 }
 
-function OnCreateFamilyTreeSubmitButtonClick() {
+export function OnCreateFamilyTreeSubmitButtonClick() {
     let treeName = $("#create-family-tree-modal")
                         .find("#family-tree-name")
                         .val();
@@ -199,13 +204,8 @@ function OnCreateFamilyTreeSubmitButtonClick() {
     window.location.reload();
 }
 
-//-------
-
-
 // Изменение вида персоны на пустую
-
-
-function ChangeViewPersonBack(person, LittleTree) {
+export function ChangeViewPersonBack(person, LittleTree) {
     if (person.lastElementChild.tagName == "IMG") {
 
         $(person).attr("data-toggle", "modal");
@@ -223,14 +223,12 @@ function ChangeViewPersonBack(person, LittleTree) {
     }
 }
 
-
-
-function AddFuncs(pers) {
+export function AddFuncs(pers) {
     $(pers.firstElementChild).dblclick(function (event) {
         if (event.target.parentElement.classList.contains("star-button")) return;
 
-        _currentFamilyTree.MainPersonId = $(event.currentTarget)[0].getAttribute("data-value");
-        sessionStorage.setItem("StartFamilyTree", JSON.stringify(_currentFamilyTree));
+        window._currentFamilyTree.MainPersonId = $(event.currentTarget)[0].getAttribute("data-value");
+        sessionStorage.setItem("StartFamilyTree", JSON.stringify(window._currentFamilyTree));
 
         document.location.reload();
     });
@@ -239,7 +237,7 @@ function AddFuncs(pers) {
         ShowModalPerson(event);
     }, function () {
         setTimeout(function () {
-            if (!visibleModal) {
+            if (!window.visibleModal) {
                 $("#modalBlockPerson")[0].style.visibility = "hidden";
             }
         }, 10);
@@ -248,17 +246,13 @@ function AddFuncs(pers) {
     return pers;
 }
 
-
-
-
-
-function ReloadTree(personId) {
-    GetFamilyTree(_currentFamilyTree.Id, personId).then((result) => {
+export function ReloadTree(personId) {
+    GetFamilyTree(window._currentFamilyTree.Id, personId).then((result) => {
         $("#mainPerson")[0].setAttribute("data-value", personId);
-        mainTree = result;
+        window.mainTree = result;
         FillTree(result, false);
 
-        if (bloodFlag) {
+        if (window.bloodFlag) {
             DrawBlood(0);
         }
         else {
@@ -274,9 +268,7 @@ function ReloadTree(personId) {
     });
 }
 
-
-
-function ChangeWifeTree(list) {
+export function ChangeWifeTree(list) {
     var idNewWife = ($(list).find(".itemCurrent")[0].children[0]).getAttribute("data-value");
     var idMainPerson = $("#mainPerson")[0].getAttribute("data-value");
 
@@ -293,7 +285,7 @@ function ChangeWifeTree(list) {
         success: function (result) {
             mainTree = result;
             FillTree(result, true);
-            if (bloodFlag) {
+            if (window.bloodFlag) {
                 DrawBlood(idNewWife);
             } else {
                 DrawConnections(result);
@@ -304,12 +296,3 @@ function ChangeWifeTree(list) {
         }
     });
 }
-
-
-
-
-
-
-
-
-

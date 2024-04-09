@@ -1,5 +1,9 @@
-﻿
-function FillWifes(tree, listSlider, itemMarginPerson, NumWifes) {
+﻿import { ChangeViewPerson } from "./ChangeViewPerson.js";
+import { FillPerson } from "./FillPerson.js";
+import { GetPerson } from "./GetPerson.js";
+import { AddFuncs, ChangeViewPersonBack } from "../LoadTree/LoadTree.js";
+
+export function FillWifes(tree, listSlider, itemMarginPerson, NumWifes) {
 
     if (NumWifes == 1) { // для УМД
         var Prev = $("#wifes-LittleTree .PrevItem")[0];

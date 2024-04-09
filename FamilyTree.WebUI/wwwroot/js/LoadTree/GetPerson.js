@@ -1,6 +1,7 @@
-﻿
+﻿import { OnUpdateMainPersonButtonClick } from "./LoadTree.js";
 
-function GetPerson(person, LittleTree) {
+
+export function GetPerson(person, LittleTree) {
     var LiElem = document.createElement('li');
     LiElem.classList.add("itemSlider");
 

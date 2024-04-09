@@ -1,6 +1,6 @@
-﻿
+﻿import { drawLine } from "./Draw.js";
 
-function RedrawSonsHasSonConnections(CurrentElem, VisibleCount, canvas, width, dashLength) {
+export function RedrawSonsHasSonConnections(CurrentElem, VisibleCount, canvas, width, dashLength) {
     // CurrentItem - текущий элемент в слайдере детей
     // VisibleCount - количество видимых детей на слайдере (2 - увеличенный масштаб дерева, 3 - обычное дерево)
     var colorMuted = "#90B2D5"; // Приглушенный

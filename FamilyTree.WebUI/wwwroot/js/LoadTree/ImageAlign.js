@@ -1,7 +1,7 @@
 ﻿
 
 // Выравнивание изображений
-function ImageAlign() {
+export function ImageAlign() {
     var arr = Array(2);
     arr[0] = $(".person");
     arr[1] = $(".LittleTreePerson");

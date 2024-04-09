@@ -1,5 +1,17 @@
+import { GetDataHolder } from "../PersonData/GetDataHolder.js";
+import { RefreshAudios } from "../PersonData/RefreshAudios.js";
+import { RefreshImages } from "../PersonData/RefreshImages.js";
+import { RefreshVideos } from "../PersonData/RefreshVideos.js";
+import { UpdateAudioModalAudioPrivacy } from "../PersonData/UpdateAudioModalAudioPrivacy.js";
+import { UpdateDataHolders } from "../PersonData/UpdateDataHolders.js";
+import { UpdateImageSliderImagePrivacy } from "../PersonData/UpdateImageSliderImagePrivacy.js";
+import { UpdateVideoModalVideoPrivacy } from "../PersonData/UpdateVideoModalVideoPrivacy.js";
+
+
+let g_privacyNotificationsConnection = null;
+
 //Notifications
-function InitPrivacyNotifications() {
+export function InitPrivacyNotifications() {
     g_privacyNotificationsConnection = new signalR.HubConnectionBuilder()
         .withUrl("/Privacy/Notifications")
         .build();

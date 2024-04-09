@@ -1,7 +1,7 @@
 ﻿
 
 // изменение отступа для изображения
-function ChangeMarginPersonImage(imgCard) {
+export function ChangeMarginPersonImage(imgCard) {
 
     var img = imgCard.firstElementChild;
     var intMarginHeight = Math.round((imgCard.offsetHeight - img.height) / 2 - 1);

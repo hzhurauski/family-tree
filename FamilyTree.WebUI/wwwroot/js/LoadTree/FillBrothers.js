@@ -1,8 +1,12 @@
 ﻿
-
 // Функция заполнения братьев
+
+import { GetPerson } from "./GetPerson.js";
+
+import { AddFuncs } from "../LoadTree/LoadTree.js";
+
 // NumBrothers - количество видимых людей в слайдере "Братья"
-function FillBrothers(tree, listSlider, itemMarginPerson, NumBrothers) {
+export function FillBrothers(tree, listSlider, itemMarginPerson, NumBrothers) {
     if (NumBrothers == 2) { // для УМД
         var Prev = $("#brothers-LittleTree .PrevItem")[0];
         var Next = $("#brothers-LittleTree .NextItem")[0];

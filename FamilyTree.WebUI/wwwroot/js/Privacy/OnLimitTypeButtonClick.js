@@ -1,4 +1,4 @@
-function OnLimitTypeButtonClick(event) {
+export function OnLimitTypeButtonClick(event) {
     let limitTypeValue = $(event.currentTarget)
         .find("input")
         .val();

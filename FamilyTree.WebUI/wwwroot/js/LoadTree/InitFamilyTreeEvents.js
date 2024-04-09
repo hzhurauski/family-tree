@@ -1,11 +1,22 @@
-﻿
+﻿import { LoadPersonData } from "../PersonData/LoadPersonData.js";
+import { NextItem, PrevItem } from "../SliderGenDrevo.js";
+import { AddNewPerson } from "./AddNewPerson.js";
+import { AddOneMorePerson } from "./AddOneMorePerson.js";
+import { DrawConnections } from "./Draw.js";
+import { DrawBlood } from "./DrawBlood.js";
+import { DrawConntecionsLittleTree } from "./DrawConntecionsLittleTree.js";
+import { ImageAlign } from "./ImageAlign.js";
+import { ChangeWifeTree, ClearInputs, OnCreateFamilyTreeSubmitButtonClick, OnDeletePersonButtonClick, OnDeletePersonSubmitButtonClick, OnShowMainPersonButtonClick, OnUpdateMainPersonButtonClick, ShowCreatePersonForm, ShowMainTree, ShowPersonData, ShowStartTree } from "../LoadTree/LoadTree.js";
+import { RedrawSonsHasSonConnections } from "./RedrawSonsHasSonConnections.js";
+import { ShowModalPerson } from "./ShowModalPerson.js";
 
-function InitFamilyTreeEvents() {
+
+export function InitFamilyTreeEvents() {
     $(".person").dblclick(function (event) {
         if (event.target.parentElement.classList.contains("star-button")) return;
 
-        _currentFamilyTree.MainPersonId = $(event.currentTarget)[0].getAttribute("data-value");
-        sessionStorage.setItem("StartFamilyTree", JSON.stringify(_currentFamilyTree));
+        window._currentFamilyTree.MainPersonId = $(event.currentTarget)[0].getAttribute("data-value");
+        sessionStorage.setItem("StartFamilyTree", JSON.stringify(window._currentFamilyTree));
 
         document.location.reload();
     });
@@ -13,7 +24,7 @@ function InitFamilyTreeEvents() {
         ShowModalPerson(event);
     }, function () {
         setTimeout(function () {
-            if (!visibleModal) {
+            if (!window.visibleModal) {
                 $("#modalBlockPerson")[0].style.visibility = "hidden";
             }
         }, 10);
@@ -21,7 +32,7 @@ function InitFamilyTreeEvents() {
     $(".LittleTreePerson").dblclick(function (event) {
         //ReloadTree($(event.currentTarget)[0].getAttribute("data-value"));
 
-        _currentFamilyTree.MainPersonId = $(event.currentTarget)[0].getAttribute("data-value");
+        window._currentFamilyTree.MainPersonId = $(event.currentTarget)[0].getAttribute("data-value");
         sessionStorage.setItem("StartFamilyTree", JSON.stringify(_currentFamilyTree));
 
         document.location.reload();
@@ -30,17 +41,17 @@ function InitFamilyTreeEvents() {
         ShowModalPerson(event);
     }, function () {
         setTimeout(function () {
-            if (!visibleModal) {
+            if (!window.visibleModal) {
                 $("#modalBlockPerson")[0].style.visibility = "hidden";
             }
         }, 10);
     });
 
     $("#modalBlockPerson").hover(function () {
-        visibleModal = true;
+        window.visibleModal = true;
     }, function () {
         $("#modalBlockPerson")[0].style.visibility = "hidden";
-        visibleModal = false;
+        window.visibleModal = false;
     });
 
     $("#wifes .PrevItem").click(function (event) {
@@ -98,17 +109,17 @@ function InitFamilyTreeEvents() {
             btnBlood.style.color = "#FFF";
 
             $(btnBlood).attr("data-value", $("#mainPerson")[0].getAttribute("data-value"));
-            bloodFlag = true;
+            window.bloodFlag = true;
 
             DrawBlood(0);
 
         } else {
             btnBlood.style.backgroundColor = "";
             btnBlood.style.color = "";
-            bloodFlag = false;
+            window.bloodFlag = false;
 
-            DrawConnections(mainTree);
-            DrawConntecionsLittleTree(mainTree);
+            DrawConnections(window.mainTree);
+            DrawConntecionsLittleTree(window.mainTree);
         }
     });
 
@@ -154,7 +165,7 @@ function InitFamilyTreeEvents() {
 
     $("#cancel-person-button").click(() => {
         ShowCreatePersonForm(false);
-        if (_familyTrees.length == 0)
+        if (window.window._familyTrees.length == 0)
             ShowStartTree();
         else
             ShowMainTree();
@@ -163,27 +174,20 @@ function InitFamilyTreeEvents() {
     });
 
     $("#save-person-button").click(() => {
-        _createPersonData.Name = $("#create-person-name").val();
-        _createPersonData.Surname = $("#create-person-surname").val();
-        _createPersonData.Middlename = $("#create-person-middlename").val();
-        _createPersonData.Birthday = $("#create-person-birthday").val();
-        _createPersonData.Gender = $("input[name=\"person-gender\"]:checked").val();
-        _createPersonData.TreeId = _currentFamilyTree.Id;
+        window._createPersonData.Name = $("#create-person-name").val();
+        window._createPersonData.Surname = $("#create-person-surname").val();
+        window._createPersonData.Middlename = $("#create-person-middlename").val();
+        window._createPersonData.Birthday = $("#create-person-birthday").val();
+        window._createPersonData.Gender = $("input[name=\"person-gender\"]:checked").val();
+        window._createPersonData.TreeId = window._currentFamilyTree.Id;
 
         $.ajax({
             type: 'POST',
             dataType: 'json',
             url: '/People/Create',
-            data: _createPersonData,
+            data: window._createPersonData,
             success: function (data) {
-                /*
-                if (_currentFamilyTree.MainPersonId == null) {
-                    $("#mainPerson")[0].setAttribute("data-value", data);
-                    _currentFamilyTree = GetFamilyTrees().find(ft => ft.Id == _currentFamilyTree.Id);
-                }           
-                */
-
-                //ReloadTree($("#mainPerson")[0].getAttribute("data-value"));
+               
                 document.location.reload();
 
                 ShowCreatePersonForm(false);

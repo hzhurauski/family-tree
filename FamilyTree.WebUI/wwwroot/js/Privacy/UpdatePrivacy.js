@@ -1,5 +1,5 @@
 // Requests
-async function UpdatePrivacy(privacy) {
+export async function UpdatePrivacy(privacy) {
     let result = await $.ajax({
         type: "PUT",
         data: privacy,

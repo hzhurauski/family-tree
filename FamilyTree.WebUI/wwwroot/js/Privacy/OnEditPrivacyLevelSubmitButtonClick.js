@@ -1,4 +1,15 @@
-function OnEditPrivacyLevelSubmitButtonClick(event) {
+import { RefreshAudios } from "../PersonData/RefreshAudios.js";
+import { RefreshDataHolders } from "../PersonData/RefreshDataHolders.js";
+import { RefreshImages } from "../PersonData/RefreshImages.js";
+import { RefreshVideos } from "../PersonData/RefreshVideos.js";
+import { UpdateAudioModalAudioPrivacy } from "../PersonData/UpdateAudioModalAudioPrivacy.js";
+import { UpdateDataHolders } from "../PersonData/UpdateDataHolders.js";
+import { UpdateImageSliderImagePrivacy } from "../PersonData/UpdateImageSliderImagePrivacy.js";
+import { UpdateVideoModalVideoPrivacy } from "../PersonData/UpdateVideoModalVideoPrivacy.js";
+import { GetPrivacyData } from "./Privacy.js";
+import { UpdatePrivacy } from "./UpdatePrivacy.js";
+
+export function OnEditPrivacyLevelSubmitButtonClick(event) {
     let editPrivacyModal = $("#privacy-level-modal");
     let privacy = GetPrivacyData();
 

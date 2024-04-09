@@ -1,6 +1,6 @@
 ﻿
 
-function ChangeViewPerson(person, LittleTree) {
+export function ChangeViewPerson(person, LittleTree) {
     $(person).attr("data-toggle", "");
     $(person).attr("data-target", "");
     if (LittleTree) {

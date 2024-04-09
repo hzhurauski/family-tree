@@ -1,5 +1,9 @@
+import { OnPrivacyLevelButtonClick } from "../Privacy/OnPrivacyLevelButtonClick.js";
+import { OnLimitTypeButtonClick } from "../Privacy/OnLimitTypeButtonClick.js";
+import { OnEditPrivacyLevelSubmitButtonClick } from "../Privacy/OnEditPrivacyLevelSubmitButtonClick.js";
+
 //Events
-function InitPrivacyModalButonEvents() {
+export function InitPrivacyModalButonEvents() {
     $("#privacy-level-modal")
         .find("input[name=\"privacy-level\"]")
         .parent()

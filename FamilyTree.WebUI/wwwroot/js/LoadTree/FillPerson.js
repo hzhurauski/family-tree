@@ -1,7 +1,7 @@
 ﻿
 
 // Заполнение атрибутов персонажа
-function FillPerson(person, data) {
+export function FillPerson(person, data) {
     $(person).attr("data-value", data.Id);
 
     $(person).find(".surname")[0].innerText = data.Surname;

@@ -1,6 +1,6 @@
 ﻿
 
-function ShowModalPerson(event) {
+export function ShowModalPerson(event) {
 
     if (event.currentTarget.firstElementChild.classList[1] == "hiddenPersonContent") {
         return;
@@ -19,7 +19,7 @@ function ShowModalPerson(event) {
     var currentId = event.currentTarget.getAttribute("data-value");
     var idPerson = 0;
 
-    if (bloodFlag) {
+    if (window.bloodFlag) {
         idPerson = $("#BloodTree")[0].getAttribute("data-value");
     }
     else {
@@ -78,4 +78,3 @@ function ShowModalPerson(event) {
     });
     */ // Дополнение: старая версия верхнего $.ajax({...})
 }
-

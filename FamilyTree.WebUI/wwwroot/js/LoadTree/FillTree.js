@@ -1,6 +1,12 @@
-﻿
+﻿import { ChangeViewPerson } from "./ChangeViewPerson.js";
+import { FillBrothers } from "./FillBrothers.js";
+import { FillChildren } from "./FillChildren.js";
+import { FillPerson } from "./FillPerson.js";
+import { FillWifes } from "./FillWifes.js";
+import { ChangeViewPersonBack } from "../LoadTree/LoadTree.js";
 
-function FillTree(tree, wifePart) {
+
+export function FillTree(tree, wifePart) {
 
     if (!wifePart) { // если заполнять только дерево со стороны жены, то пропустить этот блок
 

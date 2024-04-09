@@ -1,5 +1,7 @@
+import { UTCDateToLocaleString } from "./Privacy.js";
+
 //UI
-function LoadPrivacyData(privacy) {
+export function LoadPrivacyData(privacy) {
     let privacyModal = $("#privacy-level-modal");
 
     if (privacy == null) {

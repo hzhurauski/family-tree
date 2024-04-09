@@ -1,12 +1,15 @@
-﻿$(window).load(() => {
+﻿import { InitPrivacyModalButonEvents } from './InitPrivacyModalButonEvents.js';
+import {InitPrivacyNotifications} from './InitPrivacyNotifications.js'
+
+$(window).load(() => {
     InitPrivacyModalButonEvents();
     InitPrivacyNotifications();
 });
 
-let g_privacyNotificationsConnection = null;
+
 let g_editPrivacyId = null;
 
-function GetPrivacyData() {
+export function GetPrivacyData() {
     let editPrivacyModal = $("#privacy-level-modal");
     let beginDate = editPrivacyModal.find("#privacy-level-begin-date").val();
     let endDate = editPrivacyModal.find("#privacy-level-end-date").val();
@@ -24,7 +27,7 @@ function GetPrivacyData() {
     return privacy;
 }
 
-function UTCDateToLocaleString(date) {
+export function UTCDateToLocaleString(date) {
     var newDate = new Date(
         Date.UTC(date.getFullYear(),
             date.getMonth(),

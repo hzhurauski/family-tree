@@ -1,43 +1,48 @@
-﻿
+﻿import { DrawConnections } from "./Draw.js";
+import { DrawConntecionsLittleTree } from "./DrawConntecionsLittleTree.js";
+import { FillTree } from "./FillTree.js";
+import { ImageAlign } from "./ImageAlign.js";
+import { GetFamilyTree, GetFamilyTrees, ShowHasNoTreesBlock, ShowMainTree, ShowStarButtons, ShowStartTree } from "../LoadTree/LoadTree.js";
 
-function LoadFamilyTree() {
-    _familyTrees = GetFamilyTrees();
 
-    if (_familyTrees.length == 0) {
+export function LoadFamilyTree() {
+    window._familyTrees = GetFamilyTrees();
+
+    if (window._familyTrees.length == 0) {
         ShowHasNoTreesBlock();
         return;
     }
     else {
-        let startTree = _familyTrees[0];
+        let startTree = window._familyTrees[0];
 
         if (sessionStorage.getItem("StartFamilyTree") === null) {
             sessionStorage.setItem("StartFamilyTree", JSON.stringify(startTree));
-            _currentFamilyTree = startTree;
+            window._currentFamilyTree = startTree;
         }
         else {
-            _currentFamilyTree = JSON.parse(sessionStorage.StartFamilyTree);
+            window._currentFamilyTree = JSON.parse(sessionStorage.StartFamilyTree);
 
-            let tree = _familyTrees.find((item) => item.Id == _currentFamilyTree.Id);
+            let tree = window._familyTrees.find((item) => item.Id == window._currentFamilyTree.Id);
 
             if (tree == null)
-                _currentFamilyTree = startTree;
+            window._currentFamilyTree = startTree;
 
-            if (_currentFamilyTree.MainPersonId == null && tree.MainPersonId != null) {
-                _currentFamilyTree.MainPersonId = tree.MainPersonId;
+            if (window._currentFamilyTree.MainPersonId == null && tree.MainPersonId != null) {
+                window._currentFamilyTree.MainPersonId = tree.MainPersonId;
             }
         }
 
-        $("#headerText")[0].innerText = _currentFamilyTree.Name; // устанавливаем имя
+        $("#headerText")[0].innerText = window._currentFamilyTree.Name; // устанавливаем имя
 
-        if (_currentFamilyTree.MainPersonId == null) {
+        if (window._currentFamilyTree.MainPersonId == null) {
             ShowHasNoTreesBlock(false);
             ShowMainTree(false);
             ShowStartTree();
         }
         else {
-            GetFamilyTree(_currentFamilyTree.Id, _currentFamilyTree.MainPersonId).then((result) => {
-                mainTree = result;
-                $("#mainPerson")[0].setAttribute("data-value", _currentFamilyTree.MainPersonId);
+            GetFamilyTree(window._currentFamilyTree.Id, window._currentFamilyTree.MainPersonId).then((result) => {
+                window.mainTree = result;
+                $("#mainPerson")[0].setAttribute("data-value", window._currentFamilyTree.MainPersonId);
                 FillTree(result, false);
                 DrawConnections(result);
                 DrawConntecionsLittleTree(result);
