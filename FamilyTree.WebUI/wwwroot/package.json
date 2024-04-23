@@ -5,6 +5,10 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm"
   },
+  "engines": {
+    "node": "20.12.0",
+    "pnpm": "9.0.5"
+  },
   "license": "MIT",
   "dependencies": {
     "@microsoft/signalr": "^5.0.17",
