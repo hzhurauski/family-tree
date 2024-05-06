@@ -1,5 +1,5 @@
-import { CopySelectedDataCategories } from "./CopySelectedDataCategories.js";
+import { CopySelectedDataCategories } from './CopySelectedDataCategories.js'
 
 export function OnCopyDataCategoryButtonClick() {
-    CopySelectedDataCategories();
+  CopySelectedDataCategories()
 }

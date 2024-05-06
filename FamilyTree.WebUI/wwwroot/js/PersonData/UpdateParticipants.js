@@ -1,19 +1,17 @@
-import { AddItemToParticipant } from "./AddItemToParticipant.js";
-import { ClearParticipants } from "./ClearParticipants.js";
-import { OnPartClick } from "./OnPartClick.js";
+import { AddItemToParticipant } from './AddItemToParticipant.js'
+import { ClearParticipants } from './ClearParticipants.js'
+import { OnPartClick } from './OnPartClick.js'
 
 export function UpdateParticipants() {
-    ClearParticipants();
+  ClearParticipants()
 
-    if (g_currentDataBlockParticipants == null)
-        return;
+  if (g_currentDataBlockParticipants == null) return
 
-        g_currentDataBlockParticipants
-        .forEach((item) => {
-            AddItemToParticipant(item);
-        });
+  g_currentDataBlockParticipants.forEach(item => {
+    AddItemToParticipant(item)
+  })
 
-    $("#person-data-block")
-        .find(".participants .participants__item")
-        .click(OnPartClick);
+  $('#person-data-block')
+    .find('.participants .participants__item')
+    .click(OnPartClick)
 }

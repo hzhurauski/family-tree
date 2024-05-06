@@ -1,3 +1,3 @@
 export function ClearParticipants() {
-    $("#person-data-block").find(".participants").empty();
+  $('#person-data-block').find('.participants').empty()
 }

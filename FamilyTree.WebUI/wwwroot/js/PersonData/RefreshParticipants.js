@@ -1,5 +1,5 @@
-import { GetParticipants } from "./GetParticipants.js";
+import { GetParticipants } from './GetParticipants.js'
 
 export async function RefreshParticipants() {
-    g_currentDataBlockParticipants = await GetParticipants(g_currentDataBlock.Id);
+  g_currentDataBlockParticipants = await GetParticipants(g_currentDataBlock.Id)
 }

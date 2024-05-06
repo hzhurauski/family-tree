@@ -1,3 +1,3 @@
 export function OnEditDataCategoryButtonClick() {
-    $('#edit-data-category-modal').modal("show");
+  $('#edit-data-category-modal').modal('show')
 }

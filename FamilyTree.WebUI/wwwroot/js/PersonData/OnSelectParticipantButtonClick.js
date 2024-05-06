@@ -1,10 +1,10 @@
-import { RefreshDataBlocks } from "./RefreshDataBlocks.js";
-import { SelectParticipant } from "./SelectParticipant.js";
-import { UpdateDataBlocks } from "./UpdateDataBlocks.js";
+import { RefreshDataBlocks } from './RefreshDataBlocks.js'
+import { SelectParticipant } from './SelectParticipant.js'
+import { UpdateDataBlocks } from './UpdateDataBlocks.js'
 
 export function OnSelectParticipantButtonClick() {
-    SelectParticipant().then((value) => {
-        RefreshDataBlocks();
-        UpdateDataBlocks();
-    });
+  SelectParticipant().then(value => {
+    RefreshDataBlocks()
+    UpdateDataBlocks()
+  })
 }

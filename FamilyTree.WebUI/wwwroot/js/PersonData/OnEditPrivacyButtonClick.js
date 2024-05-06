@@ -1,31 +1,30 @@
-import { LoadPrivacyData } from "../Privacy/LoadPrivacyData.js";
+import { LoadPrivacyData } from '../Privacy/LoadPrivacyData.js'
 
-export function OnEditPrivacyButtonClick() {  
-    switch (window.g_currentAddButtonActionType) {
-        case window.AddButtonActionTypes.AddDataHolder: {
-            let selectedDataHolders = $("#person-data-block")
-                .find(".data-holders")
-                .find(".data-holders__item input[type=\"checkbox\"]:checked")
-                .parents(".data-holders__item");
-            
-            if (selectedDataHolders.length == 0 ||
-                selectedDataHolders.length > 1) return;
+export function OnEditPrivacyButtonClick() {
+  switch (window.g_currentAddButtonActionType) {
+    case window.AddButtonActionTypes.AddDataHolder: {
+      let selectedDataHolders = $('#person-data-block')
+        .find('.data-holders')
+        .find('.data-holders__item input[type="checkbox"]:checked')
+        .parents('.data-holders__item')
 
-            let dataHolderId = selectedDataHolders.attr("data-id");
-            let dataHolderPrivacy = window.g_currentDataBlock
-                .DataHolders
-                .find(dh => dh.Id == dataHolderId)
-                .Privacy;
+      if (selectedDataHolders.length == 0 || selectedDataHolders.length > 1)
+        return
 
-            window.g_editPrivacyId = dataHolderPrivacy.Id;
+      let dataHolderId = selectedDataHolders.attr('data-id')
+      let dataHolderPrivacy = window.g_currentDataBlock.DataHolders.find(
+        dh => dh.Id == dataHolderId
+      ).Privacy
 
-            LoadPrivacyData(dataHolderPrivacy);
-            break;
-        }
-            
-        default:
-            return;
+      window.g_editPrivacyId = dataHolderPrivacy.Id
+
+      LoadPrivacyData(dataHolderPrivacy)
+      break
     }
 
-    $("#privacy-level-modal").modal("show");
+    default:
+      return
+  }
+
+  $('#privacy-level-modal').modal('show')
 }

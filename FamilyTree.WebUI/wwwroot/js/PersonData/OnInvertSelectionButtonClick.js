@@ -1,6 +1,6 @@
-import { GetCurrentActionTypeElements } from "./GetCurrentActionTypeElements.js";
-import { InverseSelectCheckboxes } from "./InverseSelectCheckboxes.js";
+import { GetCurrentActionTypeElements } from './GetCurrentActionTypeElements.js'
+import { InverseSelectCheckboxes } from './InverseSelectCheckboxes.js'
 
 export function OnInvertSelectionButtonClick() {
-    InverseSelectCheckboxes(GetCurrentActionTypeElements());
+  InverseSelectCheckboxes(GetCurrentActionTypeElements())
 }
