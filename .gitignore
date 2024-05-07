@@ -351,13 +351,5 @@ MigrationBackup/
 # dependencies
 /node_modules
 
-# utility
-.eslintrc.js
-
 # visual studio
 .vscode
-
-# json
-package-lock.json.lock
-package.json.lock
-
