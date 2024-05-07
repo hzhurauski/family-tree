@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
 }
 
 #backgroundImageWrapper { /*2048*/
@@ -25,6 +25,7 @@
 /*Header*/
 
 #header {
+    display: flex;
     height: 112px;
     color: #ffffff;
     border-bottom: 1px solid #557FAF;
@@ -239,6 +240,8 @@
     /*min-width: 1200px;
     max-width: 2048px;*/
     margin: 0 auto;
+    position: sticky;
+    top: 100%;
 }
 
 #footer .container {
@@ -303,7 +306,170 @@
     color: #FFF;
 }
 
+@media (max-width: 1200px) {
+    #menu {
+        width: 550px;    
+        height: 112px;
+        margin-left: 100px;
+        float: left;
+    }
+}
 
+@media (max-width: 992px) {
+    #menu {
+        width: 650px;    
+        height: 112px;
+        margin-left: 20px;
+        float: left;
+    }
 
+    .loginButton{
+        width: 140px;
+    }
+}
+
+@media (max-width: 748px) {
+
+    #header{
+        height: 100px;
+    }
+
+    #menu {
+        width: 650px;
+        height: 100px;
+        margin-left: 20px;
+        float: left;
+    }
+
+    #menu ul li a div  {
+        font-size: 16px;
+        width: 120px;
+        height: 50px;
+        padding: 40px 0 60px 0;
+        margin-left: 10px;
+        text-align: center;
+        transition: all 0.8s;
+        border-bottom: 6px solid rgba(0, 0, 0, 0);
+    }
+
+    .loginButton {
+        width: 160px;
+        margin: 30px 0 20px 0;
+    }
+
+    #logo img {
+        height: 100px;
+    }
+
+}
+
+@media (max-width: 647px) {
+   .loginButton {
+       font-size: 16px;
+       width: 128px;
+       height: 40px;
+       margin: 24px 5px 20px 0px;
+}
+
+    #menu ul li a div {
+        width: 115px;
+        font-size: 16px;
+        padding: 40px 0 60px 0;
+        margin-left: 10px;
+        text-align: center;
+        transition: all 0.8s;
+        border-bottom: 6px solid rgba(0, 0, 0, 0);
+        height: 50px;
+    }
+
+    #logo img {
+        margin-top: 20px;
+        height: 80px;
+    }
+
+    #contentText{
+        font-size: 40px;
+        margin: 70px 0 70px 0;
+    }
+
+    #loginPanel{
+        width: 350px;
+    }
+
+    .inputField{
+        width: 350px;
+        height: 50px;
+    }
+
+    #Account_Login{
+        font-size: 18px;
+        width: 288px;
+        height: 46px;
+    }
+
+    #Account_Pass{
+        font-size: 18px;
+        width: 288px;
+        height: 46px;
+    }
+
+    #Account_Pass_Confirm{
+        font-size: 18px;
+        width: 288px;
+        height: 46px;
+    }
+
+    .Glif {
+        font-size: 18px;
+        margin: 12px 20px 0 11px !important;
+    }
+
+    #submitInput {
+        width: 132px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    #Register {
+        font-size: 18px;
+        width: 210px;
+        margin-left: 160px;
+        height: 50px;
+        padding-top: 10px;
+
+    }
+}
+
+@media (max-width: 600px) {
+
+    #header {
+        height: 80px;
+    }
+
+    #menu {
+        width: 590px;
+        height: 80px;
+        margin-left: 10px;
+    }
+
+    #menu ul li a div {
+        width: 94px;
+        font-size: 13px;
+        margin-left: 5px;
+        padding: 40px 0 40px 0;
+    }
+
+    .loginButton {
+        font-size: 13px;
+        width: 125px;
+        height: 37px;
+        margin: 30px 5px 20px 0px;
+    }
+
+    #logo img {
+        margin-top: 20px;
+        height: 60px;
+    }
+}
 
 
