@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "npm run lint --fix",
+    "prettier": "prettier . --write"
   },
   "engines": {
     "node": "20.12.0",
