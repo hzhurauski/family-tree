@@ -1,3 +1,3 @@
 export function ClearDataBlocks() {
-    $("#person-data-block").find(".data-blocks").empty();
+  $('#person-data-block').find('.data-blocks').empty()
 }

@@ -1,3 +1,3 @@
 export function ClearVideoModalVideos() {
-    $("#video-modal .videos-list").empty();
+  $('#video-modal .videos-list').empty()
 }

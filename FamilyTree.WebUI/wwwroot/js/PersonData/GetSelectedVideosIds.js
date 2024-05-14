@@ -1,13 +1,13 @@
 export function GetSelectedVideosIds() {
-    let result = [];
+  let result = []
 
-    $("#person-data-block")
-        .find(".videos .videos__item")
-        .each((i, el) => {
-            if ($(el).find("input[type=\"checkbox\"]").is(":checked")) {
-                result.push(el.getAttribute("data-id"));
-            }
-        });
+  $('#person-data-block')
+    .find('.videos .videos__item')
+    .each((i, el) => {
+      if ($(el).find('input[type="checkbox"]').is(':checked')) {
+        result.push(el.getAttribute('data-id'))
+      }
+    })
 
-    return result;
+  return result
 }

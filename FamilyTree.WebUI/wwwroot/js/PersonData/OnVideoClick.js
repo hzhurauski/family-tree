@@ -1,14 +1,15 @@
-import { UpdateVideoModalVideos } from "./UpdateVideoModalVideos.js";
+import { UpdateVideoModalVideos } from './UpdateVideoModalVideos.js'
 
 export function OnVideoClick(event) {
-    if ($(event.target).is("input")) return;
+  if ($(event.target).is('input')) return
 
-    let videoId = $(event.currentTarget).attr("data-id");
+  let videoId = $(event.currentTarget).attr('data-id')
 
-    UpdateVideoModalVideos();
+  UpdateVideoModalVideos()
 
-    $("#video-modal .videos-list .videos-list__item[data-id=\"" + videoId + "\"]")
-        .click();
+  $(
+    '#video-modal .videos-list .videos-list__item[data-id="' + videoId + '"]'
+  ).click()
 
-    $("#video-modal").modal("show");
+  $('#video-modal').modal('show')
 }

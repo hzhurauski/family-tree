@@ -4,17 +4,17 @@
  * @returns {number}
  */
 export function CreateDataCategory(dataCategory) {
-    let result = -1;
+  let result = -1
 
-    $.ajax({
-        async: false,
-        type: "POST",
-        data: dataCategory,
-        url: "/PersonContent/DataCategory/Create",
-        success: function (response) {
-            result = response;
-        }
-    });
+  $.ajax({
+    async: false,
+    type: 'POST',
+    data: dataCategory,
+    url: '/PersonContent/DataCategory/Create',
+    success: function (response) {
+      result = response
+    },
+  })
 
-    return result;
+  return result
 }
