@@ -17,25 +17,25 @@
  * limitations under the License.
  * ======================================================================== */
 
-
-+function ($) { "use strict";
+;+(function ($) {
+  'use strict'
 
   // BUTTON PUBLIC CLASS DEFINITION
   // ==============================
 
   var Button = function (element, options) {
     this.$element = $(element)
-    this.options  = $.extend({}, Button.DEFAULTS, options)
+    this.options = $.extend({}, Button.DEFAULTS, options)
   }
 
   Button.DEFAULTS = {
-    loadingText: 'loading...'
+    loadingText: 'loading...',
   }
 
   Button.prototype.setState = function (state) {
-    var d    = 'disabled'
-    var $el  = this.$element
-    var val  = $el.is('input') ? 'val' : 'html'
+    var d = 'disabled'
+    var $el = this.$element
+    var val = $el.is('input') ? 'val' : 'html'
     var data = $el.data()
 
     state = state + 'Text'
@@ -46,9 +46,9 @@
 
     // push to event loop to allow forms to submit
     setTimeout(function () {
-      state == 'loadingText' ?
-        $el.addClass(d).attr(d, d) :
-        $el.removeClass(d).removeAttr(d);
+      state == 'loadingText'
+        ? $el.addClass(d).attr(d, d)
+        : $el.removeClass(d).removeAttr(d)
     }, 0)
   }
 
@@ -56,15 +56,16 @@
     var $parent = this.$element.closest('[data-toggle="buttons"]')
 
     if ($parent.length) {
-      var $input = this.$element.find('input')
+      var $input = this.$element
+        .find('input')
         .prop('checked', !this.$element.hasClass('active'))
         .trigger('change')
-      if ($input.prop('type') === 'radio') $parent.find('.active').removeClass('active')
+      if ($input.prop('type') === 'radio')
+        $parent.find('.active').removeClass('active')
     }
 
     this.$element.toggleClass('active')
   }
-
 
   // BUTTON PLUGIN DEFINITION
   // ========================
@@ -73,8 +74,8 @@
 
   $.fn.button = function (option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.button')
+      var $this = $(this)
+      var data = $this.data('bs.button')
       var options = typeof option == 'object' && option
 
       if (!data) $this.data('bs.button', (data = new Button(this, options)))
@@ -86,7 +87,6 @@
 
   $.fn.button.Constructor = Button
 
-
   // BUTTON NO CONFLICT
   // ==================
 
@@ -95,15 +95,17 @@
     return this
   }
 
-
   // BUTTON DATA-API
   // ===============
 
-  $(document).on('click.bs.button.data-api', '[data-toggle^=button]', function (e) {
-    var $btn = $(e.target)
-    if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
-    $btn.button('toggle')
-    e.preventDefault()
-  })
-
-}(window.jQuery);
+  $(document).on(
+    'click.bs.button.data-api',
+    '[data-toggle^=button]',
+    function (e) {
+      var $btn = $(e.target)
+      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
+      $btn.button('toggle')
+      e.preventDefault()
+    }
+  )
+})(window.jQuery)

@@ -1,5 +1,5 @@
-import { GetVideos } from "./GetVideos.js";
+import { GetVideos } from './GetVideos.js'
 
 export async function RefreshVideos() {
-    g_currentDataBlockVideos = await GetVideos(g_currentDataBlock.Id);
+  g_currentDataBlockVideos = await GetVideos(g_currentDataBlock.Id)
 }

@@ -5,20 +5,20 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 13,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["@typescript-eslint", "prettier", "only-warn"],
+  plugins: ['@typescript-eslint', 'prettier', 'only-warn'],
   rules: {
-    "prettier/prettier": ["error", {}, { usePrettierrc: true }],
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
   },
-};
+}

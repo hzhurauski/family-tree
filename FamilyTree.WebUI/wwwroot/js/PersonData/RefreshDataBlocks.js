@@ -1,5 +1,5 @@
-import { RefreshDataCategory } from "./RefreshDataCategory.js";
+import { RefreshDataCategory } from './RefreshDataCategory.js'
 
 export function RefreshDataBlocks() {
-    RefreshDataCategory();
+  RefreshDataCategory()
 }
