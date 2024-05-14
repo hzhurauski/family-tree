@@ -86,7 +86,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -181,7 +180,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -293,7 +291,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -535,7 +532,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -717,7 +713,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -878,7 +873,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -1155,7 +1149,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -1613,7 +1606,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -1728,7 +1720,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -1901,7 +1892,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 
@@ -2034,7 +2024,6 @@ if (!jQuery) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ======================================================================== */
-
 ;+(function ($) {
   'use strict'
 

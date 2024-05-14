@@ -14595,7 +14595,6 @@
       },
       addShims: function addShims(shims) {
         var _namespace$shims
-
         ;(_namespace$shims = namespace.shims).push.apply(
           _namespace$shims,
           _toConsumableArray(shims)
