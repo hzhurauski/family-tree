@@ -12,6 +12,22 @@ import { ShowModalPerson } from "./ShowModalPerson.js";
 
 
 export function InitFamilyTreeEvents() {
+
+     // Удаляем hover-обработчики
+     $("#modalBlockPerson").off("mouseenter mouseleave");
+
+     // Добавляем click-обработчики на элементы .person и .LittleTreePerson
+     $(".person").click(function(event) {
+         ShowModalPerson(event);
+     });
+ 
+     $(".LittleTreePerson").click(function(event) {
+         ShowModalPerson(event);
+     });
+
+
+
+
     $(".person").dblclick(function (event) {
         if (event.target.parentElement.classList.contains("star-button")) return;
 
@@ -20,15 +36,15 @@ export function InitFamilyTreeEvents() {
 
         document.location.reload();
     });
-    $(".person").hover(function (event) {
-        ShowModalPerson(event);
-    }, function () {
-        setTimeout(function () {
-            if (!window.visibleModal) {
-                $("#modalBlockPerson")[0].style.visibility = "hidden";
-            }
-        }, 10);
-    });
+    // $(".person").hover(function (event) {
+    //     ShowModalPerson(event);
+    // }, function () {
+    //     setTimeout(function () {
+    //         if (!window.visibleModal) {
+    //             $("#modalBlockPerson")[0].style.visibility = "hidden";
+    //         }
+    //     }, 10);
+    // });
     $(".LittleTreePerson").dblclick(function (event) {
         //ReloadTree($(event.currentTarget)[0].getAttribute("data-value"));
 
@@ -37,15 +53,15 @@ export function InitFamilyTreeEvents() {
 
         document.location.reload();
     });
-    $(".LittleTreePerson").hover(function (event) {
-        ShowModalPerson(event);
-    }, function () {
-        setTimeout(function () {
-            if (!window.visibleModal) {
-                $("#modalBlockPerson")[0].style.visibility = "hidden";
-            }
-        }, 10);
-    });
+    // $(".LittleTreePerson").hover(function (event) {
+    //     ShowModalPerson(event);
+    // }, function () {
+    //     setTimeout(function () {
+    //         if (!window.visibleModal) {
+    //             $("#modalBlockPerson")[0].style.visibility = "hidden";
+    //         }
+    //     }, 10);
+    // });
 
     $("#modalBlockPerson").hover(function () {
         window.visibleModal = true;

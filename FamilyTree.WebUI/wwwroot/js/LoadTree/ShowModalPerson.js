@@ -2,7 +2,14 @@
 
 export function ShowModalPerson(event) {
 
-    if (event.currentTarget.firstElementChild.classList[1] == "hiddenPersonContent") {
+    var modalPerson = $("#modalBlockPerson")[0];
+
+    if (modalPerson.style.visibility === "visible") {
+        modalPerson.style.visibility = "hidden";
+        return;
+    }
+
+    if (event.currentTarget.firstElementChild.classList.contains("hiddenPersonContent")) {
         return;
     }
 
