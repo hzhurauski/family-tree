@@ -1,5 +1,6 @@
 import { AddImageToSlider } from "./AddImageToSlider.js";
 import { ClearSliderImages } from "./ClearSliderImages.js";
+import { OnSliderArrowClick } from "./OnSliderArrowClick.js";
 import { UpdateSliderImageDetails } from "./UpdateSliderImageDetails.js";
 
 export function UpdateImageSlider(imageId) {
@@ -11,20 +12,20 @@ export function UpdateImageSlider(imageId) {
         ClearSliderImages();
     }        
 
-    if (g_currentDataBlockImages == null)
+    if (window.g_currentDataBlockImages == null)
         return;
 
-    g_currentDataBlockImages
+    window.g_currentDataBlockImages
         .forEach((item) => {
             AddImageToSlider(item);
         });
 
     let initialSlide = 0;
 
-    let selectedImage = g_currentDataBlockImages
+    let selectedImage = window.g_currentDataBlockImages
         .find(item => item.Id == imageId);
 
-    initialSlide = g_currentDataBlockImages.indexOf(selectedImage);
+    initialSlide = window.g_currentDataBlockImages.indexOf(selectedImage);
 
     slider.slick({
         slidesToScroll: 1,

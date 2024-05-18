@@ -27,7 +27,7 @@ export function OnDeleteSubmitButtonClick() {
             });
             break;
         }
-        case AddButtonActionTypes.AddDataHolder: {
+        case window.AddButtonActionTypes.AddDataHolder: {
             DeleteSelectedDataHolders().then((val) => {
                 RefreshDataHolders();
                 UpdateDataHolders();
@@ -35,7 +35,7 @@ export function OnDeleteSubmitButtonClick() {
             });
             break;
         }
-        case AddButtonActionTypes.AddImage: {
+        case window.AddButtonActionTypes.AddImage: {
             DeleteSelectedImages().then((val) => {
                 RefreshImages().then((val) => {
                     UpdateImages();
@@ -44,7 +44,7 @@ export function OnDeleteSubmitButtonClick() {
             });            
             break;
         }
-        case AddButtonActionTypes.AddVideo: {
+        case window.AddButtonActionTypes.AddVideo: {
             DeleteSelectedVideos().then((val) => {
                 RefreshVideos().then((val) => {
                     UpdateVideos();
@@ -53,7 +53,7 @@ export function OnDeleteSubmitButtonClick() {
             });
             break;
         }
-        case AddButtonActionTypes.AddAudio: {
+        case window.AddButtonActionTypes.AddAudio: {
             DeleteSelectedAudios().then((val) => {
                 RefreshAudios().then((val) => {
                     UpdateAudios();
@@ -62,7 +62,7 @@ export function OnDeleteSubmitButtonClick() {
             });
             break;
         }
-        case AddButtonActionTypes.AddParticipant: {
+        case window.AddButtonActionTypes.AddParticipant: {
             DeleteSelectedParticipants().then((val) => {
                 RefreshParticipants().then((val) => {
                     UpdateParticipants();

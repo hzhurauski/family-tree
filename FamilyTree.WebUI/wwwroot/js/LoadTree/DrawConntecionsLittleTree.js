@@ -160,7 +160,7 @@ export function DrawConntecionsLittleTree(tree, blood) {
     /// canvas 8 ///
     window.canvas = document.getElementById("canvas8");
     window.context = window.canvas.getContext("2d");
-    window.context.clearRect(0, 0, canvas.width, canvas.height);
+    window.context.clearRect(0, 0, window.canvas.width, window.canvas.height);
 
     if (tree.Children != null) {
         if (window.bloodFlag) if (window.bloodTree.Children[0]) colorLine = colorBloodMuted; else colorLine = colorMuted;

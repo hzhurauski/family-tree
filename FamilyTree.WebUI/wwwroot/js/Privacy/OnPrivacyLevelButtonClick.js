@@ -3,7 +3,7 @@ export function OnPrivacyLevelButtonClick(event) {
         .find("input")
         .val();
 
-    if (privacyLevelValue == PrivacyLevels.InternalUse) {
+    if (privacyLevelValue == window.PrivacyLevels.InternalUse) {
         $("#privacy-level-modal")
             .find("#privacy-level-accounts")
             .css("display", "block");

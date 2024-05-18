@@ -5,24 +5,24 @@ import { PasteImages } from "./PasteImages.js";
 import { PasteVideos } from "./PasteVideos.js";
 
 export function OnPasteButtonClick() {
-    switch (g_currentAddButtonActionType) {
-        case AddButtonActionTypes.AddDataBlock: {
+    switch (window.g_currentAddButtonActionType) {
+        case window.AddButtonActionTypes.AddDataBlock: {
             PasteDataBlocks();
             break;
         }
-        case AddButtonActionTypes.AddDataHolder: {
+        case window.AddButtonActionTypes.AddDataHolder: {
             PasteDataHolders();
             break;
         }
-        case AddButtonActionTypes.AddImage: {
+        case window.AddButtonActionTypes.AddImage: {
             PasteImages();
             break;
         }
-        case AddButtonActionTypes.AddVideo: {
+        case window.AddButtonActionTypes.AddVideo: {
             PasteVideos();
             break;
         }
-        case AddButtonActionTypes.AddAudio: {
+        case window.AddButtonActionTypes.AddAudio: {
             PasteAudios();
             break;
         }

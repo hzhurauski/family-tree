@@ -5,10 +5,10 @@ import { OnPlayAudioButtonClick } from "./OnPlayAudioButtonClick.js";
 export function UpdateAudios() {
     ClearAudios();
 
-    if (g_currentDataBlockAudios == null)
+    if (window.g_currentDataBlockAudios == null)
         return;
 
-    g_currentDataBlockAudios
+    window.g_currentDataBlockAudios
         .forEach((item) => {
             AddItemToAudios(item);
         });

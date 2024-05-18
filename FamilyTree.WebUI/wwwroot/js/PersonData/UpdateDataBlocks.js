@@ -6,7 +6,7 @@ import { UpdateDataBlockOrder } from "./UpdateDataBlockOrder.js";
 export function UpdateDataBlocks() {
     ClearDataBlocks();
 
-    g_currentDataCategory
+    window.g_currentDataCategory
         .DataBlocks
         .forEach((item) => {
             AddItemToDataBlocks(item);

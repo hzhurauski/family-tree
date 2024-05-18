@@ -1,7 +1,7 @@
 import { GetSelectedDataCategoriesIds } from "./GetSelectedDataCategoriesIds.js";
 
 export function CopySelectedDataCategories() {
-    g_copyObject.Ids = GetSelectedDataCategoriesIds();
-    g_copyObject.CopyObjectType = CopyObjectTypes.DataCategory;
-    sessionStorage.setItem(CopyObjectSessionStorageKey, JSON.stringify(g_copyObject));
+    window.g_copyObject.Ids = GetSelectedDataCategoriesIds();
+    window.g_copyObject.CopyObjectType = window.CopyObjectTypes.DataCategory;
+    sessionStorage.setItem(window.CopyObjectSessionStorageKey, JSON.stringify(window.g_copyObject));
 }

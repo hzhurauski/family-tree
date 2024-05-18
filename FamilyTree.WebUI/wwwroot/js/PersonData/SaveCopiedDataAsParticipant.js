@@ -13,18 +13,18 @@ export async function SaveCopiedDataAsParticipant() {
 
     let createdDataholdersByDataBlockIds;
 
-    await CopyDataBlocks([ g_currentDataBlock.Id ], g_currentDataCategory.Id)
+    await CopyDataBlocks([ window.g_currentDataBlock.Id ], window.g_currentDataCategory.Id)
     .then(async (data) => {
         createdDataholdersByDataBlockIds = data[0];
-        await DeleteParticipant(g_currentPerson.Id, g_currentDataBlock.Id)
+        await DeleteParticipant(window.g_currentPerson.Id, window.g_currentDataBlock.Id)
     .then(async (data) => {
         UpdateDataHolderIds(createdDataholdersByDataBlockIds.DataHolders);
         await SaveDataHolders()
     .then(async (data) => {
-        g_currentDataCategory = GetDataCategory(g_currentDataCategory.Id);  
+        window.g_currentDataCategory = GetDataCategory(window.g_currentDataCategory.Id);  
         RefreshDataBlock(createdDataholdersByDataBlockIds.Id);
 
-        if (g_currentDataCategory.DataCategoryType == DataCategoryTypes.PersonInfo)
+        if (window.g_currentDataCategory.DataCategoryType == window.DataCategoryTypes.PersonInfo)
             ReloadTree($("#mainPerson")[0].getAttribute("data-value"));
 
         saveButton.find(".loader").css("display", "none");

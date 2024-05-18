@@ -6,11 +6,11 @@ import { UpdateDataCategoryOrder } from "./UpdateDataCategoryOrder.js";
 export function UpdateDataCategories() {
     ClearDataCategories();
 
-    g_dataCategories.forEach((item) => {
+    window.g_dataCategories.forEach((item) => {
         AddItemToDataCategories(item);
     });
 
-    new Sortable($(".person-data-block__data-categories")[0], {
+    new window.Sortable($(".person-data-block__data-categories")[0], {
         handle: ".data-categories__item",
         animation: 500,
         onEnd: (event) => {

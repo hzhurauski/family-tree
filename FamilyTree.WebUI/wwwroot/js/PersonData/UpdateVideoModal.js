@@ -5,7 +5,7 @@ export function UpdateVideoModal(videoId) {
     let videoModal = $("#video-modal");
     let currentVideoElement = videoModal.find("#current-video")[0];
 
-    let currentVideo = g_currentDataBlockVideos
+    let currentVideo = window.g_currentDataBlockVideos
         .find((item) => item.Id == videoId);
 
     videoModal.find("#current-video-title").val(currentVideo.Title);
@@ -17,6 +17,6 @@ export function UpdateVideoModal(videoId) {
 
     let privacyElement = videoModal.find(".privacy .privacy__privacy-level")[0];
     SetPrivacyElementPrivacyLevel(privacyElement, currentVideo.Privacy.PrivacyLevel);
-    g_editPrivacyId = currentVideo.Privacy.Id;
+    window.g_editPrivacyId = currentVideo.Privacy.Id;
     LoadPrivacyData(currentVideo.Privacy);
 }

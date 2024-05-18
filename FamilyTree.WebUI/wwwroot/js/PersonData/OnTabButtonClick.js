@@ -11,36 +11,36 @@ export function OnTabButtonClick(event) {
         .find(".tabs-buttons");
 
     if (targetElement.hasClass("tab-button-data")) {
-        ShowDataBlockContentTab(DataBlockContentTabs.Data);
-        g_currentAddButtonActionType = AddButtonActionTypes.AddDataHolder;
+        ShowDataBlockContentTab(window.DataBlockContentTabs.Data);
+        window.g_currentAddButtonActionType = window.AddButtonActionTypes.AddDataHolder;
         ShowSaveButton();
         ShowEditButton();
         ShowPrivacyButton();
     }
     else if (targetElement.hasClass("tab-button-images")) {
-        ShowDataBlockContentTab(DataBlockContentTabs.Images);
-        g_currentAddButtonActionType = AddButtonActionTypes.AddImage;
+        ShowDataBlockContentTab(window.DataBlockContentTabs.Images);
+        window.g_currentAddButtonActionType = window.AddButtonActionTypes.AddImage;
         ShowSaveButton(false);
         ShowEditButton(false);
         ShowPrivacyButton(false);
     }
     else if (targetElement.hasClass("tab-button-videos")) {
-        ShowDataBlockContentTab(DataBlockContentTabs.Videos);
-        g_currentAddButtonActionType = AddButtonActionTypes.AddVideo;
+        ShowDataBlockContentTab(window.DataBlockContentTabs.Videos);
+        window.g_currentAddButtonActionType = window.AddButtonActionTypes.AddVideo;
         ShowSaveButton(false);
         ShowEditButton(false);
         ShowPrivacyButton(false);
     }
     else if (targetElement.hasClass("tab-button-audios")) {
-        ShowDataBlockContentTab(DataBlockContentTabs.Audios);
-        g_currentAddButtonActionType = AddButtonActionTypes.AddAudio;
+        ShowDataBlockContentTab(window.DataBlockContentTabs.Audios);
+        window.g_currentAddButtonActionType = window.AddButtonActionTypes.AddAudio;
         ShowSaveButton(false);
         ShowEditButton(false);
         ShowPrivacyButton(false);
     }
     else if (targetElement.hasClass("tab-button-participants")){
-        ShowDataBlockContentTab(DataBlockContentTabs.Participants);
-        g_currentAddButtonActionType = AddButtonActionTypes.AddParticipant;
+        ShowDataBlockContentTab(window.DataBlockContentTabs.Participants);
+        window.g_currentAddButtonActionType = window.AddButtonActionTypes.AddParticipant;
         ShowSaveButton(false);
         ShowEditButton(false);
         ShowPrivacyButton(false);

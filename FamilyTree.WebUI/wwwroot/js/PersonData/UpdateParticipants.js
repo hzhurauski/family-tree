@@ -5,10 +5,10 @@ import { OnPartClick } from "./OnPartClick.js";
 export function UpdateParticipants() {
     ClearParticipants();
 
-    if (g_currentDataBlockParticipants == null)
+    if (window.g_currentDataBlockParticipants == null)
         return;
 
-        g_currentDataBlockParticipants
+        window.g_currentDataBlockParticipants
         .forEach((item) => {
             AddItemToParticipant(item);
         });

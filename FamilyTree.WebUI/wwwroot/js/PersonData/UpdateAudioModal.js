@@ -5,7 +5,7 @@ export function UpdateAudioModal(audioId) {
     let audioModal = $("#audio-modal");
     let currentAudioElement = audioModal.find("#current-audio")[0];
 
-    let currentAudio = g_currentDataBlockAudios
+    let currentAudio = window.g_currentDataBlockAudios
         .find((item) => item.Id == audioId);
 
     audioModal.find("#current-audio-title").val(currentAudio.Title);
@@ -16,6 +16,6 @@ export function UpdateAudioModal(audioId) {
 
     let privacyElement = audioModal.find(".privacy .privacy__privacy-level")[0];
     SetPrivacyElementPrivacyLevel(privacyElement, currentAudio.Privacy.PrivacyLevel);
-    g_editPrivacyId = currentAudio.Privacy.Id;
+    window.g_editPrivacyId = currentAudio.Privacy.Id;
     LoadPrivacyData(currentAudio.Privacy);
 }

@@ -5,10 +5,10 @@ import { OnImageClick } from "./OnImageClick.js";
 export function UpdateImages() {
     ClearImages();
 
-    if (g_currentDataBlockImages == null)
+    if (window.g_currentDataBlockImages == null)
         return;
 
-    g_currentDataBlockImages
+    window.g_currentDataBlockImages
         .forEach((item) => {
             AddItemToImages(item);
         });

@@ -3,19 +3,19 @@ import { RefreshImages } from "./RefreshImages.js";
 import { UpdateImages } from "./UpdateImages.js";
 
 export function PasteImages() {
-    g_copyObject = JSON.parse(sessionStorage.getItem(CopyObjectSessionStorageKey));
+    window.g_copyObject = JSON.parse(sessionStorage.getItem(window.CopyObjectSessionStorageKey));
 
-    if (g_copyObject == null ||
-        g_copyObject.Ids.length == 0)
+    if (window.g_copyObject == null ||
+        window.g_copyObject.Ids.length == 0)
         return;
 
-    if (g_copyObject.CopyObjectType == null ||
-        g_copyObject.CopyObjectType != CopyObjectTypes.Image) {
+    if (window.g_copyObject.CopyObjectType == null ||
+        window.g_copyObject.CopyObjectType != window.CopyObjectTypes.Image) {
         alert("Ошибка при вставке из буфера (неверный тип объектов)");
         return;
     }
 
-    CopyImages(g_copyObject.Ids, g_currentDataBlock.Id)
+    CopyImages(window.g_copyObject.Ids, window.g_currentDataBlock.Id)
         .then((data) => {
             RefreshImages().then((val) => UpdateImages());
         },

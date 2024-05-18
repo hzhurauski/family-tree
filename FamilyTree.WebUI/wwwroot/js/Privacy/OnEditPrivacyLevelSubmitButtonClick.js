@@ -13,8 +13,8 @@ export function OnEditPrivacyLevelSubmitButtonClick(event) {
     let editPrivacyModal = $("#privacy-level-modal");
     let privacy = GetPrivacyData();
 
-    switch (g_currentAddButtonActionType) {
-        case AddButtonActionTypes.AddDataHolder: {
+    switch (window.g_currentAddButtonActionType) {
+        case window.AddButtonActionTypes.AddDataHolder: {
             UpdatePrivacy(privacy).then((result) => {
                 RefreshDataHolders();
                 UpdateDataHolders();
@@ -26,7 +26,7 @@ export function OnEditPrivacyLevelSubmitButtonClick(event) {
             break;
         }
 
-        case AddButtonActionTypes.AddImage: {
+        case window.AddButtonActionTypes.AddImage: {
             UpdatePrivacy(privacy).then((result) => {
                 RefreshImages().then((result) => {
                     UpdateImageSliderImagePrivacy();
@@ -39,7 +39,7 @@ export function OnEditPrivacyLevelSubmitButtonClick(event) {
             break;
         }
 
-        case AddButtonActionTypes.AddVideo: {
+        case window.AddButtonActionTypes.AddVideo: {
             UpdatePrivacy(privacy).then((result) => {
                 RefreshVideos().then((result) => {
                     UpdateVideoModalVideoPrivacy();
@@ -52,7 +52,7 @@ export function OnEditPrivacyLevelSubmitButtonClick(event) {
             break;
         }
 
-        case AddButtonActionTypes.AddAudio: {
+        case window.AddButtonActionTypes.AddAudio: {
             UpdatePrivacy(privacy).then((result) => {
                 RefreshAudios().then((result) => {
                     UpdateAudioModalAudioPrivacy();

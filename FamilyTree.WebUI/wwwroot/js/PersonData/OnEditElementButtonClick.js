@@ -1,6 +1,6 @@
 export function OnEditElementButtonClick() {
-    switch (g_currentAddButtonActionType) {
-        case AddButtonActionTypes.AddDataBlock: {
+    switch (window.g_currentAddButtonActionType) {
+        case window.AddButtonActionTypes.AddDataBlock: {
             let selectedDataBlocks = $("#person-data-block")
                 .find(".data-blocks")
                 .find(".data-blocks__item input[type=\"checkbox\"]:checked")
@@ -9,7 +9,7 @@ export function OnEditElementButtonClick() {
             if (selectedDataBlocks.length == 0 ||
                 selectedDataBlocks.length > 1) return;
 
-            g_editElementId = selectedDataBlocks.attr("data-id");
+            window.g_editElementId = selectedDataBlocks.attr("data-id");
             $("#edit-data-block-title")
                 .val(selectedDataBlocks
                         .first()
@@ -19,7 +19,7 @@ export function OnEditElementButtonClick() {
             $("#edit-data-block-modal").modal("show");
             break;
         }
-        case AddButtonActionTypes.AddDataHolder: {
+        case window.AddButtonActionTypes.AddDataHolder: {
             let selectedDataHolders = $("#person-data-block")
                 .find(".data-holders")
                 .find(".data-holders__item input[type=\"checkbox\"]:checked")
@@ -28,7 +28,7 @@ export function OnEditElementButtonClick() {
             if (selectedDataHolders.length == 0 ||
                 selectedDataHolders.length > 1) return;
 
-            g_editElementId = selectedDataHolders.attr("data-id");
+            window.g_editElementId = selectedDataHolders.attr("data-id");
 
             let titleEl = selectedDataHolders
                 .first()

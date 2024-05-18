@@ -1,5 +1,5 @@
 import { GetDataCategories } from "./GetDataCategories.js";
 
 export function RefreshDataCategories() {
-    g_dataCategories = GetDataCategories(g_currentPerson.Id);
+    window.g_dataCategories = GetDataCategories(window.g_currentPerson.Id);
 }

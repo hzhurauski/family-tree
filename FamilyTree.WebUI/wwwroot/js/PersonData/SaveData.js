@@ -8,9 +8,9 @@ export async function SaveData() {
     saveButton.find(".btn__text")[0].innerHTML = "Сохранение";
 
     await SaveDataHolders().then(async (data) => {
-        g_currentDataCategory = GetDataCategory(g_currentDataCategory.Id);
+        window.g_currentDataCategory = GetDataCategory(window.g_currentDataCategory.Id);
 
-        if (g_currentDataCategory.DataCategoryType == DataCategoryTypes.PersonInfo)
+        if (window.g_currentDataCategory.DataCategoryType == window.DataCategoryTypes.PersonInfo)
             ReloadTree($("#mainPerson")[0].getAttribute("data-value"));
 
         saveButton.find(".loader").css("display", "none");
@@ -27,5 +27,5 @@ export async function SaveData() {
     saveButton.removeClass("btn-success");
     saveButton.addClass("btn-default");
 
-    g_isSaving = false;
+    window.g_isSaving = false;
 }

@@ -4,7 +4,7 @@ import { SetPrivacyElementPrivacyLevel } from "./SetPrivacyElementPrivacyLevel.j
 export function UpdateSliderImageDetails(imageId) {
     let sliderModal = $("#image-carousel-modal");
 
-    let image = g_currentDataBlockImages
+    let image = window.g_currentDataBlockImages
         .find(item => item.Id == imageId);
 
     sliderModal
@@ -21,9 +21,9 @@ export function UpdateSliderImageDetails(imageId) {
 
     sliderModal
         .find(".pages__count")
-        .text(g_currentDataBlockImages.length);
+        .text(window.g_currentDataBlockImages.length);
 
-    if (g_currentPerson.AvatarImageId == imageId) {
+    if (window.g_currentPerson.AvatarImageId == imageId) {
         sliderModal.find("#set-image-as-avatar-button")
             .prop("disabled", true)[0]
             .innerHTML = "Уже является изображением персоны";
@@ -36,6 +36,6 @@ export function UpdateSliderImageDetails(imageId) {
 
     let privacyElement = sliderModal.find(".privacy .privacy__privacy-level")[0];
     SetPrivacyElementPrivacyLevel(privacyElement, image.Privacy.PrivacyLevel);
-    g_editPrivacyId = image.Privacy.Id;
+    window.g_editPrivacyId = image.Privacy.Id;
     LoadPrivacyData(image.Privacy);
 }

@@ -18,11 +18,11 @@ import { UpdateParticipants } from "./UpdateParticipants.js";
 import { UpdateVideos } from "./UpdateVideos.js";
 
 export function RefreshDataBlock(dataBlockId) {
-    let dataBlock = g_currentDataCategory.DataBlocks
+    let dataBlock = window.g_currentDataCategory.DataBlocks
         .find((item) => item.Id == dataBlockId);
 
-    g_currentDataBlock = dataBlock;
-    g_currentAddButtonActionType = AddButtonActionTypes.AddDataHolder;
+    window.g_currentDataBlock = dataBlock;
+    window.g_currentAddButtonActionType = window.AddButtonActionTypes.AddDataHolder;
 
     UpdateDataHolders();
 

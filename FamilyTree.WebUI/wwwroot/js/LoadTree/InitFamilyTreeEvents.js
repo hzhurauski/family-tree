@@ -49,7 +49,7 @@ export function InitFamilyTreeEvents() {
         //ReloadTree($(event.currentTarget)[0].getAttribute("data-value"));
 
         window._currentFamilyTree.MainPersonId = $(event.currentTarget)[0].getAttribute("data-value");
-        sessionStorage.setItem("StartFamilyTree", JSON.stringify(_currentFamilyTree));
+        sessionStorage.setItem("StartFamilyTree", JSON.stringify(window._currentFamilyTree));
 
         document.location.reload();
     });
