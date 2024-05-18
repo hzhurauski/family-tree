@@ -1,5 +1,3 @@
 export function ClearSliderImages() {
-    $("#image-carousel-modal")
-        .find(".slider")
-        .empty();
+  $('#image-carousel-modal').find('.slider').empty()
 }

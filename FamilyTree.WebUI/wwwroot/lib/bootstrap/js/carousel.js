@@ -17,59 +17,67 @@
  * limitations under the License.
  * ======================================================================== */
 
-
-+function ($) { "use strict";
+;+(function ($) {
+  'use strict'
 
   // CAROUSEL CLASS DEFINITION
   // =========================
 
   var Carousel = function (element, options) {
-    this.$element    = $(element)
+    this.$element = $(element)
     this.$indicators = this.$element.find('.carousel-indicators')
-    this.options     = options
-    this.paused      =
-    this.sliding     =
-    this.interval    =
-    this.$active     =
-    this.$items      = null
+    this.options = options
+    this.paused =
+      this.sliding =
+      this.interval =
+      this.$active =
+      this.$items =
+        null
 
-    this.options.pause == 'hover' && this.$element
-      .on('mouseenter', $.proxy(this.pause, this))
-      .on('mouseleave', $.proxy(this.cycle, this))
+    this.options.pause == 'hover' &&
+      this.$element
+        .on('mouseenter', $.proxy(this.pause, this))
+        .on('mouseleave', $.proxy(this.cycle, this))
   }
 
   Carousel.DEFAULTS = {
-    interval: 5000
-  , pause: 'hover'
-  , wrap: true
+    interval: 5000,
+    pause: 'hover',
+    wrap: true,
   }
 
-  Carousel.prototype.cycle =  function (e) {
+  Carousel.prototype.cycle = function (e) {
     e || (this.paused = false)
 
     this.interval && clearInterval(this.interval)
 
-    this.options.interval
-      && !this.paused
-      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+    this.options.interval &&
+      !this.paused &&
+      (this.interval = setInterval(
+        $.proxy(this.next, this),
+        this.options.interval
+      ))
 
     return this
   }
 
   Carousel.prototype.getActiveIndex = function () {
     this.$active = this.$element.find('.item.active')
-    this.$items  = this.$active.parent().children()
+    this.$items = this.$active.parent().children()
 
     return this.$items.index(this.$active)
   }
 
   Carousel.prototype.to = function (pos) {
-    var that        = this
+    var that = this
     var activeIndex = this.getActiveIndex()
 
-    if (pos > (this.$items.length - 1) || pos < 0) return
+    if (pos > this.$items.length - 1 || pos < 0) return
 
-    if (this.sliding)       return this.$element.one('slid', function () { that.to(pos) })
+    if (this.sliding)
+      return this.$element.one('slid', function () {
+        that.to(pos)
+      })
     if (activeIndex == pos) return this.pause().cycle()
 
     return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
@@ -99,12 +107,12 @@
   }
 
   Carousel.prototype.slide = function (type, next) {
-    var $active   = this.$element.find('.item.active')
-    var $next     = next || $active[type]()
+    var $active = this.$element.find('.item.active')
+    var $next = next || $active[type]()
     var isCycling = this.interval
     var direction = type == 'next' ? 'left' : 'right'
-    var fallback  = type == 'next' ? 'first' : 'last'
-    var that      = this
+    var fallback = type == 'next' ? 'first' : 'last'
+    var that = this
 
     if (!$next.length) {
       if (!this.options.wrap) return
@@ -115,14 +123,19 @@
 
     isCycling && this.pause()
 
-    var e = $.Event('slide.bs.carousel', { relatedTarget: $next[0], direction: direction })
+    var e = $.Event('slide.bs.carousel', {
+      relatedTarget: $next[0],
+      direction: direction,
+    })
 
     if ($next.hasClass('active')) return
 
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
       this.$element.one('slid', function () {
-        var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
+        var $nextIndicator = $(
+          that.$indicators.children()[that.getActiveIndex()]
+        )
         $nextIndicator && $nextIndicator.addClass('active')
       })
     }
@@ -139,7 +152,9 @@
           $next.removeClass([type, direction].join(' ')).addClass('active')
           $active.removeClass(['active', direction].join(' '))
           that.sliding = false
-          setTimeout(function () { that.$element.trigger('slid') }, 0)
+          setTimeout(function () {
+            that.$element.trigger('slid')
+          }, 0)
         })
         .emulateTransitionEnd(600)
     } else {
@@ -156,7 +171,6 @@
     return this
   }
 
-
   // CAROUSEL PLUGIN DEFINITION
   // ==========================
 
@@ -164,10 +178,15 @@
 
   $.fn.carousel = function (option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.carousel')
-      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
-      var action  = typeof option == 'string' ? option : options.slide
+      var $this = $(this)
+      var data = $this.data('bs.carousel')
+      var options = $.extend(
+        {},
+        Carousel.DEFAULTS,
+        $this.data(),
+        typeof option == 'object' && option
+      )
+      var action = typeof option == 'string' ? option : options.slide
 
       if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
@@ -178,7 +197,6 @@
 
   $.fn.carousel.Constructor = Carousel
 
-
   // CAROUSEL NO CONFLICT
   // ====================
 
@@ -187,25 +205,32 @@
     return this
   }
 
-
   // CAROUSEL DATA-API
   // =================
 
-  $(document).on('click.bs.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
-    var $this   = $(this), href
-    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
-    var options = $.extend({}, $target.data(), $this.data())
-    var slideIndex = $this.attr('data-slide-to')
-    if (slideIndex) options.interval = false
+  $(document).on(
+    'click.bs.carousel.data-api',
+    '[data-slide], [data-slide-to]',
+    function (e) {
+      var $this = $(this),
+        href
+      var $target = $(
+        $this.attr('data-target') ||
+          ((href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, ''))
+      ) //strip for ie7
+      var options = $.extend({}, $target.data(), $this.data())
+      var slideIndex = $this.attr('data-slide-to')
+      if (slideIndex) options.interval = false
 
-    $target.carousel(options)
+      $target.carousel(options)
 
-    if (slideIndex = $this.attr('data-slide-to')) {
-      $target.data('bs.carousel').to(slideIndex)
+      if ((slideIndex = $this.attr('data-slide-to'))) {
+        $target.data('bs.carousel').to(slideIndex)
+      }
+
+      e.preventDefault()
     }
-
-    e.preventDefault()
-  })
+  )
 
   $(window).on('load', function () {
     $('[data-ride="carousel"]').each(function () {
@@ -213,5 +238,4 @@
       $carousel.carousel($carousel.data())
     })
   })
-
-}(window.jQuery);
+})(window.jQuery)

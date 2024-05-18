@@ -1,0 +1,42 @@
+{
+  "name": "wwwroot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "pnpm run lint --fix",
+    "prettier": "prettier . --write"
+  },
+  "engines": {
+    "node": "20.12.0",
+    "pnpm": "9.0.5"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@microsoft/signalr": "^5.0.17",
+    "jquery": "^1.11.3",
+    "moment": "^2.29.1",
+    "slick-carousel": "^1.8.1",
+    "sortablejs": "^1.13.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "6.18.0",
+    "@typescript-eslint/parser": "6.18.0",
+    "babel-eslint": "10.1.0",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-only-warn": "1.1.0",
+    "eslint-plugin-prettier": "5.1.2",
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "husky": "8.0.3",
+    "lint-staged": "15.2.0",
+    "prettier": "3.1.1"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "pnpm run lint:fix"
+    ]
+  }
+}

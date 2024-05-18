@@ -1,3 +1,3 @@
 export function OnEditVideoPrivacyButtonClick() {
-    $("#privacy-level-modal").modal("show");
+  $('#privacy-level-modal').modal('show')
 }

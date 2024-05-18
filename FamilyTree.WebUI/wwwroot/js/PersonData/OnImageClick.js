@@ -1,11 +1,11 @@
-import { UpdateImageSlider } from "./UpdateImageSlider.js";
+import { UpdateImageSlider } from './UpdateImageSlider.js'
 
 export function OnImageClick(event) {
-    if ($(event.target).is("input")) return;
+  if ($(event.target).is('input')) return
 
-    let imageId = $(event.currentTarget).attr("data-id");
+  let imageId = $(event.currentTarget).attr('data-id')
 
-    UpdateImageSlider(imageId);
+  UpdateImageSlider(imageId)
 
-    $("#image-carousel-modal").modal("show");
+  $('#image-carousel-modal').modal('show')
 }
