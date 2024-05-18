@@ -1,6 +1,6 @@
-import { GetCurrentActionTypeElements } from "./GetCurrentActionTypeElements.js";
-import { SelectAllCheckboxes } from "./SelectAllCheckboxes.js";
+import { GetCurrentActionTypeElements } from './GetCurrentActionTypeElements.js'
+import { SelectAllCheckboxes } from './SelectAllCheckboxes.js'
 
-export function OnSelectAllButtonClick() {   
-    SelectAllCheckboxes(GetCurrentActionTypeElements());
+export function OnSelectAllButtonClick() {
+  SelectAllCheckboxes(GetCurrentActionTypeElements())
 }

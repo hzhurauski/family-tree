@@ -1,15 +1,18 @@
 export async function SelectParticipant() {
-    if (!g_currentDataBlockIdsToAssignParticipant || !g_currentDataBlockIdsToAssignParticipant.length)
-        return;
+  if (
+    !g_currentDataBlockIdsToAssignParticipant ||
+    !g_currentDataBlockIdsToAssignParticipant.length
+  )
+    return
 
-    const result = await $.ajax({
-        type: "POST",
-        data: {
-            participantId: g_currentPerson.Id,
-            dataBlockIds: g_currentDataBlockIdsToAssignParticipant,
-        },
-        url: "/PersonContent/DataBlock/InsertParticipants",
-    });
+  const result = await $.ajax({
+    type: 'POST',
+    data: {
+      participantId: g_currentPerson.Id,
+      dataBlockIds: g_currentDataBlockIdsToAssignParticipant,
+    },
+    url: '/PersonContent/DataBlock/InsertParticipants',
+  })
 
-    return result;
+  return result
 }

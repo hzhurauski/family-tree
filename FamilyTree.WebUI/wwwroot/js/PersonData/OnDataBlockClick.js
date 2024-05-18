@@ -1,12 +1,12 @@
-import { RefreshDataBlock } from "./RefreshDataBlock.js";
-import { ShowDataBlockButtons } from "./ShowDataBlockButtons.js";
+import { RefreshDataBlock } from './RefreshDataBlock.js'
+import { ShowDataBlockButtons } from './ShowDataBlockButtons.js'
 
 export function OnDataBlockClick(event) {
-    if ($(event.target).is("input")) return;
+  if ($(event.target).is('input')) return
 
-    let dataBlockId = $(event.currentTarget).attr("data-id");
+  let dataBlockId = $(event.currentTarget).attr('data-id')
 
-    RefreshDataBlock(dataBlockId);
+  RefreshDataBlock(dataBlockId)
 
-    ShowDataBlockButtons();
+  ShowDataBlockButtons()
 }

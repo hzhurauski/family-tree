@@ -17,14 +17,14 @@
  * limitations under the License.
  * ======================================================================== */
 
-
-+function ($) { "use strict";
+;+(function ($) {
+  'use strict'
 
   // DROPDOWN CLASS DEFINITION
   // =========================
 
   var backdrop = '.dropdown-backdrop'
-  var toggle   = '[data-toggle=dropdown]'
+  var toggle = '[data-toggle=dropdown]'
   var Dropdown = function (element) {
     var $el = $(element).on('click.bs.dropdown', this.toggle)
   }
@@ -34,24 +34,27 @@
 
     if ($this.is('.disabled, :disabled')) return
 
-    var $parent  = getParent($this)
+    var $parent = getParent($this)
     var isActive = $parent.hasClass('open')
 
     clearMenus()
 
     if (!isActive) {
-      if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
+      if (
+        'ontouchstart' in document.documentElement &&
+        !$parent.closest('.navbar-nav').length
+      ) {
         // if mobile we we use a backdrop because click events don't delegate
-        $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
+        $('<div class="dropdown-backdrop"/>')
+          .insertAfter($(this))
+          .on('click', clearMenus)
       }
 
-      $parent.trigger(e = $.Event('show.bs.dropdown'))
+      $parent.trigger((e = $.Event('show.bs.dropdown')))
 
       if (e.isDefaultPrevented()) return
 
-      $parent
-        .toggleClass('open')
-        .trigger('shown.bs.dropdown')
+      $parent.toggleClass('open').trigger('shown.bs.dropdown')
 
       $this.focus()
     }
@@ -69,7 +72,7 @@
 
     if ($this.is('.disabled, :disabled')) return
 
-    var $parent  = getParent($this)
+    var $parent = getParent($this)
     var isActive = $parent.hasClass('open')
 
     if (!isActive || (isActive && e.keyCode == 27)) {
@@ -83,9 +86,9 @@
 
     var index = $items.index($items.filter(':focus'))
 
-    if (e.keyCode == 38 && index > 0)                 index--                        // up
-    if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
-    if (!~index)                                      index=0
+    if (e.keyCode == 38 && index > 0) index-- // up
+    if (e.keyCode == 40 && index < $items.length - 1) index++ // down
+    if (!~index) index = 0
 
     $items.eq(index).focus()
   }
@@ -95,7 +98,7 @@
     $(toggle).each(function (e) {
       var $parent = getParent($(this))
       if (!$parent.hasClass('open')) return
-      $parent.trigger(e = $.Event('hide.bs.dropdown'))
+      $parent.trigger((e = $.Event('hide.bs.dropdown')))
       if (e.isDefaultPrevented()) return
       $parent.removeClass('open').trigger('hidden.bs.dropdown')
     })
@@ -106,14 +109,14 @@
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      selector =
+        selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
     }
 
     var $parent = selector && $(selector)
 
     return $parent && $parent.length ? $parent : $this.parent()
   }
-
 
   // DROPDOWN PLUGIN DEFINITION
   // ==========================
@@ -123,7 +126,7 @@
   $.fn.dropdown = function (option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('dropdown')
+      var data = $this.data('dropdown')
 
       if (!data) $this.data('dropdown', (data = new Dropdown(this)))
       if (typeof option == 'string') data[option].call($this)
@@ -131,7 +134,6 @@
   }
 
   $.fn.dropdown.Constructor = Dropdown
-
 
   // DROPDOWN NO CONFLICT
   // ====================
@@ -141,14 +143,18 @@
     return this
   }
 
-
   // APPLY TO STANDARD DROPDOWN ELEMENTS
   // ===================================
 
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
-    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-    .on('click.bs.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-    .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
-
-}(window.jQuery);
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) {
+      e.stopPropagation()
+    })
+    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on(
+      'keydown.bs.dropdown.data-api',
+      toggle + ', [role=menu]',
+      Dropdown.prototype.keydown
+    )
+})(window.jQuery)

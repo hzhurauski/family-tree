@@ -17,15 +17,15 @@
  * limitations under the License.
  * ======================================================================== */
 
-
-+function ($) { "use strict";
+;+(function ($) {
+  'use strict'
 
   // COLLAPSE PUBLIC CLASS DEFINITION
   // ================================
 
   var Collapse = function (element, options) {
-    this.$element      = $(element)
-    this.options       = $.extend({}, Collapse.DEFAULTS, options)
+    this.$element = $(element)
+    this.options = $.extend({}, Collapse.DEFAULTS, options)
     this.transitioning = null
 
     if (this.options.parent) this.$parent = $(this.options.parent)
@@ -33,7 +33,7 @@
   }
 
   Collapse.DEFAULTS = {
-    toggle: true
+    toggle: true,
   }
 
   Collapse.prototype.dimension = function () {
@@ -59,18 +59,12 @@
 
     var dimension = this.dimension()
 
-    this.$element
-      .removeClass('collapse')
-      .addClass('collapsing')
-      [dimension](0)
+    this.$element.removeClass('collapse').addClass('collapsing')[dimension](0)
 
     this.transitioning = 1
 
     var complete = function () {
-      this.$element
-        .removeClass('collapsing')
-        .addClass('in')
-        [dimension]('auto')
+      this.$element.removeClass('collapsing').addClass('in')[dimension]('auto')
       this.transitioning = 0
       this.$element.trigger('shown.bs.collapse')
     }
@@ -94,9 +88,7 @@
 
     var dimension = this.dimension()
 
-    this.$element
-      [dimension](this.$element[dimension]())
-      [0].offsetHeight
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
 
     this.$element
       .addClass('collapsing')
@@ -115,8 +107,7 @@
 
     if (!$.support.transition) return complete.call(this)
 
-    this.$element
-      [dimension](0)
+    this.$element[dimension](0)
       .one($.support.transition.end, $.proxy(complete, this))
       .emulateTransitionEnd(350)
   }
@@ -125,7 +116,6 @@
     this[this.$element.hasClass('in') ? 'hide' : 'show']()
   }
 
-
   // COLLAPSE PLUGIN DEFINITION
   // ==========================
 
@@ -133,9 +123,14 @@
 
   $.fn.collapse = function (option) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.collapse')
-      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+      var $this = $(this)
+      var data = $this.data('bs.collapse')
+      var options = $.extend(
+        {},
+        Collapse.DEFAULTS,
+        $this.data(),
+        typeof option == 'object' && option
+      )
 
       if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
@@ -143,7 +138,6 @@
   }
 
   $.fn.collapse.Constructor = Collapse
-
 
   // COLLAPSE NO CONFLICT
   // ====================
@@ -153,27 +147,35 @@
     return this
   }
 
-
   // COLLAPSE DATA-API
   // =================
 
-  $(document).on('click.bs.collapse.data-api', '[data-toggle=collapse]', function (e) {
-    var $this   = $(this), href
-    var target  = $this.attr('data-target')
-        || e.preventDefault()
-        || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-    var $target = $(target)
-    var data    = $target.data('bs.collapse')
-    var option  = data ? 'toggle' : $this.data()
-    var parent  = $this.attr('data-parent')
-    var $parent = parent && $(parent)
+  $(document).on(
+    'click.bs.collapse.data-api',
+    '[data-toggle=collapse]',
+    function (e) {
+      var $this = $(this),
+        href
+      var target =
+        $this.attr('data-target') ||
+        e.preventDefault() ||
+        ((href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+      var $target = $(target)
+      var data = $target.data('bs.collapse')
+      var option = data ? 'toggle' : $this.data()
+      var parent = $this.attr('data-parent')
+      var $parent = parent && $(parent)
 
-    if (!data || !data.transitioning) {
-      if ($parent) $parent.find('[data-toggle=collapse][data-parent="' + parent + '"]').not($this).addClass('collapsed')
-      $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+      if (!data || !data.transitioning) {
+        if ($parent)
+          $parent
+            .find('[data-toggle=collapse][data-parent="' + parent + '"]')
+            .not($this)
+            .addClass('collapsed')
+        $this[$target.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+      }
+
+      $target.collapse(option)
     }
-
-    $target.collapse(option)
-  })
-
-}(window.jQuery);
+  )
+})(window.jQuery)

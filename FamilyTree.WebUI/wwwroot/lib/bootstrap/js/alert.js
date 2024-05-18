@@ -17,19 +17,19 @@
  * limitations under the License.
  * ======================================================================== */
 
-
-+function ($) { "use strict";
+;+(function ($) {
+  'use strict'
 
   // ALERT CLASS DEFINITION
   // ======================
 
   var dismiss = '[data-dismiss="alert"]'
-  var Alert   = function (el) {
+  var Alert = function (el) {
     $(el).on('click', dismiss, this.close)
   }
 
   Alert.prototype.close = function (e) {
-    var $this    = $(this)
+    var $this = $(this)
     var selector = $this.attr('data-target')
 
     if (!selector) {
@@ -45,7 +45,7 @@
       $parent = $this.hasClass('alert') ? $this : $this.parent()
     }
 
-    $parent.trigger(e = $.Event('close.bs.alert'))
+    $parent.trigger((e = $.Event('close.bs.alert')))
 
     if (e.isDefaultPrevented()) return
 
@@ -55,13 +55,12 @@
       $parent.trigger('closed.bs.alert').remove()
     }
 
-    $.support.transition && $parent.hasClass('fade') ?
-      $parent
-        .one($.support.transition.end, removeElement)
-        .emulateTransitionEnd(150) :
-      removeElement()
+    $.support.transition && $parent.hasClass('fade')
+      ? $parent
+          .one($.support.transition.end, removeElement)
+          .emulateTransitionEnd(150)
+      : removeElement()
   }
-
 
   // ALERT PLUGIN DEFINITION
   // =======================
@@ -71,7 +70,7 @@
   $.fn.alert = function (option) {
     return this.each(function () {
       var $this = $(this)
-      var data  = $this.data('bs.alert')
+      var data = $this.data('bs.alert')
 
       if (!data) $this.data('bs.alert', (data = new Alert(this)))
       if (typeof option == 'string') data[option].call($this)
@@ -79,7 +78,6 @@
   }
 
   $.fn.alert.Constructor = Alert
-
 
   // ALERT NO CONFLICT
   // =================
@@ -89,10 +87,8 @@
     return this
   }
 
-
   // ALERT DATA-API
   // ==============
 
   $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
-
-}(window.jQuery);
+})(window.jQuery)

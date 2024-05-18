@@ -1,3 +1,3 @@
 export function OnDeleteButtonClick() {
-    $("#delete-modal").modal("show");
+  $('#delete-modal').modal('show')
 }

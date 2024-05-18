@@ -1,11 +1,11 @@
-import { UpdateParticipants } from "./UpdateParticipants.js";
+import { UpdateParticipants } from './UpdateParticipants.js'
 
 export function OnPartClick(event) {
-    if ($(event.target).is("input")) return;
+  if ($(event.target).is('input')) return
 
-    let partId = $(event.currentTarget).attr("data-id");
+  let partId = $(event.currentTarget).attr('data-id')
 
-    UpdateParticipants();
+  UpdateParticipants()
 
-   /* $("#image-carousel-modal").modal("show")*/;
+  /* $("#image-carousel-modal").modal("show")*/
 }
