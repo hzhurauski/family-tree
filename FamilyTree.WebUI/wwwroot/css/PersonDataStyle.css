@@ -1,4 +1,9 @@
-﻿#person-data-block,
+﻿/* Временна убрана кнопка */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+#person-data-block,
 .data-blocks,
 .data-holders {
   display: none;
