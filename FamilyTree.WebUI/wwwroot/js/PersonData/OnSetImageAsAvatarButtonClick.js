@@ -9,13 +9,13 @@ export function OnSetImageAsAvatarButtonClick() {
     .find('#set-image-as-avatar-button')
     .prop('disabled', true)
   UpdatePersonAvatarImage(
-    g_currentPerson.Id,
+    window.g_currentPerson.Id,
     GetImageSliderCurrentImageId()
   ).then(
     (result) => {
-      ReloadTree(_currentFamilyTree.MainPersonId)
-      GetPersonData(g_currentPerson.Id).then((result) => {
-        g_currentPerson = result
+      ReloadTree(window._currentFamilyTree.MainPersonId)
+      GetPersonData(window.g_currentPerson.Id).then((result) => {
+        window.g_currentPerson = result
         UpdateSliderImageDetails(GetImageSliderCurrentImageId())
       })
     },

@@ -10,14 +10,14 @@ export function RedrawSonsHasSonConnections(
   // CurrentItem - текущий элемент в слайдере детей
   // VisibleCount - количество видимых детей на слайдере (2 - увеличенный масштаб дерева, 3 - обычное дерево)
   var colorMuted = '#90B2D5' // Приглушенный
-  context = canvas.getContext('2d')
-  context.clearRect(0, 0, canvas.width, canvas.height) // Очистка контекста для перерисовки
+  window.context = canvas.getContext('2d')
+  window.context.clearRect(0, 0, canvas.width, canvas.height) // Очистка контекста для перерисовки
 
   var indexElem = 0
   // Получение индекса элемента в массиве детей
-  for (var i = 0; i < mainTree.Children.length; i++) {
+  for (var i = 0; i < window.mainTree.Children.length; i++) {
     if (
-      mainTree.Children[i].Id ==
+      window.mainTree.Children[i].Id ==
       $(CurrentElem.firstElementChild)[0].getAttribute('data-value')
     ) {
       indexElem = i
@@ -43,7 +43,7 @@ export function RedrawSonsHasSonConnections(
 
   if (VisibleCount == 3) {
     indexElem = GetNextIndexElem(indexElem, mainTree.Child_has_sons.length)
-    arrHasSons[2] = mainTree.Child_has_sons[indexElem] // Установление третьего значения
+    arrHasSons[2] = window.mainTree.Child_has_sons[indexElem] // Установление третьего значения
   }
 
   // Draw //

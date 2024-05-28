@@ -3,19 +3,21 @@ import { RefreshAudios } from './RefreshAudios.js'
 import { UpdateAudios } from './UpdateAudios.js'
 
 export function PasteAudios() {
-  g_copyObject = JSON.parse(sessionStorage.getItem(CopyObjectSessionStorageKey))
+  window.g_copyObject = JSON.parse(
+    sessionStorage.getItem(window.CopyObjectSessionStorageKey)
+  )
 
-  if (g_copyObject == null || g_copyObject.Ids.length == 0) return
+  if (window.g_copyObject == null || window.g_copyObject.Ids.length == 0) return
 
   if (
-    g_copyObject.CopyObjectType == null ||
-    g_copyObject.CopyObjectType != CopyObjectTypes.Audio
+    window.g_copyObject.CopyObjectType == null ||
+    window.g_copyObject.CopyObjectType != window.CopyObjectTypes.Audio
   ) {
     alert('Ошибка при вставке из буфера (неверный тип объектов)')
     return
   }
 
-  CopyAudios(g_copyObject.Ids, g_currentDataBlock.Id).then(
+  CopyAudios(window.g_copyObject.Ids, window.g_currentDataBlock.Id).then(
     (data) => {
       RefreshAudios().then((val) => UpdateAudios())
     },

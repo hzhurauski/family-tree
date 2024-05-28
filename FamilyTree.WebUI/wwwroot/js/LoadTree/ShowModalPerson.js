@@ -33,13 +33,13 @@
 
   $('#editPersonModal').attr('data-id', currentId)
 
-  _deletePersonId = currentId
+  window._deletePersonId = currentId
 
   $.ajax({
     type: 'GET',
     dataType: 'text',
     data: {
-      treeId: _currentFamilyTree.Id,
+      treeId: window._currentFamilyTree.Id,
       targetPersonId: idPerson,
       personId: currentId,
     },
@@ -59,7 +59,7 @@
         Rect.top - modalRect.height + pageYOffset + 0 + 'px'
 
       modalPerson.style.visibility = 'visible'
-      visibleModal = false
+      window.visibleModal = false
     },
   })
   /* // Дополнение: старая версия верхнего $.ajax({...})

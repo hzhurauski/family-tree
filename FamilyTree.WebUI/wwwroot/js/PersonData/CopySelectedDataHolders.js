@@ -1,10 +1,10 @@
 import { GetSelectedDataHoldersIds } from './GetSelectedDataHoldersIds.js'
 
 export function CopySelectedDataHolders() {
-  g_copyObject.Ids = GetSelectedDataHoldersIds()
-  g_copyObject.CopyObjectType = CopyObjectTypes.DataHolder
+  window.g_copyObject.Ids = GetSelectedDataHoldersIds()
+  window.g_copyObject.CopyObjectType = window.CopyObjectTypes.DataHolder
   sessionStorage.setItem(
-    CopyObjectSessionStorageKey,
-    JSON.stringify(g_copyObject)
+    window.CopyObjectSessionStorageKey,
+    JSON.stringify(window.g_copyObject)
   )
 }

@@ -85,7 +85,7 @@ export async function UpdateMainPerson(personId) {
   let result = await $.ajax({
     method: 'PUT',
     data: {
-      Id: _currentFamilyTree.Id,
+      Id: window._currentFamilyTree.Id,
       PersonId: personId,
     },
     url: '/FamilyTree/UpdateMainPerson/' + window._currentFamilyTree.Id,
@@ -294,7 +294,7 @@ export function ChangeWifeTree(list) {
     dataType: 'json',
     contentType: 'application/json',
     data: {
-      id: _currentFamilyTree.Id,
+      id: window._currentFamilyTree.Id,
       personId: idMainPerson,
       wifeId: idNewWife,
     },

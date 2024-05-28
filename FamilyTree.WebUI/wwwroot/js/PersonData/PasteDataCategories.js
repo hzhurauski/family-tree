@@ -3,19 +3,21 @@ import { RefreshDataCategories } from './RefreshDataCategories.js'
 import { UpdateDataCategories } from './UpdateDataCategories.js'
 
 export function PasteDataCategories() {
-  g_copyObject = JSON.parse(sessionStorage.getItem(CopyObjectSessionStorageKey))
+  window.g_copyObject = JSON.parse(
+    sessionStorage.getItem(window.CopyObjectSessionStorageKey)
+  )
 
-  if (g_copyObject == null || g_copyObject.Ids.length == 0) return
+  if (window.g_copyObject == null || window.g_copyObject.Ids.length == 0) return
 
   if (
-    g_copyObject.CopyObjectType == null ||
-    g_copyObject.CopyObjectType != CopyObjectTypes.DataCategory
+    window.g_copyObject.CopyObjectType == null ||
+    window.g_copyObject.CopyObjectType != window.CopyObjectTypes.DataCategory
   ) {
     alert('Ошибка при вставке из буфера (неверный тип объектов)')
     return
   }
 
-  if (!CopyDataCategories(g_copyObject.Ids, g_currentPerson.Id)) {
+  if (!CopyDataCategories(window.g_copyObject.Ids, window.g_currentPerson.Id)) {
     alert('Ошибка при вставке из буфера')
     return
   }

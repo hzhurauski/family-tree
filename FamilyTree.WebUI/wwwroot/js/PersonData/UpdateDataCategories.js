@@ -6,7 +6,7 @@ import { UpdateDataCategoryOrder } from './UpdateDataCategoryOrder.js'
 export function UpdateDataCategories() {
   ClearDataCategories()
 
-  g_dataCategories.forEach((item) => {
+  window.g_dataCategories.forEach((item) => {
     AddItemToDataCategories(item)
   })
 
