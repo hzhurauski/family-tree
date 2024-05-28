@@ -11,24 +11,28 @@ let g_privacyNotificationsConnection = null
 
 //Notifications
 export function InitPrivacyNotifications() {
-  g_privacyNotificationsConnection = new signalR.HubConnectionBuilder()
+  g_privacyNotificationsConnection = new window.signalR.HubConnectionBuilder()
     .withUrl('/Privacy/Notifications')
     .build()
 
   g_privacyNotificationsConnection.on(
     'ReceivePrivacyChangedNotification',
     (privacyId) => {
-      if (g_currentAddButtonActionType == AddButtonActionTypes.AddDataHolder) {
-        let dataHolderIndex = g_currentDataBlock.DataHolders.findIndex(
+      if (
+        window.g_currentAddButtonActionType ==
+        window.AddButtonActionTypes.AddDataHolder
+      ) {
+        let dataHolderIndex = window.g_currentDataBlock.DataHolders.findIndex(
           (item) => item.Privacy.Id == privacyId
         )
 
         if (dataHolderIndex !== -1) {
-          let dataHolderId = g_currentDataBlock.DataHolders[dataHolderIndex].Id
+          let dataHolderId =
+            window.g_currentDataBlock.DataHolders[dataHolderIndex].Id
 
           GetDataHolder(dataHolderId).then(
             (result) => {
-              g_currentDataBlock.DataHolders[dataHolderIndex] = result
+              window.g_currentDataBlock.DataHolders[dataHolderIndex] = result
               UpdateDataHolders()
             },
             (r) => console.error(r)

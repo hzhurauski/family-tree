@@ -3,7 +3,7 @@ import { SetPrivacyElementPrivacyLevel } from './SetPrivacyElementPrivacyLevel.j
 
 export function UpdateVideoModalVideoPrivacy() {
   let videoModal = $('#video-modal')
-  let currentVideo = g_currentDataBlockVideos.find(
+  let currentVideo = window.g_currentDataBlockVideos.find(
     (item) => item.Id == GetVideoModalCurrentVideoId()
   )
 

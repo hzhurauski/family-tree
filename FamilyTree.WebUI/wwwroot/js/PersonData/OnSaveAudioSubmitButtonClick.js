@@ -6,7 +6,7 @@ export function OnSaveAudioSubmitButtonClick() {
   let audioModal = $('#audio-modal')
 
   let audio = {
-    Id: g_openedAudioId,
+    Id: window.g_openedAudioId,
     Title: audioModal.find('#current-audio-title').val(),
     Description: audioModal.find('#current-audio-desc').val(),
   }

@@ -85,7 +85,7 @@ export async function UpdateMainPerson(personId) {
   let result = await $.ajax({
     method: 'PUT',
     data: {
-      Id: _currentFamilyTree.Id,
+      Id: window._currentFamilyTree.Id,
       PersonId: personId,
     },
     url: '/FamilyTree/UpdateMainPerson/' + window._currentFamilyTree.Id,
@@ -294,13 +294,13 @@ export function ChangeWifeTree(list) {
     dataType: 'json',
     contentType: 'application/json',
     data: {
-      id: _currentFamilyTree.Id,
+      id: window._currentFamilyTree.Id,
       personId: idMainPerson,
       wifeId: idNewWife,
     },
     url: '/FamilyTree/Get',
     success: function (result) {
-      mainTree = result
+      window.mainTree = result
       FillTree(result, true)
       if (window.bloodFlag) {
         DrawBlood(idNewWife)

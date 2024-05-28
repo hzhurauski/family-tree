@@ -3,7 +3,7 @@ import { SetPrivacyElementPrivacyLevel } from './SetPrivacyElementPrivacyLevel.j
 
 export function UpdateImageSliderImagePrivacy() {
   let sliderModal = $('#image-carousel-modal')
-  let image = g_currentDataBlockImages.find(
+  let image = window.g_currentDataBlockImages.find(
     (item) => item.Id == GetImageSliderCurrentImageId()
   )
 

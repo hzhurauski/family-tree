@@ -24,18 +24,20 @@ export function OnDataCategoryClick(event) {
   if ($(event.target).is('input')) return
 
   let dataCategoryId = $(event.currentTarget).attr('data-id')
-  g_currentDataCategory = GetDataCategory(dataCategoryId)
+  window.g_currentDataCategory = GetDataCategory(dataCategoryId)
 
-  if (g_currentDataCategory == null) return
+  if (window.g_currentDataCategory == null) return
 
   if (
-    g_currentDataCategory.DataCategoryType == DataCategoryTypes.InfoBlock ||
-    g_currentDataCategory.DataCategoryType == DataCategoryTypes.PersonInfo
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.InfoBlock ||
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.PersonInfo
   ) {
     ShowDataBlocks(false)
     ShowDataBlockContent()
 
-    g_currentDataBlock = g_currentDataCategory.DataBlocks[0]
+    window.g_currentDataBlock = window.g_currentDataCategory.DataBlocks[0]
 
     UpdateDataHolders()
 
@@ -52,19 +54,23 @@ export function OnDataCategoryClick(event) {
 
     OpenDefaultDataBlockTab()
   } else if (
-    g_currentDataCategory.DataCategoryType == DataCategoryTypes.ListBlock ||
-    g_currentDataCategory.DataCategoryType == DataCategoryTypes.Education ||
-    g_currentDataCategory.DataCategoryType ==
-      DataCategoryTypes.ImportantEvents ||
-    g_currentDataCategory.DataCategoryType ==
-      DataCategoryTypes.LaborActivities ||
-    g_currentDataCategory.DataCategoryType == DataCategoryTypes.Residencies
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.ListBlock ||
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.Education ||
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.ImportantEvents ||
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.LaborActivities ||
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.Residencies
   ) {
     ShowDataBlocks()
     ShowDataBlockContent(false)
     ShowSaveButton(false)
 
-    g_currentAddButtonActionType = AddButtonActionTypes.AddDataBlock
+    window.g_currentAddButtonActionType =
+      window.AddButtonActionTypes.AddDataBlock
 
     UpdateDataBlocks()
   } else {

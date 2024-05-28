@@ -6,31 +6,31 @@ export function ShowDataBlockContentTab(dataBlockContentTab) {
   dataBlockContentTabsContainersElement.children().css('display', 'none')
 
   switch (dataBlockContentTab) {
-    case DataBlockContentTabs.Data: {
+    case window.DataBlockContentTabs.Data: {
       dataBlockContentTabsContainersElement
         .find('.data-holders')
         .css('display', 'block')
       break
     }
-    case DataBlockContentTabs.Images: {
+    case window.DataBlockContentTabs.Images: {
       dataBlockContentTabsContainersElement
         .find('.images')
         .css('display', 'grid')
       break
     }
-    case DataBlockContentTabs.Videos: {
+    case window.DataBlockContentTabs.Videos: {
       dataBlockContentTabsContainersElement
         .find('.videos')
         .css('display', 'block')
       break
     }
-    case DataBlockContentTabs.Audios: {
+    case window.DataBlockContentTabs.Audios: {
       dataBlockContentTabsContainersElement
         .find('.audios')
         .css('display', 'block')
       break
     }
-    case DataBlockContentTabs.Participants: {
+    case window.DataBlockContentTabs.Participants: {
       dataBlockContentTabsContainersElement
         .find('.participants')
         .css('display', 'block')

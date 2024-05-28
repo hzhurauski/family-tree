@@ -7,25 +7,25 @@ export function SetPrivacyElementPrivacyLevel(element, privacyLevel) {
   element.classList.remove('privacy-top-secret')
 
   switch (privacyLevel) {
-    case PrivacyLevels.Confidential: {
+    case window.PrivacyLevels.Confidential: {
       title = 'Личный'
       element.classList.add('privacy-confidential')
       break
     }
 
-    case PrivacyLevels.InternalUse: {
+    case window.PrivacyLevels.InternalUse: {
       title = 'Внутренний'
       element.classList.add('privacy-internal-use')
       break
     }
 
-    case PrivacyLevels.PublicUse: {
+    case window.PrivacyLevels.PublicUse: {
       title = 'Публичный'
       element.classList.add('privacy-public-use')
       break
     }
 
-    case PrivacyLevels.TopSecret: {
+    case window.PrivacyLevels.TopSecret: {
       title = 'Строго секретно'
       element.classList.add('privacy-top-secret')
       break

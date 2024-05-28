@@ -1,5 +1,7 @@
 import { GetImages } from './GetImages.js'
 
 export async function RefreshImages() {
-  g_currentDataBlockImages = await GetImages(g_currentDataBlock.Id)
+  window.g_currentDataBlockImages = await GetImages(
+    window.g_currentDataBlock.Id
+  )
 }

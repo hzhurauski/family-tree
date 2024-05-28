@@ -1,6 +1,7 @@
 import { AddImageToSlider } from './AddImageToSlider.js'
 import { ClearSliderImages } from './ClearSliderImages.js'
 import { UpdateSliderImageDetails } from './UpdateSliderImageDetails.js'
+import { OnSliderArrowClick } from './OnSliderArrowClick.js'
 
 export function UpdateImageSlider(imageId) {
   let slider = $('#image-carousel-modal').find('.slider')
@@ -10,19 +11,19 @@ export function UpdateImageSlider(imageId) {
     ClearSliderImages()
   }
 
-  if (g_currentDataBlockImages == null) return
+  if (window.g_currentDataBlockImages == null) return
 
-  g_currentDataBlockImages.forEach((item) => {
+  window.g_currentDataBlockImages.forEach((item) => {
     AddImageToSlider(item)
   })
 
   let initialSlide = 0
 
-  let selectedImage = g_currentDataBlockImages.find(
+  let selectedImage = window.g_currentDataBlockImages.find(
     (item) => item.Id == imageId
   )
 
-  initialSlide = g_currentDataBlockImages.indexOf(selectedImage)
+  initialSlide = window.g_currentDataBlockImages.indexOf(selectedImage)
 
   slider.slick({
     slidesToScroll: 1,

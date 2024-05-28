@@ -3,18 +3,18 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 
 #wrapper {
-    height: 100%;
-    min-width: 1300px;
-    /* max-width: 2048px; */
-    min-height: 1080px;
-    margin: 0 auto;
-    font: 20px Segoe UI Semilight sans-serif;
+  height: 100%;
+  min-width: 1300px;
+  /* max-width: 2048px; */
+  min-height: 1080px;
+  margin: 0 auto;
+  font: 20px Segoe UI Semilight sans-serif;
 }
 
 /*Header*/
@@ -136,12 +136,12 @@ body {
 
 /*Footer*/
 #footer {
-    background-repeat: no-repeat;
-    background-image: url(../images/FooterBackground.png);
-    background-size: cover;
-    min-width: 1300px;
-    /*height: 210px;*/
-    margin: 0 auto;
+  background-repeat: no-repeat;
+  background-image: url(../images/FooterBackground.png);
+  background-size: cover;
+  min-width: 1300px;
+  /*height: 210px;*/
+  margin: 0 auto;
 }
 
 #footerMenu {
@@ -188,37 +188,37 @@ body {
 }
 
 @media (max-width: 1200px) {
-    #menu {
-        width: 550px;    
-        height: 112px;
-        margin-left: 50px;
-        float: left;
-    }
-    
-    .loginButton{
-        width: 140px;
-    }
+  #menu {
+    width: 550px;
+    height: 112px;
+    margin-left: 50px;
+    float: left;
+  }
 
-    #menu ul li a div{
-        font-size: 18px;
-        width: 160px;
-    }
+  .loginButton {
+    width: 140px;
+  }
+
+  #menu ul li a div {
+    font-size: 18px;
+    width: 160px;
+  }
 }
 
 @media (max-width: 767px) {
-    #menu {
-        width: 470px;    
-        height: 112px;
-        margin-left: 100px;
-        float: left;
-    }
-    
-    .loginButton{
-        width: 140px;
-    }
+  #menu {
+    width: 470px;
+    height: 112px;
+    margin-left: 100px;
+    float: left;
+  }
 
-    #menu ul li a div{
-        font-size: 18px;
-        width: 131px;
-    }
+  .loginButton {
+    width: 140px;
+  }
+
+  #menu ul li a div {
+    font-size: 18px;
+    width: 131px;
+  }
 }

@@ -1,5 +1,5 @@
 import { GetSelectedDataBlocksIds } from './GetSelectedDataBlocksIds.js'
 
 export function OnPasteParticipantButton() {
-  g_currentDataBlockIdsToAssignParticipant = GetSelectedDataBlocksIds()
+  window.g_currentDataBlockIdsToAssignParticipant = GetSelectedDataBlocksIds()
 }
