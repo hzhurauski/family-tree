@@ -18,13 +18,17 @@ export function InitPrivacyNotifications() {
   g_privacyNotificationsConnection.on(
     'ReceivePrivacyChangedNotification',
     (privacyId) => {
-      if (window.g_currentAddButtonActionType == window.AddButtonActionTypes.AddDataHolder) {
+      if (
+        window.g_currentAddButtonActionType ==
+        window.AddButtonActionTypes.AddDataHolder
+      ) {
         let dataHolderIndex = window.g_currentDataBlock.DataHolders.findIndex(
           (item) => item.Privacy.Id == privacyId
         )
 
         if (dataHolderIndex !== -1) {
-          let dataHolderId = window.g_currentDataBlock.DataHolders[dataHolderIndex].Id
+          let dataHolderId =
+            window.g_currentDataBlock.DataHolders[dataHolderIndex].Id
 
           GetDataHolder(dataHolderId).then(
             (result) => {

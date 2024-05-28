@@ -9,7 +9,7 @@ export function OnSaveButtonClick() {
     0
   )
     return
-    window.g_isSaving = true
+  window.g_isSaving = true
 
   IsViewDataBlockAsParticipant() ? SaveCopiedDataAsParticipant() : SaveData()
 }

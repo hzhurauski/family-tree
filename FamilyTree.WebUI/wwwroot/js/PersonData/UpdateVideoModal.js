@@ -5,7 +5,9 @@ export function UpdateVideoModal(videoId) {
   let videoModal = $('#video-modal')
   let currentVideoElement = videoModal.find('#current-video')[0]
 
-  let currentVideo = window.g_currentDataBlockVideos.find((item) => item.Id == videoId)
+  let currentVideo = window.g_currentDataBlockVideos.find(
+    (item) => item.Id == videoId
+  )
 
   videoModal.find('#current-video-title').val(currentVideo.Title)
   videoModal.find('#current-video-desc').val(currentVideo.Description)

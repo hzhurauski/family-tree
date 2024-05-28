@@ -6,6 +6,6 @@ export async function UpdateDataHolderIds(dataHolders) {
   currentDataHolders.each((i, el) => {
     window.updatedId = dataHolders.find((x) => x.Title === el.innerText).Id
 
-    el.setAttribute('data-id', updatedId)
+    el.setAttribute('data-id', window.updatedId)
   })
 }

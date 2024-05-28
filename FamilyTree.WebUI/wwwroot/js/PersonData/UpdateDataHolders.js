@@ -5,7 +5,7 @@ import { UpdateDataHolderOrder } from './UpdateDataHolderOrder.js'
 export function UpdateDataHolders() {
   ClearDataHolders()
 
-  if (g_currentDataBlock == null) return
+  if (window.g_currentDataBlock == null) return
 
   window.g_currentDataBlock.DataHolders.forEach((item) => {
     AddItemToDataHolders(item)

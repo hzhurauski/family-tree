@@ -65,7 +65,7 @@ export function InitFamilyTreeEvents() {
     )[0].getAttribute('data-value')
     sessionStorage.setItem(
       'StartFamilyTree',
-      JSON.stringify(_currentFamilyTree)
+      JSON.stringify(window._currentFamilyTree)
     )
 
     document.location.reload()
@@ -200,7 +200,7 @@ export function InitFamilyTreeEvents() {
     )[0].getAttribute('data-value')
     sessionStorage.setItem(
       'StartFamilyTree',
-      JSON.stringify(_currentFamilyTree)
+      JSON.stringify(window._currentFamilyTree)
     )
 
     document.location.reload()

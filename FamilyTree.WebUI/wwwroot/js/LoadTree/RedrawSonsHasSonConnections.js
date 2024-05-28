@@ -36,13 +36,16 @@ export function RedrawSonsHasSonConnections(
   }
 
   var arrHasSons = Array(VisibleCount) // Массив, есть ли у детей ребенок
-  arrHasSons[0] = mainTree.Child_has_sons[indexElem] // Установление первого значения
+  arrHasSons[0] = window.mainTree.Child_has_sons[indexElem] // Установление первого значения
 
-  indexElem = GetNextIndexElem(indexElem, mainTree.Child_has_sons.length)
-  arrHasSons[1] = mainTree.Child_has_sons[indexElem] // Установление второго значения
+  indexElem = GetNextIndexElem(indexElem, window.mainTree.Child_has_sons.length)
+  arrHasSons[1] = window.mainTree.Child_has_sons[indexElem] // Установление второго значения
 
   if (VisibleCount == 3) {
-    indexElem = GetNextIndexElem(indexElem, mainTree.Child_has_sons.length)
+    indexElem = GetNextIndexElem(
+      indexElem,
+      window.mainTree.Child_has_sons.length
+    )
     arrHasSons[2] = window.mainTree.Child_has_sons[indexElem] // Установление третьего значения
   }
 
@@ -51,7 +54,7 @@ export function RedrawSonsHasSonConnections(
     if (arrHasSons[k]) {
       if (VisibleCount == 3) {
         drawLine(
-          context,
+          window.context,
           355 + k * 110,
           0,
           355 + k * 110,
@@ -63,7 +66,7 @@ export function RedrawSonsHasSonConnections(
         )
       } else {
         drawLine(
-          context,
+          window.context,
           460 + k * 230,
           0,
           460 + k * 230,

@@ -300,7 +300,7 @@ export function ChangeWifeTree(list) {
     },
     url: '/FamilyTree/Get',
     success: function (result) {
-      mainTree = result
+      window.mainTree = result
       FillTree(result, true)
       if (window.bloodFlag) {
         DrawBlood(idNewWife)

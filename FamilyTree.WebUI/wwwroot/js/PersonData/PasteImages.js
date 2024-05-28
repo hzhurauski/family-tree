@@ -3,7 +3,9 @@ import { RefreshImages } from './RefreshImages.js'
 import { UpdateImages } from './UpdateImages.js'
 
 export function PasteImages() {
-  window.g_copyObject = JSON.parse(sessionStorage.getItem(window.CopyObjectSessionStorageKey))
+  window.g_copyObject = JSON.parse(
+    sessionStorage.getItem(window.CopyObjectSessionStorageKey)
+  )
 
   if (window.g_copyObject == null || window.g_copyObject.Ids.length == 0) return
 

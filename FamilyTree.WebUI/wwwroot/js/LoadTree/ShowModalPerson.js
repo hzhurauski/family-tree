@@ -18,18 +18,20 @@
   var currentId = event.currentTarget.getAttribute('data-value')
   var idPerson = 0
 
+  var modalPerson = $('#modalBlockPerson')[0]
 
-    var modalPerson = $("#modalBlockPerson")[0];
+  if (modalPerson.style.visibility === 'visible') {
+    modalPerson.style.visibility = 'hidden'
+    return
+  }
 
-    if (modalPerson.style.visibility === "visible") {
-        modalPerson.style.visibility = "hidden";
-        return;
-    }
-
-    if (event.currentTarget.firstElementChild.classList.contains("hiddenPersonContent")) {
-        return;
-    }
-
+  if (
+    event.currentTarget.firstElementChild.classList.contains(
+      'hiddenPersonContent'
+    )
+  ) {
+    return
+  }
 
   $('#editPersonModal').attr('data-id', currentId)
 

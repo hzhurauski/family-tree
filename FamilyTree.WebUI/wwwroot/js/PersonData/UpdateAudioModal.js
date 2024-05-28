@@ -5,7 +5,9 @@ export function UpdateAudioModal(audioId) {
   let audioModal = $('#audio-modal')
   let currentAudioElement = audioModal.find('#current-audio')[0]
 
-  let currentAudio = window.g_currentDataBlockAudios.find((item) => item.Id == audioId)
+  let currentAudio = window.g_currentDataBlockAudios.find(
+    (item) => item.Id == audioId
+  )
 
   audioModal.find('#current-audio-title').val(currentAudio.Title)
   audioModal.find('#current-audio-desc').val(currentAudio.Description)

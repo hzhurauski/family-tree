@@ -1,7 +1,6 @@
 ﻿import { InitPrivacyModalButonEvents } from './InitPrivacyModalButonEvents.js'
 import { InitPrivacyNotifications } from './InitPrivacyNotifications.js'
-import $ from 'jquery';
-
+import $ from 'jquery'
 
 $(window).load(() => {
   InitPrivacyModalButonEvents()

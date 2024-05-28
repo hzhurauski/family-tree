@@ -29,8 +29,10 @@ export function OnDataCategoryClick(event) {
   if (window.g_currentDataCategory == null) return
 
   if (
-    window.g_currentDataCategory.DataCategoryType == window.DataCategoryTypes.InfoBlock ||
-    window.g_currentDataCategory.DataCategoryType == window.DataCategoryTypes.PersonInfo
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.InfoBlock ||
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.PersonInfo
   ) {
     ShowDataBlocks(false)
     ShowDataBlockContent()
@@ -52,19 +54,23 @@ export function OnDataCategoryClick(event) {
 
     OpenDefaultDataBlockTab()
   } else if (
-    window.g_currentDataCategory.DataCategoryType == window.DataCategoryTypes.ListBlock ||
-    window.g_currentDataCategory.DataCategoryType == window.DataCategoryTypes.Education ||
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.ListBlock ||
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.Education ||
     window.g_currentDataCategory.DataCategoryType ==
       window.DataCategoryTypes.ImportantEvents ||
     window.g_currentDataCategory.DataCategoryType ==
       window.DataCategoryTypes.LaborActivities ||
-    window.g_currentDataCategory.DataCategoryType == window.DataCategoryTypes.Residencies
+    window.g_currentDataCategory.DataCategoryType ==
+      window.DataCategoryTypes.Residencies
   ) {
     ShowDataBlocks()
     ShowDataBlockContent(false)
     ShowSaveButton(false)
 
-    window.g_currentAddButtonActionType = window.AddButtonActionTypes.AddDataBlock
+    window.g_currentAddButtonActionType =
+      window.AddButtonActionTypes.AddDataBlock
 
     UpdateDataBlocks()
   } else {

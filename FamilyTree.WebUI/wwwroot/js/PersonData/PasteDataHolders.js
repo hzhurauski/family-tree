@@ -3,7 +3,9 @@ import { RefreshDataHolders } from './RefreshDataHolders.js'
 import { UpdateDataHolders } from './UpdateDataHolders.js'
 
 export function PasteDataHolders() {
-  window.g_copyObject = JSON.parse(sessionStorage.getItem(window.CopyObjectSessionStorageKey))
+  window.g_copyObject = JSON.parse(
+    sessionStorage.getItem(window.CopyObjectSessionStorageKey)
+  )
 
   if (window.g_copyObject == null || window.g_copyObject.Ids.length == 0) return
 

@@ -23,7 +23,8 @@ export function RefreshDataBlock(dataBlockId) {
   )
 
   window.g_currentDataBlock = dataBlock
-  window.g_currentAddButtonActionType = window.AddButtonActionTypes.AddDataHolder
+  window.g_currentAddButtonActionType =
+    window.AddButtonActionTypes.AddDataHolder
 
   UpdateDataHolders()
 

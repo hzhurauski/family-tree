@@ -28,82 +28,80 @@
   font-weight: 100;
 }
 
-#Submit {    
-   margin-left: 130px;   
+#Submit {
+  margin-left: 130px;
 }
 
 @media (max-width: 1200px) {
-    #menu {
-        width: 550px;    
-        height: 112px;
-        margin-left: 100px;
-    }
+  #menu {
+    width: 550px;
+    height: 112px;
+    margin-left: 100px;
+  }
 }
 
 @media (max-width: 992px) {
-    #menu {
-        width: 650px;    
-        height: 112px;
-        margin-left: 20px;
-        float: left;
-    }
-    #menu ul li a div{
-        width: 145px;
-    }
+  #menu {
+    width: 650px;
+    height: 112px;
+    margin-left: 20px;
+    float: left;
+  }
+  #menu ul li a div {
+    width: 145px;
+  }
 
-    .loginButton{
-        width: 140px;
-    }
+  .loginButton {
+    width: 140px;
+  }
 }
 
 @media (max-width: 748px) {
-    #menu ul li a div {
-        width: 118px;
-    }
+  #menu ul li a div {
+    width: 118px;
+  }
 
-    #contentText {
-        font-size: 54px;
-        margin: 60px 0 60px 0;
-    }
+  #contentText {
+    font-size: 54px;
+    margin: 60px 0 60px 0;
+  }
 }
 
 @media (max-width: 658px) {
-    #logo img {
-        margin-top: 20px;
-        height: 80px;
-    }
+  #logo img {
+    margin-top: 20px;
+    height: 80px;
+  }
 
-    #menu {
-        height: 100px;
-        margin-left: 10px;
+  #menu {
+    height: 100px;
+    margin-left: 10px;
+  }
 
-    }
+  #menu ul li a div {
+    margin-left: 0px;
+  }
 
-    #menu ul li a div{
-        margin-left: 0px;
-    }
-    
-    .loginButton {
-        font-size: 16px;
-        width: 126px;
-        height: 42px;
-    }
+  .loginButton {
+    font-size: 16px;
+    width: 126px;
+    height: 42px;
+  }
 }
 
 @media (max-width: 647px) {
-    #Submit {
-        margin-left: 74px;
-    }
+  #Submit {
+    margin-left: 74px;
+  }
 }
 
 @media (max-width: 595px) {
-    #menu ul li a div {
-        width: 98px;
-    }
+  #menu ul li a div {
+    width: 98px;
+  }
 
-    #logo img {
-        margin-top: 20px;
-        height: 60px;
-    }
-
+  #logo img {
+    margin-top: 20px;
+    height: 60px;
+  }
 }

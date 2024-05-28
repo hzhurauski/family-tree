@@ -9,10 +9,13 @@ export async function SaveData() {
 
   await SaveDataHolders().then(
     async (data) => {
-      window.g_currentDataCategory = GetDataCategory(window.g_currentDataCategory.Id)
+      window.g_currentDataCategory = GetDataCategory(
+        window.g_currentDataCategory.Id
+      )
 
       if (
-        window.g_currentDataCategory.DataCategoryType == window.DataCategoryTypes.PersonInfo
+        window.g_currentDataCategory.DataCategoryType ==
+        window.DataCategoryTypes.PersonInfo
       )
         ReloadTree($('#mainPerson')[0].getAttribute('data-value'))
 

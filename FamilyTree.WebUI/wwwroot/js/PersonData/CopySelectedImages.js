@@ -4,7 +4,7 @@ export function CopySelectedImages() {
   window.g_copyObject.Ids = GetSelectedImagesIds()
   window.g_copyObject.CopyObjectType = window.CopyObjectTypes.Image
   sessionStorage.setItem(
-    CopyObjectSessionStorageKey,
+    window.CopyObjectSessionStorageKey,
     JSON.stringify(window.g_copyObject)
   )
 }

@@ -10,7 +10,7 @@ export function UpdateDataCategories() {
     AddItemToDataCategories(item)
   })
 
-  new Sortable($('.person-data-block__data-categories')[0], {
+  new window.Sortable($('.person-data-block__data-categories')[0], {
     handle: '.data-categories__item',
     animation: 500,
     onEnd: (event) => {
