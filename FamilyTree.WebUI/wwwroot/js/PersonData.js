@@ -2757,6 +2757,7 @@ function CreateDateDataHolderElement(dataHolder) {
     const dateFormats = {
       iso_int: 'YYYY-MM-DD',
       short_date: 'DD/MM/YYYY',
+      short_date_dash: 'DD-MM-YYYY',
       iso_date_time: 'YYYY-MM-DDTHH:MM:SS',
       iso_date_time_utc: 'YYYY-MM-DDTHH:MM:SSZ',
     }
