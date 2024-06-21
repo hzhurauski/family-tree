@@ -80,15 +80,15 @@ export function CreateGenderDataHolderElement(dataHolder) {
   dataHolderElement.appendChild(dataHolderPrivacyElement)
 
   switch (dataHolder.Data) {
-    case GenderTypes.Male: {
+    case window.GenderTypes.Male: {
       labelsElements[0].classList.add('active')
       break
     }
-    case GenderTypes.Female: {
+    case window.GenderTypes.Female: {
       labelsElements[1].classList.add('active')
       break
     }
-    case GenderTypes.Unknown: {
+    case window.GenderTypes.Unknown: {
       labelsElements[2].classList.add('active')
       break
     }

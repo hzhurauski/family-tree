@@ -9,43 +9,43 @@ export function AddItemToDataHolders(dataHolder) {
   let dataHolderElement = null
 
   switch (dataHolder.DataHolderType) {
-    case DataHolderTypes.Text: {
+    case window.DataHolderTypes.Text: {
       dataHolderElement = CreateTextDataHolderElement(dataHolder)
       break
     }
-    case DataHolderTypes.TextArea: {
+    case window.DataHolderTypes.TextArea: {
       dataHolderElement = CreateTextAreaDataHolderElement(dataHolder)
       break
     }
-    case DataHolderTypes.Date: {
+    case window.DataHolderTypes.Date: {
       dataHolderElement = CreateDateDataHolderElement(dataHolder)
       break
     }
-    case DataHolderTypes.DateTime: {
+    case window.DataHolderTypes.DateTime: {
       dataHolderElement = CreateDateTimeDataHolderElement(dataHolder)
       break
     }
-    case DataHolderTypes.Time: {
+    case window.DataHolderTypes.Time: {
       dataHolderElement = CreateTimeDataHolderElement(dataHolder)
       break
     }
-    case DataHolderTypes.Name: {
+    case window.DataHolderTypes.Name: {
       dataHolderElement = CreateTextDataHolderElement(dataHolder)
       break
     }
-    case DataHolderTypes.Surname: {
+    case window.DataHolderTypes.Surname: {
       dataHolderElement = CreateTextDataHolderElement(dataHolder)
       break
     }
-    case DataHolderTypes.MiddleName: {
+    case window.DataHolderTypes.MiddleName: {
       dataHolderElement = CreateTextDataHolderElement(dataHolder)
       break
     }
-    case DataHolderTypes.Birthday: {
+    case window.DataHolderTypes.Birthday: {
       dataHolderElement = CreateDateDataHolderElement(dataHolder)
       break
     }
-    case DataHolderTypes.Gender: {
+    case window.DataHolderTypes.Gender: {
       dataHolderElement = CreateGenderDataHolderElement(dataHolder)
       break
     }

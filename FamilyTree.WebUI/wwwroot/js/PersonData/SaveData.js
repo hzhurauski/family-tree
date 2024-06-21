@@ -9,10 +9,13 @@ export async function SaveData() {
 
   await SaveDataHolders().then(
     async (data) => {
-      g_currentDataCategory = GetDataCategory(g_currentDataCategory.Id)
+      window.g_currentDataCategory = GetDataCategory(
+        window.g_currentDataCategory.Id
+      )
 
       if (
-        g_currentDataCategory.DataCategoryType == DataCategoryTypes.PersonInfo
+        window.g_currentDataCategory.DataCategoryType ==
+        window.DataCategoryTypes.PersonInfo
       )
         ReloadTree($('#mainPerson')[0].getAttribute('data-value'))
 
@@ -31,5 +34,5 @@ export async function SaveData() {
   saveButton.removeClass('btn-success')
   saveButton.addClass('btn-default')
 
-  g_isSaving = false
+  window.g_isSaving = false
 }

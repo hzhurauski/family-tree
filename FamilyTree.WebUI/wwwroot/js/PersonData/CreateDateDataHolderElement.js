@@ -12,7 +12,10 @@ export function CreateDateDataHolderElement(dataHolder) {
   inputElement.type = 'date'
 
   inputElement.value = dataHolder.Data
-    ? moment(dataHolder.Data, getFormat(dataHolder.Data)).format().split('T')[0]
+    ? window
+        .moment(dataHolder.Data, getFormat(dataHolder.Data))
+        .format()
+        .split('T')[0]
     : 0
 
   dataHolderDataElement.appendChild(inputElement)
@@ -32,7 +35,7 @@ export function CreateDateDataHolderElement(dataHolder) {
       iso_date_time_utc: 'YYYY-MM-DDTHH:MM:SSZ',
     }
     for (var prop in dateFormats) {
-      if (moment(d, dateFormats[prop], true).isValid()) {
+      if (window.moment(d, dateFormats[prop], true).isValid()) {
         return dateFormats[prop]
       }
     }

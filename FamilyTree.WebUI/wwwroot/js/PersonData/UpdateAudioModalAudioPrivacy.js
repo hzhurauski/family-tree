@@ -2,8 +2,8 @@ import { SetPrivacyElementPrivacyLevel } from './SetPrivacyElementPrivacyLevel.j
 
 export function UpdateAudioModalAudioPrivacy() {
   let audioModal = $('#audio-modal')
-  let currentAudio = g_currentDataBlockAudios.find(
-    (item) => item.Id == g_openedAudioId
+  let currentAudio = window.g_currentDataBlockAudios.find(
+    (item) => item.Id == window.g_openedAudioId
   )
 
   if (currentAudio == null) return
