@@ -7,11 +7,11 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "FamilyTree", new { area = "" })">
-        <button type="submit" class="col-md-2 loginButton">Выход</button>
+        <button type="submit" class="loginButton">Выход</button>
     </form>
 }
 else
 {
-    <a class="col-md-2 loginButton" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+    <a class="loginButton" asp-area="Identity" asp-page="/Account/Login">Вход</a>
 }
 
