@@ -740,7 +740,7 @@ function FillParticipant(person, data) {
     person.children[1].src = '/Media/Image/GetFile/' + data.AvatarImageId
     person.children[1].decoding = 'async'
   } else {
-    person.children[1].src = '/images/person.png'
+    person.children[1].src = '/assets/images/person.png'
     person.children[1].decoding = 'async'
   }
 }
@@ -2535,7 +2535,7 @@ function AddItemToAudios(audio) {
   playButtonElement.classList.add('btn-default')
 
   let playButtonImgElement = document.createElement('img')
-  playButtonImgElement.src = '/images/play.svg'
+  playButtonImgElement.src = '/assets/images/play.svg'
 
   playButtonElement.appendChild(playButtonImgElement)
 

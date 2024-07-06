@@ -1101,7 +1101,7 @@ function FillPerson(person, data) {
         person.firstElementChild.firstElementChild.src = "/Media/Image/GetFile/" + data.AvatarImageId;
         person.firstElementChild.firstElementChild.decoding = "async";
     } else {
-        person.firstElementChild.firstElementChild.src = "/images/person.png";
+        person.firstElementChild.firstElementChild.src = "/assets/images/person.png";
         person.firstElementChild.firstElementChild.decoding = "async";
     }
 }
@@ -1168,7 +1168,7 @@ function GetPerson(person, LittleTree) {
     if (person.AvatarImage != null) {
         newImg.src = "data:image/" + person.AvatarImage.ImageFormat + ";base64," + person.AvatarImage.ImageData;
     } else {
-        newImg.src = "/images/person.png";
+        newImg.src = "/assets/images/person.png";
     }
 
     var newImgBlock = document.createElement('div');

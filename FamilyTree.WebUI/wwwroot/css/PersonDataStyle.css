@@ -78,7 +78,7 @@
 }
 
 .data-block .data-block__header {
-  background-image: url('../images/TopBlockPreview.png');
+  background-image: url('../assets/images/TopBlockPreview.png');
   background-repeat: no-repeat;
   height: 107px;
   margin-bottom: -50px;
@@ -87,7 +87,7 @@
 }
 
 .data-block .data-block__footer {
-  background-image: url('../images/BottomBlockPreview.png');
+  background-image: url('../assets/images/BottomBlockPreview.png');
   background-repeat: no-repeat;
   height: 131px;
   margin-top: -80px;
@@ -968,12 +968,12 @@ input:focus {
 /* Стрелка влево */
 .slick-arrow.slick-prev {
   left: 0;
-  background: url(../images/back.png) 0 0 / 100% no-repeat;
+  background: url(../assets/images/back.png) 0 0 / 100% no-repeat;
 }
 /* Стрелка вправо */
 .slick-arrow.slick-next {
   right: 0;
-  background: url(../images/forward.png) 0 0 / 100% no-repeat;
+  background: url(../assets/images/forward.png) 0 0 / 100% no-repeat;
 }
 
 /* Videos modal*/

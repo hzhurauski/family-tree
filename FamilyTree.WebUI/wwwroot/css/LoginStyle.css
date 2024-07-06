@@ -10,7 +10,7 @@
     width: 100%;
     margin: 0 auto;
     background-repeat: no-repeat;
-    background-image: url(../images/BackgroundSign.png);
+    background-image: url(../assets/images/BackgroundSign.png);
     background-size: cover;
 }
 
@@ -232,7 +232,7 @@
 
 #footer {
     background-repeat: no-repeat;
-    background-image: url(../images/FooterBackground.png);
+    background-image: url(../assets/images/FooterBackground.png);
     background-size: cover;
     /*height: 210px;*/
     width: 100%;
