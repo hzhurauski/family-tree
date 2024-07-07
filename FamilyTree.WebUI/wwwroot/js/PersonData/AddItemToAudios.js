@@ -22,7 +22,7 @@ export function AddItemToAudios(audio) {
   playButtonElement.classList.add('btn-default')
 
   let playButtonImgElement = document.createElement('img')
-  playButtonImgElement.src = '/images/play.svg'
+  playButtonImgElement.src = '/assets/images/play.svg'
 
   playButtonElement.appendChild(playButtonImgElement)
 

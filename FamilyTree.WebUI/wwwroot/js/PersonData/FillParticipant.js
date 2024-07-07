@@ -11,7 +11,7 @@ export function FillParticipant(person, data) {
     person.children[1].src = '/Media/Image/GetFile/' + data.AvatarImageId
     person.children[1].decoding = 'async'
   } else {
-    person.children[1].src = '/images/person.png'
+    person.children[1].src = '/assets/images/person.png'
     person.children[1].decoding = 'async'
   }
 }

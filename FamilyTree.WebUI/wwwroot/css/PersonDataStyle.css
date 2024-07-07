@@ -89,7 +89,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .data-block .data-block__header {
-  background-image: url('../images/TopBlockPreview.png');
+  background-image: url('../assets/images/TopBlockPreview.png');
   background-repeat: no-repeat;
   height: 107px;
   margin-bottom: -50px;
@@ -98,7 +98,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .data-block .data-block__footer {
-  background-image: url('../images/BottomBlockPreview.png');
+  background-image: url('../assets/images/BottomBlockPreview.png');
   background-repeat: no-repeat;
   height: 131px;
   margin-top: -80px;
@@ -477,48 +477,49 @@ input:focus {
 }
 
 .button-up .button-up__img {
-  background-image: url('../lib/bootstrap/icons/arrow-up.svg');
+  background-image: url('../assets/icons/arrow-up.svg');
 }
 
 .button-down .button-down__img {
-  background-image: url('../lib/bootstrap/icons/arrow-down.svg');
+  background-image: url('../assets/icons/arrow-down.svg');
 }
 
 .button-copy .button-copy__img {
-  background-image: url('../lib/bootstrap/icons/clipboard.svg');
+  background-image: url('../assets/icons/clipboard.svg');
 }
 
 .button-delete .button-delete__img {
-  background-image: url('../lib/bootstrap/icons/trash.svg');
+  background-image: url('../assets/icons/trash.svg');
 }
 
 .button-edit .button-edit__img {
-  background-image: url('../lib/bootstrap/icons/pencil.svg');
+  background-image: url('../assets/icons/pencil.svg');
 }
 
 .button-order .button-order__img {
-  background-image: url('../lib/bootstrap/icons/list-ol.svg');
+  background-image: url('../assets/icons/list-ol.svg');
 }
 
 .button-back .button-back__img {
-  background-image: url('../lib/bootstrap/icons/arrow-left.svg');
+  background-image: url('../assets/icons/arrow-left.svg');
 }
 
 .button-add .button-add__img {
-  background-image: url('../lib/bootstrap/icons/plus.svg');
+  background-image: url('../assets/icons/plus.svg');
 }
 
 .button-save .button-save__img {
-  background-image: url('../lib/bootstrap/icons/check-square.svg');
+  background-image: url('../assets/icons/check-square.svg');
+
   float: left;
 }
 
 .button-select .button-select__img {
-  background-image: url('../lib/bootstrap/icons/check2-square.svg');
+  background-image: url('../assets/icons/check2-square.svg');
 }
 
 .button-caret-down .button-caret-down__img {
-  background-image: url('../lib/bootstrap/icons/caret-down-fill.svg');
+  background-image: url('../assets/icons/caret-down-fill.svg');
 }
 
 .edit-order__checkbox {
@@ -558,15 +559,15 @@ input:focus {
 }
 
 .button-paste .button-paste__img {
-  background-image: url('../lib/bootstrap/icons/clipboard-check.svg');
+  background-image: url('../assets/icons/clipboard-check.svg');
 }
 
 .button-paste-participant .button-paste-participant__img {
-  background-image: url('../lib/bootstrap/icons/person-add.svg');
+  background-image: url('../assets/icons/person-add.svg');
 }
 
 .button-privacy .button-privacy__img {
-  background-image: url('../lib/bootstrap/icons/lock-fill.svg');
+  background-image: url('../assets/icons/lock-fill.svg');
 }
 
 .toolbox__horizontal-separator {
@@ -985,12 +986,12 @@ input:focus {
 /* Стрелка влево */
 .slick-arrow.slick-prev {
   left: 0;
-  background: url(../images/back.png) 0 0 / 100% no-repeat;
+  background: url(../assets/images/back.png) 0 0 / 100% no-repeat;
 }
 /* Стрелка вправо */
 .slick-arrow.slick-next {
   right: 0;
-  background: url(../images/forward.png) 0 0 / 100% no-repeat;
+  background: url(../assets/images/forward.png) 0 0 / 100% no-repeat;
 }
 
 /* Videos modal*/

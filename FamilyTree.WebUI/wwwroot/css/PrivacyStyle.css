@@ -31,7 +31,7 @@
 }
 
 .privacy .privacy__privacy-button {
-  background-image: url(../lib/bootstrap/icons/lock-fill.svg);
+  background-image: url(../assets/icons/lock-fill.svg);
   background-repeat: no-repeat;
   background-size: 25px;
   background-origin: content-box;

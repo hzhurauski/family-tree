@@ -6,12 +6,14 @@
 
 @section Styles
 {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <link href="~/css/Reference.css" type="text/css" rel="stylesheet">
 }
 
 @section Scripts
 {
-<script src="~/js/Reference.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="~/js/Reference.js"></script>
 }
 
 @section HeaderText
@@ -65,7 +67,7 @@
         <div class="BigText">Элемент дерева</div>
         <span class="RedString"></span>Элементом дерева является человек. В дереве он представляется блоком, который представлен ниже.
         <div class="imgInf">
-            <img src="~/images/TreeElement.png" /> 
+            <img src="~/assets/images/TreeElement.png" /> 
         </div>
         <span class="RedString"></span>В данном блоке отображаются фамилия, имя, отчество и изображение, которое было установлено в качестве аватара.
         Если аватар отсутствует, то вместо аватара отображается изображение по умолчанию, как представлено на рисунке выше.<p></p>
@@ -74,13 +76,13 @@
         <div class="BigText">Блок добавления</div>
         <span class="RedString"></span>В случае, если данные об этом человеке отсутствуют, то вместо представленного блока отображается блок добавления, который представлен ниже.
         <div class="imgInf">
-            <img src="~/images/AddElement.png" />
+            <img src="~/assets/images/AddElement.png" />
         </div>
         <span class="RedString"></span>При нажатии на блок добавления человека в дерева, вы перейдете на страницу добавления человека в дерево.<p></p>
         <div class="BigText">Блок отношения</div>
         <span class="RedString"></span>При наведении на блок человека в дереве будет отображен дополнительный блок, который представлен ниже.
         <div class="imgInfLine">
-            <img src="~/images/AditionalBlock.png" />
+            <img src="~/assets/images/AditionalBlock.png" />
         </div>
         <span class="RedString"></span>С помощью этого блока можно перейти на страницу с более подробной информацией о человеке, такие как персональные параметры, образование,
         трудовая делятельность, места проживания и другие события, которые случились с данным человеком. Также в этом блоке отображается информация о том,
@@ -91,23 +93,23 @@
         <div class="BigText">По цвету и формату</div>
         <span class="RedString"></span>Цвет бывает 2 цветов с 2-мя уровнями блеклости: <span class="blueText">синий</span> и <span class="redText">красный</span>.<p></p>
         <span class="imgInfLineColor">
-            <img src="~/images/BlueSolidLine.png" />
+            <img src="~/assets/images/BlueSolidLine.png" />
         </span> - обычная связь между элементами дерева, которые оба находятся в области просмотра дерева.<p></p>
         <span class="imgInfLineColor">
-            <img src="~/images/BlueSolidFatedLine.png" />
+            <img src="~/assets/images/BlueSolidFatedLine.png" />
         </span> - связь между главным человеком и ребенком от второго брака, а также 2-й жены и этим же ребенком.<p></p>
         <span class="imgInfLineColor">
-            <img src="~/images/BlueDashedFatedLine.png" />
+            <img src="~/assets/images/BlueDashedFatedLine.png" />
         </span> - связь между элементами дерева, один из которых находится за пределами области просмотра дерева.<p></p>
         <span class="imgInfLineColor">
-            <img src="~/images/RedSolidLine.png" />
-            <img src="~/images/RedSolidFatedLine.png" />
-            <img src="~/images/RedDashedFatedLine.png" />           
+            <img src="~/assets/images/RedSolidLine.png" />
+            <img src="~/assets/images/RedSolidFatedLine.png" />
+            <img src="~/assets/images/RedDashedFatedLine.png" />           
         </span>- смысл такой же, как и у соответствующих синих линий, но красный отображает кровное родство между двумя элементами дерева. <p></p>   <p></p>  <p></p>       
         <div class="BigText">По направлению</div>
         <span class="RedString"></span>Для наглядного отображения всех направлений ниже представлен рисунок.
         <div class="imgInf">
-            <img src="~/images/BlockConnections.png" />
+            <img src="~/assets/images/BlockConnections.png" />
         </div>
         <span class="RedString"></span>Как видно на рисунке, всего 5 направлений:
         <ul type="none">
