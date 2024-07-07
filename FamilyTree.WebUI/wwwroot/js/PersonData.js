@@ -60,8 +60,8 @@ const CopyObjectTypes = {
 }
 const CopyObjectSessionStorageKey = 'COPY_OBJECT'
 
-const WaitForMilliseconds = ms =>
-  new Promise(handler => setTimeout(handler, ms))
+const WaitForMilliseconds = (ms) =>
+  new Promise((handler) => setTimeout(handler, ms))
 
 let g_currentPerson = null
 let g_dataCategories = []
@@ -85,7 +85,7 @@ let g_isUploadingAudio = false
 let g_currentDataBlockIdsToAssignParticipant = null
 
 async function LoadPersonData(personId) {
-  g_currentPerson = await GetPersonData(personId).catch(r => {
+  g_currentPerson = await GetPersonData(personId).catch((r) => {
     g_currentPerson = null
   })
 
@@ -357,7 +357,7 @@ async function CreateParticipants() {
     type: 'POST',
     data: {
       blockId: g_currentDataBlock.Id,
-      participantIds: g_currentDataBlockParticipants.map(x => x.Id),
+      participantIds: g_currentDataBlockParticipants.map((x) => x.Id),
     },
     url: '/PersonContent/DataBlock/UpdateParticipants',
   })
@@ -550,7 +550,7 @@ async function SaveDataHolders() {
   })
 
   for (const dh of updatedDataHolders) {
-    await UpdateDataHolderData(dh).catch(r => {
+    await UpdateDataHolderData(dh).catch((r) => {
       console.error(r)
     })
   }
@@ -562,7 +562,7 @@ async function UpdateDataHolderIds(dataHolders) {
   )
 
   currentDataHolders.each((i, el) => {
-    updatedId = dataHolders.find(x => x.Title === el.innerText).Id
+    updatedId = dataHolders.find((x) => x.Title === el.innerText).Id
 
     el.setAttribute('data-id', updatedId)
   })
@@ -825,11 +825,11 @@ function InitPersonDataBlockButtonEvents() {
 
   $('#save-audio-submit-button').click(OnSaveAudioSubmitButtonClick)
 
-  $('#video-modal').on('hidden.bs.modal', e => {
+  $('#video-modal').on('hidden.bs.modal', (e) => {
     $('#video-modal #current-video')[0].pause()
   })
 
-  $('#audio-modal').on('hidden.bs.modal', e => {
+  $('#audio-modal').on('hidden.bs.modal', (e) => {
     $('#audio-modal #current-audio')[0].pause()
   })
 
@@ -924,12 +924,12 @@ function OnDataCategoryClick(event) {
     ClearVideos()
     ClearAudios()
     ClearParticipants()
-    RefreshImages().then(val => UpdateImages())
-    RefreshVideos().then(val => UpdateVideos())
-    RefreshAudios().then(val => UpdateAudios())
+    RefreshImages().then((val) => UpdateImages())
+    RefreshVideos().then((val) => UpdateVideos())
+    RefreshAudios().then((val) => UpdateAudios())
     RefreshParticipants()
-      .then(val => UpdateParticipants())
-      .then(val => ShowSaveButton())
+      .then((val) => UpdateParticipants())
+      .then((val) => ShowSaveButton())
 
     OpenDefaultDataBlockTab()
   } else if (
@@ -974,7 +974,7 @@ function OnDataBlockClick(event) {
 
 function RefreshDataBlock(dataBlockId) {
   let dataBlock = g_currentDataCategory.DataBlocks.find(
-    item => item.Id == dataBlockId
+    (item) => item.Id == dataBlockId
   )
 
   g_currentDataBlock = dataBlock
@@ -986,12 +986,12 @@ function RefreshDataBlock(dataBlockId) {
   ClearVideos()
   ClearAudios()
   ClearParticipants()
-  RefreshImages().then(val => UpdateImages())
-  RefreshVideos().then(val => UpdateVideos())
-  RefreshAudios().then(val => UpdateAudios())
+  RefreshImages().then((val) => UpdateImages())
+  RefreshVideos().then((val) => UpdateVideos())
+  RefreshAudios().then((val) => UpdateAudios())
   RefreshParticipants()
-    .then(val => UpdateParticipants())
-    .then(val => ShowSaveButton())
+    .then((val) => UpdateParticipants())
+    .then((val) => ShowSaveButton())
 
   ShowDataBlockButtons()
   ShowDataBlocks(false)
@@ -1058,7 +1058,7 @@ function OnCopyDataCategoryButtonClick() {
 }
 
 function OnSelectParticipantButtonClick() {
-  SelectParticipant().then(value => {
+  SelectParticipant().then((value) => {
     RefreshDataBlocks()
     UpdateDataBlocks()
   })
@@ -1089,7 +1089,7 @@ function OnAddDataCategorySubmitButtonClick() {
 }
 
 function OnDeleteDataCategorySubmitButtonClick() {
-  DeleteSelectedDataCategories().then(val => {
+  DeleteSelectedDataCategories().then((val) => {
     RefreshDataCategories()
     UpdateDataCategories()
     $('#delete-data-category-modal').modal('hide')
@@ -1184,13 +1184,13 @@ function OnAddImageSubmitButtonClick() {
   imageModal.find('#image-file').prop('disabled', true)
 
   CreateImage(formData).then(
-    result => {
+    (result) => {
       imageModal.modal('hide')
-      RefreshImages().then(val => UpdateImages())
+      RefreshImages().then((val) => UpdateImages())
       g_isUploadingImage = false
       imageModal.find('#image-file').prop('disabled', false)
     },
-    r => {
+    (r) => {
       alert('Ошибка при создании изображения.')
       g_isUploadingImage = false
       imageModal.find('#image-file').prop('disabled', false)
@@ -1220,13 +1220,13 @@ function OnAddVideoSubmitButtonClick() {
   videoModal.find('#video-file').prop('disabled', true)
 
   CreateVideo(formData).then(
-    data => {
+    (data) => {
       videoModal.modal('hide')
-      RefreshVideos().then(val => UpdateVideos())
+      RefreshVideos().then((val) => UpdateVideos())
       g_isUploadingVideo = false
       videoModal.find('#video-file').prop('disabled', false)
     },
-    r => {
+    (r) => {
       alert('Ошибка при создании видео.')
       g_isUploadingVideo = false
       videoModal.find('#video-file').prop('disabled', false)
@@ -1256,13 +1256,13 @@ function OnAddAudioSubmitButtonClick() {
   audioModal.find('#audio-file').prop('disabled', true)
 
   CreateAudio(formData).then(
-    result => {
+    (result) => {
       audioModal.modal('hide')
-      RefreshAudios().then(val => UpdateAudios())
+      RefreshAudios().then((val) => UpdateAudios())
       g_isUploadingAudio = false
       audioModal.find('#audio-file').prop('disabled', false)
     },
-    r => {
+    (r) => {
       alert('Ошибка при создании аудио.')
       g_isUploadingAudio = false
       audioModal.find('#audio-file').prop('disabled', false)
@@ -1284,10 +1284,10 @@ function OnAddParticipantSubmitButtonClick() {
   let partModal = $('#add-participant-modal')
 
   partModal.modal('hide')
-  RefreshParticipants().then(val => UpdateParticipants())
+  RefreshParticipants().then((val) => UpdateParticipants())
 
-  CreateParticipants().then(result => {
-    RefreshParticipants().then(val => UpdateParticipants())
+  CreateParticipants().then((result) => {
+    RefreshParticipants().then((val) => UpdateParticipants())
     partModal.find('#participant').prop('disabled', false)
   })
 }
@@ -1414,7 +1414,7 @@ function OnDeleteButtonClick() {
 function OnDeleteSubmitButtonClick() {
   switch (g_currentAddButtonActionType) {
     case AddButtonActionTypes.AddDataBlock: {
-      DeleteSelectedDataBlocks().then(val => {
+      DeleteSelectedDataBlocks().then((val) => {
         RefreshDataBlocks()
         UpdateDataBlocks()
         $('#delete-modal').modal('hide')
@@ -1422,7 +1422,7 @@ function OnDeleteSubmitButtonClick() {
       break
     }
     case AddButtonActionTypes.AddDataHolder: {
-      DeleteSelectedDataHolders().then(val => {
+      DeleteSelectedDataHolders().then((val) => {
         RefreshDataHolders()
         UpdateDataHolders()
         $('#delete-modal').modal('hide')
@@ -1430,8 +1430,8 @@ function OnDeleteSubmitButtonClick() {
       break
     }
     case AddButtonActionTypes.AddImage: {
-      DeleteSelectedImages().then(val => {
-        RefreshImages().then(val => {
+      DeleteSelectedImages().then((val) => {
+        RefreshImages().then((val) => {
           UpdateImages()
           $('#delete-modal').modal('hide')
         })
@@ -1439,8 +1439,8 @@ function OnDeleteSubmitButtonClick() {
       break
     }
     case AddButtonActionTypes.AddVideo: {
-      DeleteSelectedVideos().then(val => {
-        RefreshVideos().then(val => {
+      DeleteSelectedVideos().then((val) => {
+        RefreshVideos().then((val) => {
           UpdateVideos()
           $('#delete-modal').modal('hide')
         })
@@ -1448,8 +1448,8 @@ function OnDeleteSubmitButtonClick() {
       break
     }
     case AddButtonActionTypes.AddAudio: {
-      DeleteSelectedAudios().then(val => {
-        RefreshAudios().then(val => {
+      DeleteSelectedAudios().then((val) => {
+        RefreshAudios().then((val) => {
           UpdateAudios()
           $('#delete-modal').modal('hide')
         })
@@ -1457,8 +1457,8 @@ function OnDeleteSubmitButtonClick() {
       break
     }
     case AddButtonActionTypes.AddParticipant: {
-      DeleteSelectedParticipants().then(val => {
-        RefreshParticipants().then(val => {
+      DeleteSelectedParticipants().then((val) => {
+        RefreshParticipants().then((val) => {
           UpdateParticipants()
           $('#delete-modal').modal('hide')
         })
@@ -1489,7 +1489,7 @@ async function SaveData() {
   saveButton.find('.btn__text')[0].innerHTML = 'Сохранение'
 
   await SaveDataHolders().then(
-    async data => {
+    async (data) => {
       g_currentDataCategory = GetDataCategory(g_currentDataCategory.Id)
 
       if (
@@ -1503,7 +1503,7 @@ async function SaveData() {
       saveButton.addClass('btn-success')
       await WaitForMilliseconds(1500)
     },
-    r => {
+    (r) => {
       alert('Произошла ошибка во время сохранения.')
     }
   )
@@ -1523,13 +1523,13 @@ async function SaveCopiedDataAsParticipant() {
   let createdDataholdersByDataBlockIds
 
   await CopyDataBlocks([g_currentDataBlock.Id], g_currentDataCategory.Id).then(
-    async data => {
+    async (data) => {
       createdDataholdersByDataBlockIds = data[0]
       await DeleteParticipant(g_currentPerson.Id, g_currentDataBlock.Id).then(
-        async data => {
+        async (data) => {
           UpdateDataHolderIds(createdDataholdersByDataBlockIds.DataHolders)
           await SaveDataHolders().then(
-            async data => {
+            async (data) => {
               g_currentDataCategory = GetDataCategory(g_currentDataCategory.Id)
               RefreshDataBlock(createdDataholdersByDataBlockIds.Id)
 
@@ -1545,7 +1545,7 @@ async function SaveCopiedDataAsParticipant() {
               saveButton.addClass('btn-success')
               await WaitForMilliseconds(1500)
             },
-            r => {
+            (r) => {
               alert('Произошла ошибка во время сохранения.')
             }
           )
@@ -1572,7 +1572,7 @@ function OnEditPrivacyButtonClick() {
 
       let dataHolderId = selectedDataHolders.attr('data-id')
       let dataHolderPrivacy = g_currentDataBlock.DataHolders.find(
-        dh => dh.Id == dataHolderId
+        (dh) => dh.Id == dataHolderId
       ).Privacy
 
       g_editPrivacyId = dataHolderPrivacy.Id
@@ -1667,7 +1667,7 @@ function OnSaveImageSubmitButtonClick() {
   if (!UpdateImageDetails(image)) {
     alert('Ошибка при сохранении данных изображения.')
   } else {
-    RefreshImages().then(val => UpdateSliderImageDetails(currentImageId))
+    RefreshImages().then((val) => UpdateSliderImageDetails(currentImageId))
   }
 }
 
@@ -1679,14 +1679,14 @@ function OnSetImageAsAvatarButtonClick() {
     g_currentPerson.Id,
     GetImageSliderCurrentImageId()
   ).then(
-    result => {
+    (result) => {
       ReloadTree(_currentFamilyTree.MainPersonId)
-      GetPersonData(g_currentPerson.Id).then(result => {
+      GetPersonData(g_currentPerson.Id).then((result) => {
         g_currentPerson = result
         UpdateSliderImageDetails(GetImageSliderCurrentImageId())
       })
     },
-    r => {
+    (r) => {
       alert('Ошибка при задании изображения аватара персоны.')
     }
   )
@@ -1714,7 +1714,7 @@ function OnSaveVideoSubmitButtonClick() {
   if (!UpdateVideoDetails(video)) {
     alert('Ошибка при сохранении данных видео.')
   } else {
-    RefreshVideos().then(val => {
+    RefreshVideos().then((val) => {
       UpdateVideoModalVideos()
       SelectVideoModalVideo(currentVideoId)
     })
@@ -1731,12 +1731,12 @@ function OnSaveAudioSubmitButtonClick() {
   }
 
   UpdateAudioDetails(audio).then(
-    result => {
-      RefreshAudios().then(result => {
+    (result) => {
+      RefreshAudios().then((result) => {
         UpdateAudios()
       })
     },
-    r => {
+    (r) => {
       alert('Ошибка при сохранении информации аудио.')
     }
   )
@@ -1758,14 +1758,14 @@ function OnInvertSelectionButtonClick() {
 function UpdateDataCategories() {
   ClearDataCategories()
 
-  g_dataCategories.forEach(item => {
+  g_dataCategories.forEach((item) => {
     AddItemToDataCategories(item)
   })
 
   new Sortable($('.person-data-block__data-categories')[0], {
     handle: '.data-categories__item',
     animation: 500,
-    onEnd: event => {
+    onEnd: (event) => {
       let dataCategory = {
         Id: $(event.item).attr('data-id'),
         Order: event.newIndex + 1,
@@ -1784,14 +1784,14 @@ function UpdateDataCategories() {
 function UpdateDataBlocks() {
   ClearDataBlocks()
 
-  g_currentDataCategory.DataBlocks.forEach(item => {
+  g_currentDataCategory.DataBlocks.forEach((item) => {
     AddItemToDataBlocks(item)
   })
 
   new Sortable($('.person-data-block__data-blocks')[0], {
     handle: '.data-block__selector',
     animation: 500,
-    onEnd: event => {
+    onEnd: (event) => {
       let dataBlock = {
         Id: $(event.item).attr('data-id'),
         Order: event.newIndex + 1,
@@ -1812,7 +1812,7 @@ function UpdateDataHolders() {
 
   if (g_currentDataBlock == null) return
 
-  g_currentDataBlock.DataHolders.forEach(item => {
+  g_currentDataBlock.DataHolders.forEach((item) => {
     AddItemToDataHolders(item)
   })
 
@@ -1820,7 +1820,7 @@ function UpdateDataHolders() {
     handle:
       '.data-holder__selector, .data-holder-gender__selector, .data-holder-textarea__selector',
     animation: 500,
-    onEnd: event => {
+    onEnd: (event) => {
       let dataHolder = {
         Id: $(event.item).attr('data-id'),
         Order: event.newIndex + 1,
@@ -1836,7 +1836,7 @@ function UpdateImages() {
 
   if (g_currentDataBlockImages == null) return
 
-  g_currentDataBlockImages.forEach(item => {
+  g_currentDataBlockImages.forEach((item) => {
     AddItemToImages(item)
   })
 
@@ -1853,13 +1853,15 @@ function UpdateImageSlider(imageId) {
 
   if (g_currentDataBlockImages == null) return
 
-  g_currentDataBlockImages.forEach(item => {
+  g_currentDataBlockImages.forEach((item) => {
     AddImageToSlider(item)
   })
 
   let initialSlide = 0
 
-  let selectedImage = g_currentDataBlockImages.find(item => item.Id == imageId)
+  let selectedImage = g_currentDataBlockImages.find(
+    (item) => item.Id == imageId
+  )
 
   initialSlide = g_currentDataBlockImages.indexOf(selectedImage)
 
@@ -1881,7 +1883,7 @@ function UpdateImageSlider(imageId) {
 function UpdateSliderImageDetails(imageId) {
   let sliderModal = $('#image-carousel-modal')
 
-  let image = g_currentDataBlockImages.find(item => item.Id == imageId)
+  let image = g_currentDataBlockImages.find((item) => item.Id == imageId)
 
   sliderModal.find('#slider-image-title').val(image.Title)
 
@@ -1912,7 +1914,7 @@ function UpdateSliderImageDetails(imageId) {
 function UpdateImageSliderImagePrivacy() {
   let sliderModal = $('#image-carousel-modal')
   let image = g_currentDataBlockImages.find(
-    item => item.Id == GetImageSliderCurrentImageId()
+    (item) => item.Id == GetImageSliderCurrentImageId()
   )
 
   if (image == null) return
@@ -1926,7 +1928,7 @@ function UpdateVideos() {
 
   if (g_currentDataBlockVideos == null) return
 
-  g_currentDataBlockVideos.forEach(item => {
+  g_currentDataBlockVideos.forEach((item) => {
     AddItemToVideos(item)
   })
 
@@ -1938,7 +1940,7 @@ function UpdateAudios() {
 
   if (g_currentDataBlockAudios == null) return
 
-  g_currentDataBlockAudios.forEach(item => {
+  g_currentDataBlockAudios.forEach((item) => {
     AddItemToAudios(item)
   })
 
@@ -1952,7 +1954,7 @@ function UpdateParticipants() {
 
   if (g_currentDataBlockParticipants == null) return
 
-  g_currentDataBlockParticipants.forEach(item => {
+  g_currentDataBlockParticipants.forEach((item) => {
     AddItemToParticipant(item)
   })
 
@@ -1965,7 +1967,7 @@ function UpdateVideoModal(videoId) {
   let videoModal = $('#video-modal')
   let currentVideoElement = videoModal.find('#current-video')[0]
 
-  let currentVideo = g_currentDataBlockVideos.find(item => item.Id == videoId)
+  let currentVideo = g_currentDataBlockVideos.find((item) => item.Id == videoId)
 
   videoModal.find('#current-video-title').val(currentVideo.Title)
   videoModal.find('#current-video-desc').val(currentVideo.Description)
@@ -1990,7 +1992,7 @@ function UpdateVideoModal(videoId) {
 function UpdateVideoModalVideoPrivacy() {
   let videoModal = $('#video-modal')
   let currentVideo = g_currentDataBlockVideos.find(
-    item => item.Id == GetVideoModalCurrentVideoId()
+    (item) => item.Id == GetVideoModalCurrentVideoId()
   )
 
   if (currentVideo == null) return
@@ -2007,7 +2009,7 @@ function UpdateVideoModalVideos() {
 
   if (g_currentDataBlockVideos == null) return
 
-  g_currentDataBlockVideos.forEach(item => {
+  g_currentDataBlockVideos.forEach((item) => {
     AddVideoToVideoModal(item)
   })
 
@@ -2020,7 +2022,7 @@ function UpdateAudioModal(audioId) {
   let audioModal = $('#audio-modal')
   let currentAudioElement = audioModal.find('#current-audio')[0]
 
-  let currentAudio = g_currentDataBlockAudios.find(item => item.Id == audioId)
+  let currentAudio = g_currentDataBlockAudios.find((item) => item.Id == audioId)
 
   audioModal.find('#current-audio-title').val(currentAudio.Title)
   audioModal.find('#current-audio-desc').val(currentAudio.Description)
@@ -2040,7 +2042,7 @@ function UpdateAudioModal(audioId) {
 function UpdateAudioModalAudioPrivacy() {
   let audioModal = $('#audio-modal')
   let currentAudio = g_currentDataBlockAudios.find(
-    item => item.Id == g_openedAudioId
+    (item) => item.Id == g_openedAudioId
   )
 
   if (currentAudio == null) return
@@ -2067,7 +2069,7 @@ function RefreshDataBlocks() {
 function RefreshDataHolders() {
   RefreshDataCategory()
   g_currentDataBlock = g_currentDataCategory.DataBlocks.find(
-    item => item.Id == g_currentDataBlock.Id
+    (item) => item.Id == g_currentDataBlock.Id
   )
 }
 
@@ -3204,10 +3206,10 @@ function PasteImages() {
   }
 
   CopyImages(g_copyObject.Ids, g_currentDataBlock.Id).then(
-    data => {
-      RefreshImages().then(val => UpdateImages())
+    (data) => {
+      RefreshImages().then((val) => UpdateImages())
     },
-    r => {
+    (r) => {
       alert('Ошибка при вставке из буфера')
     }
   )
@@ -3227,10 +3229,10 @@ function PasteVideos() {
   }
 
   CopyVideos(g_copyObject.Ids, g_currentDataBlock.Id).then(
-    data => {
-      RefreshVideos().then(val => UpdateVideos())
+    (data) => {
+      RefreshVideos().then((val) => UpdateVideos())
     },
-    r => {
+    (r) => {
       alert('Ошибка при вставке из буфера')
     }
   )
@@ -3250,10 +3252,10 @@ function PasteAudios() {
   }
 
   CopyAudios(g_copyObject.Ids, g_currentDataBlock.Id).then(
-    data => {
-      RefreshAudios().then(val => UpdateAudios())
+    (data) => {
+      RefreshAudios().then((val) => UpdateAudios())
     },
-    r => {
+    (r) => {
       alert('Ошибка при вставке из буфера')
     }
   )
@@ -3353,11 +3355,11 @@ async function DeleteSelectedParticipants() {
   let debug = participantIds.indexOf(g_currentDataBlockParticipants[0].Id)
 
   g_currentDataBlockParticipants = g_currentDataBlockParticipants.filter(
-    x => participantIds.indexOf(x.Id) < 0
+    (x) => participantIds.indexOf(x.Id) < 0
   )
 
-  CreateParticipants().then(res =>
-    RefreshParticipants().then(val => UpdateParticipants())
+  CreateParticipants().then((res) =>
+    RefreshParticipants().then((val) => UpdateParticipants())
   )
 }
 
@@ -3365,8 +3367,8 @@ function IsViewDataBlockAsParticipant() {
   return (
     g_currentDataBlockParticipants &&
     g_currentDataBlockParticipants
-      .filter(x => !x.IsOwner)
-      .map(x => x.Id)
+      .filter((x) => !x.IsOwner)
+      .map((x) => x.Id)
       .indexOf(g_currentPerson.Id) >= 0
   )
 }
