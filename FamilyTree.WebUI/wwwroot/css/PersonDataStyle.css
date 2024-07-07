@@ -1,4 +1,9 @@
-﻿#person-data-block,
+﻿/* Временна убрана кнопка */
+input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+#person-data-block,
 .data-blocks,
 .data-holders {
   display: none;
@@ -15,7 +20,10 @@
   background-color: #454545;
   color: #acacac;
   border-top: none;
-  transition: background-color 0.5s, border-color 0.5s, border-left-width 0.5s,
+  transition:
+    background-color 0.5s,
+    border-color 0.5s,
+    border-left-width 0.5s,
     color 0.5s;
 }
 
@@ -40,7 +48,10 @@
   border-color: #007cd3;
   border-left-width: 40px;
   color: #0096ff;
-  transition: background-color 0.5s, border-color 0.5s, border-left-width 0.5s,
+  transition:
+    background-color 0.5s,
+    border-color 0.5s,
+    border-left-width 0.5s,
     color 0.5s;
 }
 
@@ -499,6 +510,7 @@ input:focus {
 
 .button-save .button-save__img {
   background-image: url('../assets/icons/check-square.svg');
+
   float: left;
 }
 
@@ -612,14 +624,20 @@ input:focus {
   text-align: center;
   padding-top: 25px;
   cursor: pointer;
-  transition: background-color ease 0.5s, box-shadow ease 0.5s, color ease 0.5s;
+  transition:
+    background-color ease 0.5s,
+    box-shadow ease 0.5s,
+    color ease 0.5s;
 }
 
 .tabs-buttons .tabs-buttons__button:hover {
   background: #0096ff;
   box-shadow: 0px 0px 4px #0096ff;
   color: #fff;
-  transition: background-color ease 0.5s, box-shadow ease 0.5s, color ease 0.5s;
+  transition:
+    background-color ease 0.5s,
+    box-shadow ease 0.5s,
+    color ease 0.5s;
   border: none;
 }
 
