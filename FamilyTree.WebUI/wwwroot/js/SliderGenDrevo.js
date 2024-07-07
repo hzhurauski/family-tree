@@ -12,7 +12,7 @@ $('.PrevItem').click(function (event) {
   PrevItem(event.currentTarget)
 })
 
-function NextItem(currentTarget) {
+export function NextItem(currentTarget) {
   GetSpace(currentTarget)
 
   var current = $(SliderBlock)[0].getElementsByClassName('itemCurrent')[0]
@@ -76,7 +76,7 @@ function NextItem(currentTarget) {
     (GetNumberListSlider($(List)[0].style.transform) - space) +
     'px)'
 }
-function PrevItem(currentTarget) {
+export function PrevItem(currentTarget) {
   GetSpace(currentTarget)
 
   var current = $(SliderBlock)[0].getElementsByClassName('itemCurrent')[0]
@@ -104,15 +104,15 @@ function PrevItem(currentTarget) {
     'px)'
 }
 
-function GetNumber(left) {
+export function GetNumber(left) {
   var num = left.slice(0, left.length - 2)
   return num - 0
 }
-function GetNumberListSlider(List) {
+export function GetNumberListSlider(List) {
   var num = List.slice(11, List.length - 3)
   return num - 0
 }
-function GetSpace(currentTarget) {
+export function GetSpace(currentTarget) {
   SliderBlock = $('#' + $(currentTarget.parentElement)[0].id + ' .PrevItem')[0]
     .nextElementSibling
   LengthSlider =
