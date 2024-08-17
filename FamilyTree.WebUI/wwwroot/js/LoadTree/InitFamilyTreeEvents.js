@@ -1,11 +1,3 @@
-﻿import { LoadPersonData } from '../PersonData/LoadPersonData.js'
-import { NextItem, PrevItem } from '../SliderGenDrevo.js'
-import { AddNewPerson } from './AddNewPerson.js'
-import { AddOneMorePerson } from './AddOneMorePerson.js'
-import { DrawConnections } from './Draw.js'
-import { DrawBlood } from './DrawBlood.js'
-import { DrawConntecionsLittleTree } from './DrawConntecionsLittleTree.js'
-import { ImageAlign } from './ImageAlign.js'
 import {
   ChangeWifeTree,
   ClearInputs,
@@ -19,6 +11,15 @@ import {
   ShowPersonData,
   ShowStartTree,
 } from '../LoadTree/LoadTree.js'
+
+import { LoadPersonData } from '../PersonData/LoadPersonData.js'
+import { NextItem, PrevItem } from '../SliderGenDrevo.js'
+import { AddNewPerson } from './AddNewPerson.js'
+import { AddOneMorePerson } from './AddOneMorePerson.js'
+import { DrawConnections } from './Draw.js'
+import { DrawBlood } from './DrawBlood.js'
+import { DrawConntecionsLittleTree } from './DrawConntecionsLittleTree.js'
+import { ImageAlign } from './ImageAlign.js'
 import { RedrawSonsHasSonConnections } from './RedrawSonsHasSonConnections.js'
 import { ShowModalPerson } from './ShowModalPerson.js'
 

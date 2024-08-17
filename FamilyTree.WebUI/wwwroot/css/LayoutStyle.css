@@ -29,7 +29,7 @@ body {
 
 #header {
   background-repeat: no-repeat;
-  background-image: url(../images/BackgroundSign.png);
+  background-image: url(../assets/images/BackgroundSign.png);
   background-size: cover;
   height: 300px;
   display: flex;
@@ -137,9 +137,8 @@ body {
 /*Footer*/
 #footer {
   background-repeat: no-repeat;
-  background-image: url(../images/FooterBackground.png);
+  background-image: url(../assets/images/FooterBackground.png);
   background-size: cover;
-  min-width: 1300px;
   /*height: 210px;*/
   margin: 0 auto;
 }

@@ -18,7 +18,7 @@ export function FillPerson(person, data) {
       '/Media/Image/GetFile/' + data.AvatarImageId
     person.firstElementChild.firstElementChild.decoding = 'async'
   } else {
-    person.firstElementChild.firstElementChild.src = '/images/person.png'
+    person.firstElementChild.firstElementChild.src = '/assets/images/person.png'
     person.firstElementChild.firstElementChild.decoding = 'async'
   }
 }

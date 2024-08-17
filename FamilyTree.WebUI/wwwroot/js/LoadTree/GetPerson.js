@@ -25,7 +25,7 @@ export function GetPerson(person, LittleTree) {
       ';base64,' +
       person.AvatarImage.ImageData
   } else {
-    newImg.src = '/images/person.png'
+    newImg.src = '/assets/images/person.png'
   }
 
   var newImgBlock = document.createElement('div')
