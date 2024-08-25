@@ -101,6 +101,18 @@ function LoadFamilyTree() {
 }
 
 function InitFamilyTreeEvents() {
+  // Удаляем hover-обработчики
+  $("#modalBlockPerson").off("mouseenter mouseleave");
+
+  // Добавляем click-обработчики на элементы .person и .LittleTreePerson
+  $(".person").click(function(event) {
+    ShowModalPerson(event);
+  });
+
+  $(".LittleTreePerson").click(function(event) {
+    ShowModalPerson(event);
+  });
+
   $('.person').dblclick(function (event) {
     if (event.target.parentElement.classList.contains('star-button')) return
 
@@ -114,18 +126,7 @@ function InitFamilyTreeEvents() {
 
     document.location.reload()
   })
-  $('.person').hover(
-    function (event) {
-      ShowModalPerson(event)
-    },
-    function () {
-      setTimeout(function () {
-        if (!visibleModal) {
-          $('#modalBlockPerson')[0].style.visibility = 'hidden'
-        }
-      }, 10)
-    }
-  )
+ 
   $('.LittleTreePerson').dblclick(function (event) {
     //ReloadTree($(event.currentTarget)[0].getAttribute("data-value"));
 
@@ -139,18 +140,6 @@ function InitFamilyTreeEvents() {
 
     document.location.reload()
   })
-  $('.LittleTreePerson').hover(
-    function (event) {
-      ShowModalPerson(event)
-    },
-    function () {
-      setTimeout(function () {
-        if (!visibleModal) {
-          $('#modalBlockPerson')[0].style.visibility = 'hidden'
-        }
-      }, 10)
-    }
-  )
 
   $('#modalBlockPerson').hover(
     function () {
@@ -2329,6 +2318,17 @@ function ShowModalPerson(event) {
   var person = $('#mainPerson')[0]
   var currentId = event.currentTarget.getAttribute('data-value')
   var idPerson = 0
+
+  var modalPerson = $("#modalBlockPerson")[0];
+
+    if (modalPerson.style.visibility === "visible") {
+        modalPerson.style.visibility = "hidden";
+        return;
+    }
+
+    if (event.currentTarget.firstElementChild.classList.contains("hiddenPersonContent")) {
+        return;
+    }
 
   if (bloodFlag) {
     idPerson = $('#BloodTree')[0].getAttribute('data-value')
