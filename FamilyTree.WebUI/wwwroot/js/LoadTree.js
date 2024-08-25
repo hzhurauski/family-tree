@@ -126,18 +126,7 @@ function InitFamilyTreeEvents() {
 
     document.location.reload()
   })
-  //$('.person').hover(
-  //   function (event) {
-  //     ShowModalPerson(event)
-  //   },
-  //   function () {
-  //     setTimeout(function () {
-  //       if (!visibleModal) {
-  //         $('#modalBlockPerson')[0].style.visibility = 'hidden'
-  //       }
-  //     }, 10)
-  //   }
-  // )
+ 
   $('.LittleTreePerson').dblclick(function (event) {
     //ReloadTree($(event.currentTarget)[0].getAttribute("data-value"));
 
@@ -151,18 +140,6 @@ function InitFamilyTreeEvents() {
 
     document.location.reload()
   })
-  // $('.LittleTreePerson').hover(
-  //   function (event) {
-  //     ShowModalPerson(event)
-  //   },
-  //   function () {
-  //     setTimeout(function () {
-  //       if (!visibleModal) {
-  //         $('#modalBlockPerson')[0].style.visibility = 'hidden'
-  //       }
-  //     }, 10)
-  //   }
-  // )
 
   $('#modalBlockPerson').hover(
     function () {
